@@ -29,7 +29,7 @@ for file in ${files}; do
     ln -sf ${scriptfiledir}/.${file} ${homedir}/.${file}
 done
 
-source scriptfiledir/.zshrc
+source ${scriptfiledir}/.zshrc
 echo ""
 echo "[Sourced]"
 echo ""
