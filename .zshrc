@@ -1,3 +1,6 @@
+# ------------------------------------------------------------------------------
+# Oh-My-Zsh
+# ------------------------------------------------------------------------------
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
@@ -97,6 +100,9 @@ export TERM="xterm-256color"
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
 
+# ------------------------------------------------------------------------------
+# Aliases
+# ------------------------------------------------------------------------------
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
@@ -107,6 +113,15 @@ export TERM="xterm-256color"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 # alias python=/usr/local/bin/python3.8
 # alias pip=/usr/local/bin/pip3
+
+alias lsla='ls -la'
+alias ch='history | grep "git commit"'
+alias pih='history | grep "pip install"'
+alias hg='history | grep'
+
+# ------------------------------------------------------------------------------
+# Powerlevel 10k
+# ------------------------------------------------------------------------------
 source /usr/local/opt/powerlevel10k/powerlevel10k.zsh-theme
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
@@ -114,6 +129,7 @@ source /usr/local/opt/powerlevel10k/powerlevel10k.zsh-theme
 
 # ------------------------------------------------------------------------------
 # PYENV
+# ------------------------------------------------------------------------------
 export PATH="$HOME/.pyenv/bin:$PATH"
 eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"
@@ -132,3 +148,7 @@ fi
 #export PKG_CONFIG_PATH="${PKG_CONFIG_PATH} /usr/local/opt/sqlite/lib/pkgconfig"
 
 #export PATH="/usr/local/opt/openssl@1.1/bin:$PATH"
+
+# ------------------------------------------------------------------------------
+# New
+# ------------------------------------------------------------------------------
