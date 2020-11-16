@@ -110,4 +110,7 @@ do
     else
         break
     fi
+    
+    cp gitignore .gitignore
+    
 done
