@@ -29,6 +29,11 @@ for file in ${files}; do
     ln -sf ${scriptfiledir}/.${file} ${homedir}/.${file}
 done
 
+source scriptfiledir/.zshrc
+echo ""
+echo "[Sourced]"
+echo ""
+
 # Download Git Auto-Completion
 curl "https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash" > ${homedir}/.git-completion.bash
 
