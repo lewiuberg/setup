@@ -117,7 +117,17 @@ export TERM="xterm-256color"
 alias lsla='ls -la'
 alias ch='history | grep "git commit"'
 alias pih='history | grep "pip install"'
-alias hg='history | grep'
+alias gh='history | grep'
+
+# Show/hide hidden files in Finder
+alias show="defaults write com.apple.finder AppleShowAllFiles -bool true && killall Finder"
+alias hide="defaults write com.apple.finder AppleShowAllFiles -bool false && killall Finder"
+
+# TEMP for pyenv_install: https://github.com/pyenv/pyenv/issues/1219#issuecomment-428793012
+alias pyenv_install='f(){ CFLAGS="-I$(brew --prefix readline)/include -I$(brew --prefix openssl)/include -I$(xcrun --show-sdk-path)/usr/include" \
+LDFLAGS="-L$(brew --prefix readline)/lib -L$(brew --prefix openssl)/lib" \
+PYTHON_CONFIGURE_OPTS=--enable-unicode=ucs2 \
+pyenv install -v "$@";  unset -f f; }; f'
 
 # ------------------------------------------------------------------------------
 # Powerlevel 10k
@@ -133,21 +143,11 @@ source /usr/local/opt/powerlevel10k/powerlevel10k.zsh-theme
 export PATH="$HOME/.pyenv/bin:$PATH"
 eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"
+
 if command -v pyenv 1>/dev/null 2>&1; then
     eval "$(pyenv init -)"
 fi
 
-#For compilers to find zlib you may need to set:
-#export LDFLAGS="${LDFLAGS} -L/usr/local/opt/zlib/lib"
-#export CPPFLAGS="${CPPFLAGS} -I/usr/local/opt/zlib/include"
-#export LDFLAGS="${LDFLAGS} -L/usr/local/opt/sqlite/lib"
-#export CPPFLAGS="${CPPFLAGS} -I/usr/local/opt/sqlite/include"
-
-#For pkg-config to find zlib you may need to set:
-#export PKG_CONFIG_PATH="${PKG_CONFIG_PATH} /usr/local/opt/zlib/lib/pkgconfig"
-#export PKG_CONFIG_PATH="${PKG_CONFIG_PATH} /usr/local/opt/sqlite/lib/pkgconfig"
-
-#export PATH="/usr/local/opt/openssl@1.1/bin:$PATH"
 
 # ------------------------------------------------------------------------------
 # New

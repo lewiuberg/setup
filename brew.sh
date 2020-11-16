@@ -1,39 +1,27 @@
 #!/usr/bin/env zsh
-################################################################################
-# This script creates symlinks from the home directory to any desired Scripts in ${homedir}/Scripts
-# And also installs Homebrew Packages
-# And sets Sublime preferences
-################################################################################
 
-if [ "$#" -ne 1 ]; then
-    echo "Usage: install.sh <home_directory>"
-    exit 1
-fi
+# Install Brew Packages
+brew install tree
+brew install node
 
-homedir=$1
-
-# Scripts directory
-scriptfiledir=${homedir}/Scripts
-
-# list of files/folders to symlink in ${homedir}
-files="zshrc"
-
-# change to the Scripts directory
-echo "Changing to the ${scriptfiledir} directory"
-cd ${scriptfiledir}
-echo "...done"
-
-# create symlinks (will overwrite old Scripts)
-for file in ${files}; do
-    echo "Creating symlink to $file in home directory."
-    ln -sf ${scriptfiledir}/.${file} ${homedir}/.${file}
-done
-
-# Download Git Auto-Completion
-curl "https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash" > ${homedir}/.git-completion.bash
-
-# Run the Homebrew Script
-#./brew.sh
-
-# Run the Sublime Script
-#./sublime.sh
+# Install MacOS Applications
+brew cask install visual-studio-code
+brew cask install hyperdock
+brew cask install sourcetree
+brew cask install vnc-viewer
+brew cask install parallels
+brew cask install parallels-access
+brew cask install parallels-client
+brew cask install parallels-toolbox
+brew cask install slack
+brew cask install discord
+brew cask install messenger
+brew cask install microsoft-teams
+brew cask install grammarly
+brew cask install cheatsheet
+brew cask install jabref
+brew cask install autodesk-fusion360
+brew cask install raspberry-pi-imager
+brew cask install balenaetcher
+brew cask install pibakery
+brew cask install applepi-baker

@@ -5,6 +5,8 @@
 # And sets Sublime preferences
 ################################################################################
 
+clear
+
 if [ "$#" -ne 1 ]; then
     echo "Usage: install.sh <home_directory>"
     exit 1
@@ -34,11 +36,22 @@ echo ""
 echo "[Sourced]"
 echo ""
 
+# Install Homebrew
+curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh
+brew doctor
+brew install cask
+brew doctor
+# homebrew cask updater: https://github.com/buo/homebrew-cask-upgrade
+brew tap buo/cask-upgrade
+
 # Download Git Auto-Completion
 curl "https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash" > ${homedir}/.git-completion.bash
 
-# Run the Homebrew Script
-#./brew.sh
+# Run the Terminal Script
+./terminal.sh
 
-# Run the Sublime Script
-#./sublime.sh
+# Run the Homebrew Script
+./brew.sh
+
+# Run the VScode extension Script
+./vscode_extensions.sh
