@@ -1,6 +1,6 @@
 # Jupyter Dash in Jupyter Lab for MacOS
 
-Sources:
+Sources:<br/>
 [Charming Data](https://drive.google.com/file/d/1ZRtQUie0y2k3dXz_MM8s29WQaSrM9bDn/view)<br/>
 [Xing Han Lu](https://medium.com/plotly/introducing-jupyterdash-811f1f57c02e)<br/>
 [Plotly](https://plotly.com/python/getting-started/#jupyterlab-support-python-35)<br/>
