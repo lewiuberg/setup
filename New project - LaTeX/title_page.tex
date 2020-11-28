@@ -1,0 +1,48 @@
+\begin{titlepage} %Prevents page numbering and inclusion in page count.
+\newcommand{\HRule}{\rule{\linewidth}{.5mm}} % Defines a custom command.
+
+\center
+\textsc{\LARGE \university}\\[15mm]
+\textsc{\Large \myCourseName}\\[5mm]
+\textsc{\large \myCourseCode}\\[5mm]
+
+\HRule\\[5mm]
+{\huge\bfseries \myTitle}\\[5mm]
+{\LARGE\bfseries \myUndertitle}\\[5mm]
+
+\HRule\\[15mm]
+
+\begin{minipage}{0.4\textwidth}
+	\begin{flushleft}
+		\large
+		\textit{Author}\\
+		\myAuthorFirst{} \myAuthorLast
+	\end{flushleft}
+\end{minipage}
+~
+\begin{minipage}{0.4\textwidth}
+	\begin{flushright}
+		\large
+		\textit{Professor}\\
+		\myProfessorFirst{} \textsc{\myProfessorLast}
+	\end{flushright}
+	\begin{flushright}
+		\large
+		\textit{Lecturer}\\
+		\myLecturerFirst{} \textsc{\myLecturerLast}
+	\end{flushright}
+\end{minipage}
+
+\vfill
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{Noroff.pdf}
+\end{figure}
+
+\vfill
+
+%Made static when submitting 
+{\large\myDate}
+
+\end{titlepage}

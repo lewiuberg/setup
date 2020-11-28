@@ -124,6 +124,7 @@ alias lsla='ls -la'
 alias ch='history | grep "git commit"'
 alias pih='history | grep "pip install"'
 alias gh='history | grep'
+alias ppip="python3 -m pip"
 
 # Show/hide hidden files in Finder
 alias show="defaults write com.apple.finder AppleShowAllFiles -bool true && killall Finder"
