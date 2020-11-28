@@ -1,0 +1,16 @@
+autopep8
+pylint
+pycodestyle
+numpy
+pandas
+matplotlib
+seaborn
+notebook
+ipykernel
+ipywidgets
+jupyter_contrib_nbextensions
+Jupyterlab
+jupyter-dash
+jupyterlab-python-file
+nbconvert==5.6.1
+country_converter

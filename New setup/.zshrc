@@ -1,3 +1,8 @@
+echo "⛔️ REMEMBER TO ACTIVATE VENV ⛔️"
+echo ""
+echo "⛔️ REMEMBER TO ACTIVATE VENV ⛔️"
+echo ""
+echo "⛔️ REMEMBER TO ACTIVATE VENV ⛔️"
 # ------------------------------------------------------------------------------
 # Oh-My-Zsh
 # ------------------------------------------------------------------------------
@@ -114,6 +119,7 @@ export TERM="xterm-256color"
 # alias python=/usr/local/bin/python3.8
 # alias pip=/usr/local/bin/pip3
 
+alias lss='ls -alhS'
 alias lsla='ls -la'
 alias ch='history | grep "git commit"'
 alias pih='history | grep "pip install"'

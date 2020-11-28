@@ -1,39 +1,53 @@
 #!/usr/bin/env zsh
 ################################################################################
 # This script creates symlinks from the home directory to any desired Scripts in ${homedir}/Scripts
-# And also installs Homebrew Packages
-# And sets Sublime preferences
+# And also installs Homebrew Packages, OhMyZsh, Powerlevel10k and VS Code extensions
 ################################################################################
 
 clear
 
 if [ "$#" -ne 1 ]; then
-    echo "Usage: install.sh <home_directory>"
+    echo "Usage: install.sh <user_account>"
     exit 1
 fi
 
-homedir=$1
-
+# Making path variables
+echo "[Dot files]"
+echo
+# User account
+user="$1"
+echo "User: ${user}"
 # Scripts directory
-scriptfiledir=${homedir}/Scripts
-
-# list of files/folders to symlink in ${homedir}
+#filesdir=$(echo "$PWD" | sed "s/ /\\\ /g")
+filesdir=$PWD
+echo "Installation files path: ${filesdir}"
+cd
+# Home directory
+#homedir=$(echo "$PWD" | sed -r -e "s/ /\\\ /g")
+homedir=$PWD
+echo "Home directory path: ${homedir}"
+echo
+# Make folder for dotfiles in the home directory
+echo "List of files to symlink in: ${homedir}"
 files="zshrc"
-
-# change to the Scripts directory
-echo "Changing to the ${scriptfiledir} directory"
-cd ${scriptfiledir}
-echo "...done"
-
+echo $files
+echo
+echo "Making folder for dotfiles: ${homedir}/dotfiles"
+mkdir -p ${homedir}/dotfiles
+echo "Copying files to: ${homedir}/dotfiles"
+cp "$filesdir"/.${files} ${homedir}/dotfiles
+cd "$filesdir"
+pwd
 # create symlinks (will overwrite old Scripts)
 for file in ${files}; do
     echo "Creating symlink to $file in home directory."
-    ln -sf ${scriptfiledir}/.${file} ${homedir}/.${file}
+    ln -sf ${homedir}/dotfiles/.${file} ${homedir}/.${file}
 done
 
-source ${scriptfiledir}/.zshrc
+echo
+source "${homedir}"/dotfiles/.zshrc
 echo ""
-echo "[Sourced]"
+echo "[Done]"
 echo ""
 
 # Install Homebrew
