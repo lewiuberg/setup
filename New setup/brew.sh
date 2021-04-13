@@ -5,23 +5,27 @@ brew install tree
 brew install node
 
 # Install MacOS Applications
-brew cask install visual-studio-code
-brew cask install hyperdock
-brew cask install sourcetree
-brew cask install vnc-viewer
-brew cask install parallels
-brew cask install parallels-access
-brew cask install parallels-client
-brew cask install parallels-toolbox
-brew cask install slack
-brew cask install discord
-brew cask install messenger
-brew cask install microsoft-teams
-brew cask install grammarly
-brew cask install cheatsheet
-brew cask install jabref
-brew cask install autodesk-fusion360
-brew cask install raspberry-pi-imager
-brew cask install balenaetcher
-brew cask install pibakery
-brew cask install applepi-baker
+brew install --cask visual-studio-code
+# brew install --cask hyperdock
+# brew install --cask sourcetree
+brew install --cask vnc-viewer
+brew install --cask parallels
+brew install --cask parallels-access
+brew install --cask parallels-client
+brew install --cask parallels-toolbox
+brew install --cask slack
+brew install --cask discord
+brew install --cask messenger
+brew install --cask microsoft-teams
+brew install --cask grammarly
+brew install --cask cheatsheet
+brew install --cask jabref
+brew install --cask autodesk-fusion360
+brew install --cask raspberry-pi-imager
+brew install --cask balenaetcher
+brew install --cask applepi-baker
+brew install --cask fluid
+brew install --cask alfred
+brew install --cask transmission
+brew install --cask termius
+brew install --cask github
