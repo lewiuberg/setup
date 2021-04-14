@@ -3,6 +3,8 @@
 # Install Brew Packages
 brew install tree
 brew install node
+brew install pyenv
+brew install pyenv-virtualenv
 
 # Install MacOS Applications
 brew install --cask visual-studio-code
