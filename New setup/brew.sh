@@ -5,6 +5,7 @@ brew install tree
 brew install node
 brew install pyenv
 brew install pyenv-virtualenv
+brew install xz
 
 # Install MacOS Applications
 brew install --cask visual-studio-code
