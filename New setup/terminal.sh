@@ -10,3 +10,4 @@ echo 'source /usr/local/opt/powerlevel10k/powerlevel10k.zsh-theme' >>~/.zshrc
 # Install nerd fonts
 brew tap homebrew/cask-fonts
 brew install --cask font-meslo-lg-nerd-font
+brew install --cask font-space-mono
