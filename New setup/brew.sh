@@ -3,6 +3,13 @@
 # Install Brew Packages
 brew install tree
 brew install node
+brew install git
+brew install gh
+brew install docker
+brew install docker-machine
+brew install azure-cli
+brew install poetry
+brew install direnv
 
 # Install MacOS Applications
 brew cask install visual-studio-code

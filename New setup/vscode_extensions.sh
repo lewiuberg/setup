@@ -18,3 +18,5 @@ code --install-extension mechatroner.rainbow-csv
 code --install-extension msrvida.vscode-sanddance
 code --install-extension alexcvzz.vscode-sqlite
 code --install-extension rogalmic.zsh-debug
+code --install-extension rangav.vscode-thunder-client
+code --install-extension atlassian.atlascode

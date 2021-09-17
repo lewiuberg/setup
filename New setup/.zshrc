@@ -1,8 +1,3 @@
-echo "⛔️ REMEMBER TO ACTIVATE VENV ⛔️"
-echo ""
-echo "⛔️ REMEMBER TO ACTIVATE VENV ⛔️"
-echo ""
-echo "⛔️ REMEMBER TO ACTIVATE VENV ⛔️"
 # ------------------------------------------------------------------------------
 # Oh-My-Zsh
 # ------------------------------------------------------------------------------
@@ -10,7 +5,7 @@ echo "⛔️ REMEMBER TO ACTIVATE VENV ⛔️"
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-    source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
 # If you come from bash you might have to change your $PATH.
@@ -60,6 +55,8 @@ ZSH_THEME="robbyrussell"
 # ENABLE_CORRECTION="true"
 
 # Uncomment the following line to display red dots whilst waiting for completion.
+# Caution: this setting can cause issues with multiline prompts (zsh 5.7.1 and newer seem to work)
+# See https://github.com/ohmyzsh/ohmyzsh/issues/5765
 # COMPLETION_WAITING_DOTS="true"
 
 # Uncomment the following line if you want to disable marking untracked files
@@ -83,12 +80,12 @@ ZSH_THEME="robbyrussell"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git)
+plugins=(git gh wd vscode docker docker-compose docker-machine poetry brew direnv zsh-autosuggestions zsh-syntax-highlighting)
 
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
-export TERM="xterm-256color"
+# #### export TERM="xterm-256color"
 
 # export MANPATH="/usr/local/man:$MANPATH"
 
@@ -116,25 +113,17 @@ export TERM="xterm-256color"
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-# alias python=/usr/local/bin/python3.8
-# alias pip=/usr/local/bin/pip3
 
 alias lss='ls -alhS'
 alias lsla='ls -la'
 alias ch='history | grep "git commit"'
 alias pih='history | grep "pip install"'
-alias gh='history | grep'
+alias hg='history | grep'
 alias ppip="python3 -m pip"
 
 # Show/hide hidden files in Finder
 alias show="defaults write com.apple.finder AppleShowAllFiles -bool true && killall Finder"
 alias hide="defaults write com.apple.finder AppleShowAllFiles -bool false && killall Finder"
-
-# TEMP for pyenv_install: https://github.com/pyenv/pyenv/issues/1219#issuecomment-428793012
-alias pyenv_install='f(){ CFLAGS="-I$(brew --prefix readline)/include -I$(brew --prefix openssl)/include -I$(xcrun --show-sdk-path)/usr/include" \
-LDFLAGS="-L$(brew --prefix readline)/lib -L$(brew --prefix openssl)/lib" \
-PYTHON_CONFIGURE_OPTS=--enable-unicode=ucs2 \
-pyenv install -v "$@";  unset -f f; }; f'
 
 # ------------------------------------------------------------------------------
 # Powerlevel 10k
@@ -143,23 +132,55 @@ source /usr/local/opt/powerlevel10k/powerlevel10k.zsh-theme
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-
-# ------------------------------------------------------------------------------
-# PYENV
-# ------------------------------------------------------------------------------
-export PATH="$HOME/.pyenv/bin:$PATH"
-eval "$(pyenv init -)"
-eval "$(pyenv virtualenv-init -)"
-
-if command -v pyenv 1>/dev/null 2>&1; then
-    eval "$(pyenv init -)"
-fi
+export PATH="/usr/local/sbin:$PATH"
 
 # ------------------------------------------------------------------------------
 # Ruby
 # ------------------------------------------------------------------------------
 export PATH="/usr/local/opt/ruby/bin:$PATH"
 export PATH="$HOME/.gem/ruby/2.7.0/bin:$PATH"
+export PATH=~/.gem/ruby/3.0.0/bin:$PATH
+
+# ------------------------------------------------------------------------------
+# PYENV
+# ------------------------------------------------------------------------------
+#export PATH="$HOME/.pyenv/bin:$PATH"
+#eval "$(pyenv init -)"
+#eval "$(pyenv virtualenv-init -)"
+
+if command -v pyenv 1>/dev/null 2>&1; then
+  eval "$(pyenv init -)"
+fi
+
+if which pyenv-virtualenv-init > /dev/null; then
+  eval "$(pyenv virtualenv-init -)";
+fi
+
+# ------------------------------------------------------------------------------
+# tcl-tk
+# ------------------------------------------------------------------------------
+export PATH="/usr/local/opt/tcl-tk/bin:$PATH"
+export LDFLAGS="-L/usr/local/opt/tcl-tk/lib"
+export CPPFLAGS="-I/usr/local/opt/tcl-tk/include"
+export PKG_CONFIG_PATH="/usr/local/opt/tcl-tk/lib/pkgconfig"
+export PYTHON_CONFIGURE_OPTS="--with-tcltk-includes='-I/usr/local/opt/tcl-tk/include' --with-tcltk-libs='-L/usr/local/opt/tcl-tk/lib -ltcl8.6 -ltk8.6'"
+
+
+# ------------------------------------------------------------------------------
+# Homebrew
+# ------------------------------------------------------------------------------
+# export PATH="/usr/local/opt/openssl@1.1/bin:$PATH"
+
+# ------------------------------------------------------------------------------
+# Direnv
+# ------------------------------------------------------------------------------
+eval "$(direnv hook zsh)"
+
+
+# ------------------------------------------------------------------------------
+# Poetry
+# ------------------------------------------------------------------------------
+fpath+=~/.zfunc
 
 # ------------------------------------------------------------------------------
 # New
