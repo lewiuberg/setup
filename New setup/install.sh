@@ -51,15 +51,34 @@ echo "[Done]"
 echo ""
 
 # Install Homebrew
-curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 brew doctor
 brew install cask
+echo 'export PATH="/usr/local/sbin:$PATH"' >> ~/.zshrc
+source "${homedir}"/dotfiles/.zshrc
 brew doctor
 # homebrew cask updater: https://github.com/buo/homebrew-cask-upgrade
 brew tap buo/cask-upgrade
 
 # Download Git Auto-Completion
-curl "https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash" > ${homedir}/.git-completion.bash
+# Create the folder structure
+mkdir -p ~/.zsh
+cd ~/.zsh
+# Download the scripts
+curl -o git-completion.bash https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash
+curl -o _git https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.zsh
+# # curl "https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash" > ${homedir}/.git-completion.bash
+
+echo '# Load Git completion' >>~/.zshrc
+echo "zstyle ':completion:*:*:git:*' script ~/.zsh/git-completion.bash" >>~/.zshrc
+echo 'fpath=(~/.zsh $fpath)' >>~/.zshrc
+echo 'autoload -Uz compinit && compinit' >>~/.zshrc
+
+sudo chmod -R 755 /usr/local/share/zsh/site-functions
+
+# Clear out the shell auto completion
+rm ~/.zcompdump
+source "${homedir}"/dotfiles/.zshrc
 
 # Run the Terminal Script
 ./terminal.sh
