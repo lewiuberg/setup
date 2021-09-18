@@ -82,6 +82,8 @@ ZSH_THEME="robbyrussell"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(git gh wd vscode docker docker-compose docker-machine poetry brew direnv zsh-autosuggestions zsh-syntax-highlighting)
 
+plugins=(autoswitch_virtualenv $plugins)
+
 source $ZSH/oh-my-zsh.sh
 
 # User configuration

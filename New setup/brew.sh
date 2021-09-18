@@ -1,6 +1,9 @@
 #!/usr/bin/env zsh
 
 # Install Brew Packages
+brew install pwgen
+brew install virtualenv
+brew install poetry
 brew install tree
 brew install node
 brew install git
@@ -8,7 +11,6 @@ brew install gh
 brew install docker
 brew install docker-machine
 brew install azure-cli
-brew install poetry
 brew install direnv
 
 # Install MacOS Applications
