@@ -33,8 +33,6 @@ brew install --cask termius
 brew install --cask transmission
 brew install --cask fluid
 brew install --cask avast-security
-brew install --cask 
-brew install --cask 
 brew install --cask autodesk-fusion360
 brew install --cask blender
 brew install --cask visual-studio-code
