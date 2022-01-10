@@ -43,11 +43,13 @@ brew install --cask discord
 brew install --cask messenger
 brew install --cask jabref
 brew install --cask grammarly
+brew install --cask grammarly-desktop
 brew install --cask microsoft-office
 brew install --cask microsoft-teams
 brew install --cask docker
 brew install --cask postman
 brew install --cask notable
+brew install --cask sdformatter
 brew install --cask raspberry-pi-imager
 brew install --cask balenaetcher
 brew install --cask applepi-baker
