@@ -58,3 +58,18 @@ brew install --cask applepi-baker
 brew tap homebrew/cask-drivers
 brew install --cask logitech-options
 brew install --cask philips-hue-sync
+
+# Plugins for packages
+# mkdir ~/.zfunc
+# touch ~/.zfunc/_poetry
+# poetry completions zsh > ~/.zfunc/_poetry
+
+mkdir $ZSH_CUSTOM/plugins/poetry
+poetry completions zsh > $ZSH_CUSTOM/plugins/poetry/_poetry
+rm ~/.zcompdump*
+
+git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git
+echo "source ${(q-)PWD}/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" >> ${ZDOTDIR:-$HOME}/.zshrc
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
