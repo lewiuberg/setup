@@ -14,7 +14,6 @@ brew install tree
 brew install graphviz
 brew install smudge/smudge/nightlight
 brew install direnv
-brew install docker
 brew install docker-machine
 brew install azure-cli
 
@@ -46,6 +45,7 @@ brew install --cask jabref
 brew install --cask grammarly
 brew install --cask microsoft-office
 brew install --cask microsoft-teams
+brew install --cask docker
 brew install --cask postman
 brew install --cask notable
 brew install --cask raspberry-pi-imager
