@@ -106,8 +106,8 @@ printf '%s\n' \
 
 echo "setup ssh config file."
 
-ssh-add ~/.ssh/lewiuberg@icloud.com
-ssh-add ~/.ssh/lewi@anzyz.com
+ssh-add -K ~/.ssh/lewiuberg@icloud.com
+ssh-add -K ~/.ssh/lewi@anzyz.com
 
 # eval "$(ssh-agent -s)"
 
