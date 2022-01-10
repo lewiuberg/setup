@@ -66,5 +66,63 @@ brew tap buo/cask-upgrade
 # Run the Homebrew Script
 ./brew.sh
 
+# Setup Git
+git config --global user.name "Lewi Uberg"
+git config --global user.email "lewiuberg@icloud.com"
+git config --global init.defaultBranch main
+git config --global -l
+
+# Setup SSH
+ssh-keygen -t ed25519
+cd ~/.ssh
+
+ssh-keygen -t ed25519 -C "gh" -f "lewiuberg@icloud.com"
+pbcopy < ~/.ssh/lewiuberg@icloud.com.pub
+open https://github.com/settings/ssh/new
+
+ssh-keygen -t ed25519 -C "bb" -f "lewi@anzyz.com"
+pbcopy < ~/.ssh/lewi@anzyz.com.pub
+open https://bitbucket.org/account/settings/ssh-keys/
+
+touch ~/.ssh/config
+
+printf '%s\n' \
+    "# Personal" \
+    "Host gh" \
+    "    HostName github.com" \
+    "    User git" \
+    "    IdentityFile ~/.ssh/lewiuberg@icloud.com" \
+    "    UseKeychain yes" \
+    "    AddKeysToAgent yes" \
+    "" \
+    "# Work" \
+    "Host bb" \
+    "    HostName bitbucket.org" \
+    "    User git" \
+    "    IdentityFile ~/.ssh/lewi@anzyz.com" \
+    "    UseKeychain yes" \
+    "    AddKeysToAgent yes" \
+    >>~/.ssh/config
+
+echo "setup ssh config file." >> ~/.config
+
+ssh-add ~/.ssh/lewiuberg@icloud.com
+ssh-add ~/.ssh/lewi@anzyz.com
+
+# eval "$(ssh-agent -s)"
+
+ssh-add -l
+
+ssh-keyscan github.com >> ~/.ssh/known_hosts
+ssh-keyscan bitbucket.org >> ~/.ssh/known_hosts
+
+ssh -T gh
+ssh -T bb
+
+echo "Use [git config user.name 'Lewi Uberg'] and [git config user.email lewi@anzyz.com] at repo level to ensure secondary host."
+echo "For more information, see: https://gist.github.com/rosswd/e1afd2b0b0d515517eac"
+
+cd ~
+
 # Run the VScode extension Script
 ./vscode_extensions.sh
