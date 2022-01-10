@@ -104,7 +104,7 @@ printf '%s\n' \
     "    AddKeysToAgent yes" \
     >>~/.ssh/config
 
-echo "setup ssh config file." >> ~/.config
+echo "setup ssh config file."
 
 ssh-add ~/.ssh/lewiuberg@icloud.com
 ssh-add ~/.ssh/lewi@anzyz.com
