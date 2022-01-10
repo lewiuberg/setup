@@ -12,7 +12,7 @@ brew install git-lfs
 brew install gh
 brew install tree
 brew install graphviz
-brew install nightlight
+brew install smudge/smudge/nightlight
 brew install direnv
 brew install docker
 brew install docker-machine
