@@ -6,7 +6,6 @@ brew install node
 brew install virtualenv
 brew install pyenv
 brew install pyenv-virtualenv
-brew install poetry
 brew install git
 brew install git-lfs
 brew install gh
