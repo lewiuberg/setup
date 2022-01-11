@@ -16,7 +16,7 @@ brew install --cask font-space-mono
 git clone "https://github.com/MichaelAquilina/zsh-autoswitch-virtualenv.git" "$ZSH_CUSTOM/plugins/autoswitch_virtualenv"
 
 # Update .zshrc to activate autoswitch-virtualenv
-sed -i '' 's/# Add wisely, as too many plugins slow down shell startup./# Add wisely, as too many plugins slow down shell startup.\nplugins=(autoswitch_virtualenv brew git gh poetry wd vscode docker zsh-autosuggestions zsh-syntax-highlighting)\n\nplugins=(autoswitch_virtualenv \$plugins)/g' ~/.zshrc
+sed -i '' 's/# Add wisely, as too many plugins slow down shell startup./# Add wisely, as too many plugins slow down shell startup.\nplugins=(autoswitch_virtualenv brew git gh poetry wd vscode docker zsh-autosuggestions zsh-syntax-highlighting)\n\n# plugins not in use: direnv docker-compose docker-machine/g' ~/.zshrc
 
 # Append zshrc with custom settings.
 printf '%s\n' "" \
@@ -89,7 +89,7 @@ printf '%s\n' "" \
     "# Direnv" \
     "# ------------------------------------------------------------------------------" \
     "eval \"\$(direnv hook zsh)\"" \
-    "" \
+    "export EDITOR="code --wait"" \
     "" \
     "# ------------------------------------------------------------------------------" \
     "# Poetry" \
