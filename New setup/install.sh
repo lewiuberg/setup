@@ -73,52 +73,71 @@ git config --global init.defaultBranch main
 git config --global -l
 
 # Setup SSH
-ssh-keygen -t ed25519
 cd ~/.ssh
 
-ssh-keygen -t ed25519 -C "gh" -f "lewiuberg@icloud.com"
+echo "Generating keys."
+echo ""
+
+ssh-keygen -t ed25519 -C "lewiuberg@icloud.com" -f "lewiuberg@icloud.com"
 pbcopy < ~/.ssh/lewiuberg@icloud.com.pub
 open https://github.com/settings/ssh/new
 
-ssh-keygen -t ed25519 -C "bb" -f "lewi@anzyz.com"
+echo ""
+
+ssh-keygen -t ed25519 -C "lewi@anzyz.com" -f "lewi@anzyz.com"
 pbcopy < ~/.ssh/lewi@anzyz.com.pub
 open https://bitbucket.org/account/settings/ssh-keys/
+
+echo ""
+echo "Setup ssh config file."
 
 touch ~/.ssh/config
 
 printf '%s\n' \
     "# Personal" \
-    "Host gh" \
-    "    HostName github.com" \
-    "    User git" \
-    "    IdentityFile ~/.ssh/lewiuberg@icloud.com" \
-    "    UseKeychain yes" \
-    "    AddKeysToAgent yes" \
+    "Host github.com" \
+    "HostName github.com" \
+    "User git" \
+    "IdentityFile ~/.ssh/lewiuberg@icloud.com" \
+    "UseKeychain yes" \
+    "AddKeysToAgent yes" \
     "" \
     "# Work" \
-    "Host bb" \
-    "    HostName bitbucket.org" \
-    "    User git" \
-    "    IdentityFile ~/.ssh/lewi@anzyz.com" \
-    "    UseKeychain yes" \
-    "    AddKeysToAgent yes" \
+    "Host bitbucket.org" \
+    "HostName bitbucket.org" \
+    "User git" \
+    "IdentityFile ~/.ssh/lewi@anzyz.com" \
+    "UseKeychain yes" \
+    "AddKeysToAgent yes" \
     >>~/.ssh/config
 
-echo "setup ssh config file."
+cat ~/.ssh/config
+echo ""
 
-ssh-add -K ~/.ssh/lewiuberg@icloud.com
-ssh-add -K ~/.ssh/lewi@anzyz.com
+echo ""
+echo "Add identities."
+echo ""
 
-# eval "$(ssh-agent -s)"
+ssh-add --apple-use-keychain ~/.ssh/lewiuberg@icloud.com
+ssh-add --apple-use-keychain ~/.ssh/lewi@anzyz.com
 
 ssh-add -l
+
+echo ""
+echo "Add to known hosts."
 
 ssh-keyscan github.com >> ~/.ssh/known_hosts
 ssh-keyscan bitbucket.org >> ~/.ssh/known_hosts
 
-ssh -T gh
-ssh -T bb
+echo ""
+echo "Test connection."
+read -n 1 -s -r -p "Press any key to continue..."
+echo ""
 
+ssh -T github.com
+ssh -T bitbucket.org
+
+echo ""
 echo "Use [git config user.name 'Lewi Uberg'] and [git config user.email lewi@anzyz.com] at repo level to ensure secondary host."
 echo "For more information, see: https://gist.github.com/rosswd/e1afd2b0b0d515517eac"
 
