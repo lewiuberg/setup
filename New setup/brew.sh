@@ -52,6 +52,11 @@ brew install --cask sdformatter
 brew install --cask raspberry-pi-imager
 brew install --cask balenaetcher
 brew install --cask applepi-baker
+brew install --cask tableplus
+brew install --cask mark-text
+$ brew install --cask jupyter-notebook-viewer
+brew install --cask betterzip
+
 
 # Install casks of drivers
 brew tap homebrew/cask-drivers
