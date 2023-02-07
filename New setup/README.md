@@ -74,7 +74,7 @@ brew install node # nodejs
 brew install graphviz # for graphviz
 brew install lcov # code coverage
 brew install lnav # log viewer
-# brew install pwgen
+# brew install pwgen # password generator
 # brew install virtualenv
 # brew install direnv
 # brew install docker-machine
