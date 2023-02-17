@@ -1,79 +1,146 @@
 #!/usr/bin/env zsh
 
-# Install Brew Packages
-brew install pwgen
-brew install node
-brew install virtualenv
-brew install pyenv
-brew install pyenv-virtualenv
-brew install git
-brew install git-lfs
-brew install gh
-brew install tree
-brew install graphviz
-brew install smudge/smudge/nightlight
-brew install direnv
-brew install docker-machine
-brew install azure-cli
+source functions.sh
+source constants.sh
 
-# Install MacOS Applications
-brew install --cask iterm2
-brew install --cask syntax-highlight
-brew install --cask qlmarkdown
-brew install --cask qlstephen
-brew install --cask parallels
-brew install --cask parallels-access
-brew install --cask parallels-client
-brew install --cask parallels-toolbox
-brew install --cask vnc-viewer
-brew install --cask virtualbox
-brew install --cask termius
-brew install --cask transmission
-brew install --cask fluid
-brew install --cask avast-security
-brew install --cask autodesk-fusion360
-brew install --cask blender
-brew install --cask visual-studio-code
-brew install --cask prince
-brew install --cask github
-brew install --cask sourcetree
-brew install --cask slack
-brew install --cask discord
-brew install --cask messenger
-brew install --cask jabref
-brew install --cask grammarly
-brew install --cask grammarly-desktop
-brew install --cask microsoft-office
-brew install --cask microsoft-teams
-brew install --cask docker
-brew install --cask postman
-brew install --cask notable
-brew install --cask sdformatter
-brew install --cask raspberry-pi-imager
-brew install --cask balenaetcher
-brew install --cask applepi-baker
-brew install --cask tableplus
-brew install --cask mark-text
-$ brew install --cask jupyter-notebook-viewer
-brew install --cask betterzip
+# Homebrew: Install ###########################################################
+sleep 1
+frame_text "Homebrew"
 
+if [ -d "/opt/homebrew" ] || [ -d "/usr/local" ]; then
+    echo "Homebrew is already installed"
+else
+    echo "Installing Homebrew"
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+    brew doctor
+    brew update
+fi
 
-# Install casks of drivers
-brew tap homebrew/cask-drivers
-brew install --cask logitech-options
-brew install --cask philips-hue-sync
+ZPROFILE_HOMEBREW='# ------------------------------------------------------------------------------
+# Homebrew
+# ------------------------------------------------------------------------------
+# Set PATH, MANPATH, etc., for Homebrew.'
+if [ "$ARCH_ARM64" = true ]; then
+    ZPROFILE_HOMEBREW="$ZPROFILE_HOMEBREW
+eval \"\$(/opt/homebrew/bin/brew shellenv)\""
+elif [ "$ARCH_86_64" = true ]; then
+    ZPROFILE_HOMEBREW="$ZPROFILE_HOMEBREW
+eval \"\$(/usr/local/bin/brew shellenv)\""
+fi
 
-# Plugins for packages
-# mkdir ~/.zfunc
-# touch ~/.zfunc/_poetry
-# poetry completions zsh > ~/.zfunc/_poetry
+# check if ZPROFILE_HOMEBREW is in .zprofile
+if [[ "$(cat ~/.zprofile)" != *"$ZPROFILE_HOMEBREW"* ]]; then
+    echo "Appending Homebrew settings for arm64"
+    # check if file is empty
+    if [ -s ~/.zprofile ]; then
+        # check if last line is empty, if not, add an empty line
+        if [ "$(tail -c 1 ~/.zprofile)" != "" ]; then
+            echo "\n" >>~/.zprofile
+        else
+            echo "" >>~/.zprofile
+        fi
+    fi
+    echo "$ZPROFILE_HOMEBREW" >>~/.zprofile
+else
+    echo "Homebrew settings already in .zprofile"
+fi
 
-mkdir $ZSH_CUSTOM/plugins/poetry
-poetry completions zsh > $ZSH_CUSTOM/plugins/poetry/_poetry
-rm ~/.zcompdump*
+# source shell
+if [ "$ARCH_ARM64" = true ]; then
+    eval "$(/opt/homebrew/bin/brew shellenv)"
+    echo "Sourced shell for arm64"
+elif [ "$ARCH_86_64" = true ]; then
+    eval "$(/usr/local/bin/brew shellenv)"
+    echo "Sourced shell for x86_64/i386"
+fi
 
-git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+echo ""
 
-git clone https://github.com/zsh-users/zsh-syntax-highlighting.git
-echo "source ${(q-)PWD}/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" >> ${ZDOTDIR:-$HOME}/.zshrc
-git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+# Homebrew: Install Packages ##################################################
+# Read brew_formulas.sh to get all packages, casks, and taps
+brew_taps=$(grep -E "^\s*brew tap" brew_formulas.sh | sed -e "s/brew tap //g" | sed -e "s/#.*//g" | sed -e "s/ && brew install.*//g")
+brew_formulas=$(grep -E "^\s*brew install | && brew install" brew_formulas.sh | grep -vE "^\s*#" | sed -e "s/#.*//g" | sed -e "s/.*&& brew install //g" | sed -e "s/brew install //g")
+# Separate brew packages and brew casks
+brew_packages=$(echo "$brew_formulas" | grep -vF -- "--cask")
+brew_casks=$(echo "$brew_formulas" | grep -F -- "--cask" | sed -e "s/--cask //g")
+
+# get installed packages, casks, and taps
+brew_taps_installed=$(brew tap)
+brew_packages_installed=$(brew list --formula)
+brew_casks_installed=$(brew list --cask)
+
+# remove all taps that are already installed
+brew_taps=$(echo "$brew_taps" | grep -vF "$brew_taps_installed")
+
+# remove all packages that are already installed
+brew_packages=$(echo "$brew_packages" | grep -vF "$brew_packages_installed")
+
+# remove all casks that are already installed
+brew_casks=$(echo "$brew_casks" | grep -vF "$brew_casks_installed")
+
+# Homebrew: Tap Repositories ##################################################
+sleep 1
+frame_text "Homebrew: Tap Repositories"
+
+# if brew_taps is not empty
+if [ -n "$brew_taps" ]; then
+    for brew_tap in $brew_taps; do
+        echo "Tapping $brew_tap"
+        #! brew tap $brew_tap
+        echo "brew tap $brew_tap"
+        echo "Repository tapped"
+        echo ""
+    done
+    echo "Finished tapping repositories"
+else
+    echo "All repositories already tapped"
+fi
+echo ""
+
+# Homebrew: Install Packages ##################################################
+sleep 1
+frame_text "Homebrew: Install Packages"
+
+# if brew_packages is not empty
+if [ -n "$brew_packages" ]; then
+    for brew_package in $brew_packages; do
+        echo "Installing package: $brew_package"
+        #! brew install $brew_package
+        echo "brew install $brew_package"
+        echo "Package installed"
+        echo ""
+    done
+    echo "Finished installing packages"
+else
+    echo "All Homebrew packages are already installed"
+fi
+echo ""
+
+# Homebrew: Install Casks ####################################################
+sleep 1
+frame_text "Homebrew: Install Casks"
+
+# if brew_casks is not empty
+if [ -n "$brew_casks" ]; then
+    for brew_cask in $brew_casks; do
+        echo "Installing cask: $brew_cask"
+        #! brew install --cask $brew_cask
+        echo "brew install --cask $brew_cask"
+        echo "Cask installed"
+        echo ""
+    done
+    echo "Finished installing casks"
+else
+    echo "All Homebrew casks are already installed"
+fi
+echo ""
+
+# Homebrew: Cleanup ##########################################################
+sleep 1
+frame_text "Homebrew: Cleanup"
+
+echo "Cleaning up Homebrew"
+#! brew cleanup
+echo "Finished cleaning up Homebrew"
+
+echo ""
