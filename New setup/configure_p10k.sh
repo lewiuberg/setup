@@ -35,8 +35,10 @@ line change "    # newline               # \n" to "    newline                 #
 line add "    newline                 # \n" below "    prompt_char             # prompt symbol" in ~/.p10k.zsh
 
 # POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS
-line comment all "    vi_mode                 # vi mode (you don't need this if you've enabled prompt_char)" in ~/.p10k.zsh
-# line uncomment all "    # vi_mode               # vi mode (you don't need this if you've enabled prompt_char)" in ~/.p10k.zsh
+line comment first "    vi_mode                 # vi mode (you don't need this if you've enabled prompt_char)" in ~/.p10k.zsh
+
+# typeset -g POWERLEVEL9K_MODE
+line change "  typeset -g POWERLEVEL9K_MODE=compatible" to "  typeset -g POWERLEVEL9K_MODE=nerdfont-complete" in ~/.p10k.zsh
 
 # line add "    Lewi was here" at start of ~/.p10k.zsh
 # line add "    Lewi was here" at end of ~/.p10k.zsh

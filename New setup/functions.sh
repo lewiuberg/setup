@@ -174,11 +174,7 @@ function line() {
                 if [[ $CHECK == *"$NEW"* ]] && [[ $CHECK == *"$ORIGINAL_COMMENT" ]]; then
                     echo "Not modified: line add found that '$NEW_LINE' was already modified in $FILE"
                 else
-                    # sed -i '' "$CHECK_LINE_NUMBER_BELOW s/^/$NEW_LINE $NEW_COMMENT\n/" $FILE
-                    printf '%s\n' "$NEW_LINE $NEW_COMMENT" | sed -i '' "$CHECK_LINE_NUMBER_BELOW{
-                                r /dev/stdin
-                                d
-                            }" $FILE
+                    sed -i '' "$CHECK_LINE_NUMBER_BELOW s/^/$NEW_LINE $NEW_COMMENT\n/" $FILE
                     echo "Modified:     line add added '$NEW_LINE' below '$NAVIGATION_LINE' in $FILE"
                 fi
             # ************************** add: above ***************************
@@ -194,11 +190,7 @@ function line() {
                 if [[ $CHECK == *"$NEW"* ]] && [[ $CHECK == *"$ORIGINAL_COMMENT" ]]; then
                     echo "Not modified: line add found that '$NEW_LINE' was already modified in $FILE"
                 else
-                    # sed -i '' "$CHECK_LINE_NUMBER_ABOVE s/^/$NEW_LINE $NEW_COMMENT\n/" $FILE
-                    printf '%s\n' "$NEW_LINE $NEW_COMMENT" | sed -i '' "$CHECK_LINE_NUMBER_ABOVE{
-                                r /dev/stdin
-                                d
-                            }" $FILE
+                    sed -i '' "$CHECK_LINE_NUMBER_ABOVE s/^/$NEW_LINE $NEW_COMMENT\n/" $FILE
                     echo "Modified:     line add added '$NEW_LINE' above '$NAVIGATION_LINE' in $FILE"
                 fi
             fi
@@ -218,11 +210,7 @@ function line() {
             if [[ $CHECK_LINE == "$NEW_LINE $NEW_COMMENT" ]] || [[ $CHECK_LINE == "$NEW_LINE" ]] || [[ $CHECK_LINE == "$NEW_LINE $ORIGINAL_COMMENT" ]]; then
                 echo "Not modified: line add found that '$NEW_LINE' was already modified in $FILE"
             else
-                # sed -i '' "1s/^/$NEW_LINE $NEW_COMMENT\n/" $FILE
-                printf '%s\n' "$NEW_LINE $NEW_COMMENT" | sed -i '' "1{
-                            r /dev/stdin
-                            d
-                        }" $FILE
+                sed -i '' "1s/^/$NEW_LINE $NEW_COMMENT\n/" $FILE
                 echo "Modified:     line add added '$NEW_LINE' at the start of $FILE"
             fi
         fi
@@ -232,11 +220,7 @@ function line() {
             if [[ $CHECK_LINE == "$NEW_LINE $NEW_COMMENT" ]] || [[ $CHECK_LINE == "$NEW_LINE" ]] || [[ $CHECK_LINE == "$NEW_LINE $ORIGINAL_COMMENT" ]]; then
                 echo "Not modified: line add found that '$NEW_LINE' was already modified in $FILE"
             else
-                # sed -i '' "\$s/\$/\n$NEW_LINE $NEW_COMMENT/" $FILE
-                printf '%s\n' "$NEW_LINE $NEW_COMMENT" | sed -i '' "\${
-                            r /dev/stdin
-                            d
-                        }" $FILE
+                sed -i '' "\$s/\$/\n$NEW_LINE $NEW_COMMENT/" $FILE
                 echo "Modified:     line add added '$NEW_LINE' at the end of $FILE"
             fi
         fi
