@@ -70,19 +70,88 @@ function line() {
         MODIFIED_LINE=$4
         FILE_KEYWORD=$5
         FILE=$6
-        if grep -qF "$ORIGINAL_LINE" $FILE; then
+        if [[ $ORIGINAL_LINE == *\n* ]]; then
+            ORIGINAL_LINE=$(echo "$ORIGINAL_LINE" | sed 's/\n/\\n/g')
+        fi
+        if [[ $MODIFIED_LINE == *\n* ]]; then
+            MODIFIED_LINE=$(echo "$MODIFIED_LINE" | sed 's/\n/\\n/g')
+        fi
+        if grep -qF "$(printf '%s' "$ORIGINAL_LINE" | sed 's/[]\/$*.^|[]/\\&/g')" $FILE; then
             ORIGINAL_LINE_FROM_FILE=$(grep -F "$ORIGINAL_LINE" $FILE)
             if ! [[ $MODIFIED_LINE == *"$NEW_COMMENT" ]]; then
                 MODIFIED_LINE="$MODIFIED_LINE $NEW_COMMENT"
             fi
             if ! [[ $ORIGINAL_LINE_FROM_FILE == *"$ORIGINAL_COMMENT" ]]; then
-                sed -i '' "s/$ORIGINAL_LINE/$ORIGINAL_LINE $ORIGINAL_COMMENT\n$MODIFIED_LINE/g" $FILE
+                printf '%s\n' "$ORIGINAL_LINE $ORIGINAL_COMMENT" "$MODIFIED_LINE" | sed -i '' "/$ORIGINAL_LINE/{
+                    r /dev/stdin
+                    d
+                }" $FILE
                 echo "Modified:     line change found that '$ORIGINAL_LINE' was not modified in $FILE"
             else
                 echo "Not modified: line change found that '$ORIGINAL_LINE' was already modified in $FILE"
             fi
         else
             echo "Not modified: line change did not find '$ORIGINAL_LINE' in $FILE"
+        fi
+    #  ||||||||||||||||||||||||||||||| comment ||||||||||||||||||||||||||||||||
+    elif [[ $1 == "comment" ]]; then
+        MATCH=$2
+        LINE=$3
+        FILE_KEYWORD=$4
+        FILE=$5
+        if grep -qF "$(printf '%s' "$LINE" | sed 's/[]\/$*.^|[]/\\&/g')" $FILE; then
+            LINE_NUMBERS=$(grep -n "$(printf '%s' "$LINE" | sed 's/[]\/$*.^|[]/\\&/g')" $FILE | cut -d: -f1)
+            INDENTATION=$(echo "$LINE" | grep -o '^[[:space:]]*')
+            if [[ $MATCH == "all" ]]; then
+                for LINE_NUMBER in $LINE_NUMBERS; do
+                    LINE=$(echo "$LINE" | sed 's/^[[:space:]]*//')
+                    printf '%s\n' "$INDENTATION# $LINE $NEW_COMMENT" | sed -i '' "$LINE_NUMBER{
+                                r /dev/stdin
+                                d
+                            }" $FILE
+                done
+                echo "Modified:     line comment out found that '$LINE' was not commented out in $FILE"
+            elif [[ $MATCH == "first" ]]; then
+                LINE_NUMBER=$(echo "$LINE_NUMBERS" | head -n 1)
+                LINE=$(echo "$LINE" | sed 's/^[[:space:]]*//')
+                printf '%s\n' "$INDENTATION# $LINE $NEW_COMMENT" | sed -i '' "$LINE_NUMBER{
+                            r /dev/stdin
+                            d
+                        }" $FILE
+                echo "Modified:     line comment out found that '$LINE' was not commented out in $FILE"
+            fi
+        else
+            echo "Not modified: line comment out did not find '$LINE' in $FILE"
+        fi
+    #  ||||||||||||||||||||||||||||||| uncomment ||||||||||||||||||||||||||||||||
+    elif [[ $1 == "uncomment" ]]; then
+        MATCH=$2
+        LINE=$3
+        FILE_KEYWORD=$4
+        FILE=$5
+        if grep -qF "$(printf '%s' "$LINE" | sed 's/[]\/$*.^|[]/\\&/g')" $FILE; then
+            LINE_NUMBERS=$(grep -n "$(printf '%s' "$LINE" | sed 's/[]\/$*.^|[]/\\&/g')" $FILE | cut -d: -f1)
+            INDENTATION=$(echo "$LINE" | grep -o '^[[:space:]]*')
+            if [[ $MATCH == "all" ]]; then
+                for LINE_NUMBER in $LINE_NUMBERS; do
+                    LINE=$(echo "$LINE" | sed 's/^[[:space:]]*# //')
+                    printf '%s\n' "$INDENTATION$LINE $NEW_COMMENT" | sed -i '' "$LINE_NUMBER{
+                                r /dev/stdin
+                                d
+                            }" $FILE
+                done
+                echo "Modified:     line uncomment out found that '$LINE' was not uncommented out in $FILE"
+            elif [[ $MATCH == "first" ]]; then
+                LINE_NUMBER=$(echo "$LINE_NUMBERS" | head -n 1)
+                LINE=$(echo "$LINE" | sed 's/^[[:space:]]*# //')
+                printf '%s\n' "$INDENTATION$LINE $NEW_COMMENT" | sed -i '' "$LINE_NUMBER{
+                            r /dev/stdin
+                            d
+                        }" $FILE
+                echo "Modified:     line uncomment out found that '$LINE' was not uncommented out in $FILE"
+            else
+                echo "Not modified: line uncomment out found that '$LINE' was already uncommented out in $FILE"
+            fi
         fi
     #  ||||||||||||||||||||||||||||||||| add ||||||||||||||||||||||||||||||||||
     elif [[ $1 == "add" ]] && ! [[ $3 == "at" ]]; then
@@ -105,7 +174,11 @@ function line() {
                 if [[ $CHECK == *"$NEW"* ]] && [[ $CHECK == *"$ORIGINAL_COMMENT" ]]; then
                     echo "Not modified: line add found that '$NEW_LINE' was already modified in $FILE"
                 else
-                    sed -i '' "$CHECK_LINE_NUMBER_BELOW s/^/$NEW_LINE $NEW_COMMENT\n/" $FILE
+                    # sed -i '' "$CHECK_LINE_NUMBER_BELOW s/^/$NEW_LINE $NEW_COMMENT\n/" $FILE
+                    printf '%s\n' "$NEW_LINE $NEW_COMMENT" | sed -i '' "$CHECK_LINE_NUMBER_BELOW{
+                                r /dev/stdin
+                                d
+                            }" $FILE
                     echo "Modified:     line add added '$NEW_LINE' below '$NAVIGATION_LINE' in $FILE"
                 fi
             # ************************** add: above ***************************
@@ -121,12 +194,16 @@ function line() {
                 if [[ $CHECK == *"$NEW"* ]] && [[ $CHECK == *"$ORIGINAL_COMMENT" ]]; then
                     echo "Not modified: line add found that '$NEW_LINE' was already modified in $FILE"
                 else
-                    sed -i '' "$CHECK_LINE_NUMBER_ABOVE s/^/$NEW_LINE $NEW_COMMENT\n/" $FILE
+                    # sed -i '' "$CHECK_LINE_NUMBER_ABOVE s/^/$NEW_LINE $NEW_COMMENT\n/" $FILE
+                    printf '%s\n' "$NEW_LINE $NEW_COMMENT" | sed -i '' "$CHECK_LINE_NUMBER_ABOVE{
+                                r /dev/stdin
+                                d
+                            }" $FILE
                     echo "Modified:     line add added '$NEW_LINE' above '$NAVIGATION_LINE' in $FILE"
                 fi
             fi
         else
-            echo "Line '$NEW_LINE' already exist in $FILE"
+            echo "Not modified: line add found that '$NEW_LINE' was already modified in $FILE"
         fi
     # ************************** add: at ***************************
     elif [[ $1 == "add" ]] && [[ $3 == "at" ]]; then
@@ -141,7 +218,11 @@ function line() {
             if [[ $CHECK_LINE == "$NEW_LINE $NEW_COMMENT" ]] || [[ $CHECK_LINE == "$NEW_LINE" ]] || [[ $CHECK_LINE == "$NEW_LINE $ORIGINAL_COMMENT" ]]; then
                 echo "Not modified: line add found that '$NEW_LINE' was already modified in $FILE"
             else
-                sed -i '' "1s/^/$NEW_LINE $NEW_COMMENT\n/" $FILE
+                # sed -i '' "1s/^/$NEW_LINE $NEW_COMMENT\n/" $FILE
+                printf '%s\n' "$NEW_LINE $NEW_COMMENT" | sed -i '' "1{
+                            r /dev/stdin
+                            d
+                        }" $FILE
                 echo "Modified:     line add added '$NEW_LINE' at the start of $FILE"
             fi
         fi
@@ -151,7 +232,11 @@ function line() {
             if [[ $CHECK_LINE == "$NEW_LINE $NEW_COMMENT" ]] || [[ $CHECK_LINE == "$NEW_LINE" ]] || [[ $CHECK_LINE == "$NEW_LINE $ORIGINAL_COMMENT" ]]; then
                 echo "Not modified: line add found that '$NEW_LINE' was already modified in $FILE"
             else
-                sed -i '' "\$s/\$/\n$NEW_LINE $NEW_COMMENT/" $FILE
+                # sed -i '' "\$s/\$/\n$NEW_LINE $NEW_COMMENT/" $FILE
+                printf '%s\n' "$NEW_LINE $NEW_COMMENT" | sed -i '' "\${
+                            r /dev/stdin
+                            d
+                        }" $FILE
                 echo "Modified:     line add added '$NEW_LINE' at the end of $FILE"
             fi
         fi
@@ -287,6 +372,10 @@ function line() {
         echo "  append [STRING] to first [STRING] in [FILE]"
         echo "  append [STRING] to last [STRING] in [FILE]"
         echo "  append [STRING] to all [STRING] in [FILE]"
+        echo "  comment all [STRING] in [FILE]"
+        echo "  comment first [STRING] in [FILE]"
+        echo "  uncomment all [STRING] in [FILE]"
+        echo "  uncomment first [STRING] in [FILE]"
         echo "  -h or --help"
         echo "Examples:"
         echo "  line check \"string 1\" below \"string 2\" in ~/.p10k.zsh"
@@ -307,6 +396,10 @@ function line() {
         echo "  line append \"string 1\" to first \"string 2\" in ~/.p10k.zsh"
         echo "  line append \"string 1\" to last \"string 2\" in ~/.p10k.zsh"
         echo "  line append \"string 1\" to all \"string 2\" in ~/.p10k.zsh"
+        echo "  line comment all \"string 1\" in ~/.p10k.zsh"
+        echo "  line comment first \"string 1\" in ~/.p10k.zsh"
+        echo "  line uncomment all \"# string 1\" in ~/.p10k.zsh"
+        echo "  line uncomment first \"# string 1\" in ~/.p10k.zsh"
         echo "  line -h or line --help"
     fi
 }

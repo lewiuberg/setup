@@ -25,21 +25,18 @@ if [[ ! $REPLY =~ ^[Yy]$ ]]; then
 fi
 
 echo "\nApplying custom modifications..."
-# test check line: true/0
-line check "    # =========================[ Line #1 ]=========================" is anywhere in ~/.p10k.zsh
-# test check line: false/1
-line check "    # =========================[ Lewi #1 ]=========================" is anywhere in ~/.p10k.zsh
-# test check line below: true/0
-line check "    # =========================[ Line #1 ]=========================" below "  typeset -g POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(" in ~/.p10k.zsh
-# test check line below: false/1
-line check "    # =========================[ Line #1 ]=========================" below "    # os_icon               # os identifier" in ~/.p10k.zsh
-
-# sleep 1
+# POWERLEVEL9K_LEFT_PROMPT_ELEMENTS
 line change "    # os_icon               # os identifier" to "    os_icon                 # os identifier" in ~/.p10k.zsh
 line add "    os_icon                 # os identifier" below "    # =========================[ Line #1 ]=========================" in ~/.p10k.zsh
-line change "    # prompt_char           # prompt symbol" to "    prompt_char             # prompt symbol" in ~/.p10k.zsh
-line change "    # newline               # \\\n" to "    newline                 # \\\n" in ~/.p10k.zsh
 line add "    # =========================[ Line #2 ]=========================" below "    vcs                     # git status" in ~/.p10k.zsh
+line change "    # prompt_char           # prompt symbol" to "    prompt_char             # prompt symbol" in ~/.p10k.zsh
+line add "    prompt_char             # prompt symbol" below "    # =========================[ Line #2 ]=========================" in ~/.p10k.zsh
+line change "    # newline               # \n" to "    newline                 # \n" in ~/.p10k.zsh
+line add "    newline                 # \n" below "    prompt_char             # prompt symbol" in ~/.p10k.zsh
+
+# POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS
+line comment all "    vi_mode                 # vi mode (you don't need this if you've enabled prompt_char)" in ~/.p10k.zsh
+# line uncomment all "    # vi_mode               # vi mode (you don't need this if you've enabled prompt_char)" in ~/.p10k.zsh
 
 # line add "    Lewi was here" at start of ~/.p10k.zsh
 # line add "    Lewi was here" at end of ~/.p10k.zsh
