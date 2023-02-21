@@ -25,20 +25,42 @@ if [[ ! $REPLY =~ ^[Yy]$ ]]; then
 fi
 
 echo "\nApplying custom modifications..."
+# line check "    # os_icon               # os identifier" anywhere in ~/.p10k.zsh
+# line check "    # os_icon               # os identifier" below "    # =========================[ Line #1 ]=========================" in ~/.p10k.zsh
+# line remove line 41 from ~/.p10k.zsh
+# line remove range 2 to 16 from ~/.p10k.zsh
+# line remove range 1750 to end in ~/.p10k.zsh
+# line remove range start to 3 from ~/.p10k.zsh
+# line remove range start to end from ~/.p10k.zsh
+# line remove all found "    # take me out           # \n\t" from ~/.p10k.zsh
+# line remove first found "    # take me out           # \n\t" from ~/.p10k.zsh
+# line remove last found "    # take me out           # \n\t" from ~/.p10k.zsh
+# line replace all "    # newline               # \n" with "    newline1                # \n\t" in ~/.p10k.zsh
+# line replace first "    # newline               # \n" with "    newline1                # \n\t" in ~/.p10k.zsh
+# line comment first "    vcs                     # git status" in ~/.p10k.zsh
+# line comment all "    vcs                     # git status" in ~/.p10k.zsh
+# line uncomment first "    # os_icon               # os identifier" in ~/.p10k.zsh
+# line uncomment first "    # newline               # \n" in ~/.p10k.zsh
+# line comment all "    newline                 # \n" in ~/.p10k.zsh
+# line uncomment all "    # newline               # \n" in ~/.p10k.zsh
+# line add "    # =========================[ Line #2 ]=========================" below "    vcs                     # git status" in ~/.p10k.zsh
+# line add "    some new line # \n" above "    # prompt_char           # prompt symbol" in ~/.p10k.zsh
+# line add "    # newline               # \n" below "    # newline               # \n" in ~/.p10k.zsh
+# line add "    # newline               # \n" above "    # newline               # \n" in ~/.p10k.zsh
 # POWERLEVEL9K_LEFT_PROMPT_ELEMENTS
-line change "    # os_icon               # os identifier" to "    os_icon                 # os identifier" in ~/.p10k.zsh
-line add "    os_icon                 # os identifier" below "    # =========================[ Line #1 ]=========================" in ~/.p10k.zsh
-line add "    # =========================[ Line #2 ]=========================" below "    vcs                     # git status" in ~/.p10k.zsh
-line change "    # prompt_char           # prompt symbol" to "    prompt_char             # prompt symbol" in ~/.p10k.zsh
-line add "    prompt_char             # prompt symbol" below "    # =========================[ Line #2 ]=========================" in ~/.p10k.zsh
-line change "    # newline               # \n" to "    newline                 # \n" in ~/.p10k.zsh
-line add "    newline                 # \n" below "    prompt_char             # prompt symbol" in ~/.p10k.zsh
+# line change "    # os_icon               # os identifier" to "    os_icon                 # os identifier" in ~/.p10k.zsh
+# line add "    os_icon                 # os identifier" below "    # =========================[ Line #1 ]=========================" in ~/.p10k.zsh
+# line add "    # =========================[ Line #2 ]=========================" below "    vcs                     # git status" in ~/.p10k.zsh
+# line change "    # prompt_char           # prompt symbol" to "    prompt_char             # prompt symbol" in ~/.p10k.zsh
+# line add "    prompt_char             # prompt symbol" below "    # =========================[ Line #2 ]=========================" in ~/.p10k.zsh
+# line change "    # newline               # \n" to "    newline                 # \n" in ~/.p10k.zsh
+# line add "    newline                 # \n" below "    prompt_char             # prompt symbol" in ~/.p10k.zsh
 
 # POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS
-line comment first "    vi_mode                 # vi mode (you don't need this if you've enabled prompt_char)" in ~/.p10k.zsh
+# line comment first "    vi_mode                 # vi mode (you don't need this if you've enabled prompt_char)" in ~/.p10k.zsh
 
 # typeset -g POWERLEVEL9K_MODE
-line change "  typeset -g POWERLEVEL9K_MODE=compatible" to "  typeset -g POWERLEVEL9K_MODE=nerdfont-complete" in ~/.p10k.zsh
+# line change "  typeset -g POWERLEVEL9K_MODE=compatible" to "  typeset -g POWERLEVEL9K_MODE=nerdfont-complete" in ~/.p10k.zsh
 
 # line add "    Lewi was here" at start of ~/.p10k.zsh
 # line add "    Lewi was here" at end of ~/.p10k.zsh
