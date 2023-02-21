@@ -208,7 +208,6 @@ function line() {
         FILE_KEYWORD=$4
         FILE=$5
         if grep -qF "$(printf '%s' "$LINE" | sed 's/\n[]\/$*.^|[]/\\&/g')" $FILE; then
-            echo "!!!!"
             LINE_NUMBERS=$(grep -n "$(printf '%s' "$LINE" | sed 's/[]\/$*.^|[]/\\&/g')" $FILE | cut -d: -f1)
             INDENTATION=$(echo "$LINE" | grep -o '^[[:space:]]*')
             if [[ $MATCH == "all" ]]; then
@@ -239,7 +238,7 @@ function line() {
         NAVIGATION_LINE=$4
         FILE_KEYWORD=$5
         FILE=$6
-        if ! [ $(line check "$NEW_LINE" $WHERE "$NAVIGATION_LINE" $FILE_KEYWORD $FILE) -eq 0 ]; then
+        if ! [ $(line check "$NEW_LINE" $WHERE "$NAVIGATION_LINE" $FILE_KEYWORD $FILE) -eq 0 ] && grep -qF "$(printf '%s' "$NAVIGATION_LINE" | sed 's/\n[]\/$*.^|[]/\\&/g')" $FILE; then
             # ************************** add: below ***************************
             if [[ $WHERE == "below" ]]; then
                 NAVIGATION_LINE_NUMBER=$(grep -n "$(printf '%s' "$NAVIGATION_LINE" | sed 's/[]\/$*.^|[]/\\&/g')" $FILE | cut -d: -f1)

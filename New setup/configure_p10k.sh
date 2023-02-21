@@ -25,6 +25,16 @@ if [[ ! $REPLY =~ ^[Yy]$ ]]; then
 fi
 
 echo "\nApplying custom modifications..."
+line uncomment first "    # os_icon               # os identifier" in ~/.p10k.zsh
+line add "    os_icon               # os identifier" below "    # =========================[ Line #1 ]=========================" in ~/.p10k.zsh
+line add "    # =========================[ Line #2 ]=========================" below "    vcs                     # git status" in ~/.p10k.zsh
+# line uncomment first "    # newline               # \n" in ~/.p10k.zsh
+line replace first "    # newline               # \n" with "    newline                 # \n" in ~/.p10k.zsh
+line add "    newline                 # \n" below "    # prompt_char           # prompt symbol" in ~/.p10k.zsh
+# line check "$NEW_LINE" $WHERE "$NAVIGATION_LINE" $FILE_KEYWORD $FILE
+#
+#
+#
 # line check "    # os_icon               # os identifier" anywhere in ~/.p10k.zsh
 # line check "    # os_icon               # os identifier" below "    # =========================[ Line #1 ]=========================" in ~/.p10k.zsh
 # line remove line 41 from ~/.p10k.zsh
@@ -90,7 +100,7 @@ echo "\nApplying custom modifications..."
 # line change "    # newline               # \\\n" to "    newline                 # \\\n" in ~/.p10k.zsh
 # line check "    # =========================[ Line #2 ]=========================" below "    vcs                     # git status" in ~/.p10k.zsh
 
-echo ""
+# echo ""
 # if [ $(line check "    # =========================[ Line #2 ]=========================" below "    vcs                     # git status" in ~/.p10k.zsh) -eq 0 ]; then
 #     echo "Line exist"
 # else
