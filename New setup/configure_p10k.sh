@@ -31,6 +31,8 @@ line add "    # =========================[ Line #2 ]=========================" b
 # line uncomment first "    # newline               # \n" in ~/.p10k.zsh
 line replace first "    # newline               # \n" with "    newline                 # \n" in ~/.p10k.zsh
 line add "    newline                 # \n" below "    # prompt_char           # prompt symbol" in ~/.p10k.zsh
+line comment first "    vi_mode                 # vi mode (you don't need this if you've enabled prompt_char)" in ~/.p10k.zsh
+line replace first "  typeset -g POWERLEVEL9K_MODE=compatible" with "  typeset -g POWERLEVEL9K_MODE=nerdfont-complete" in ~/.p10k.zsh
 # line check "$NEW_LINE" $WHERE "$NAVIGATION_LINE" $FILE_KEYWORD $FILE
 #
 #

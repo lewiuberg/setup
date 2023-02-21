@@ -162,7 +162,11 @@ function line() {
             done <<<"$TEMP_LINE_NUMBERS"
 
             for line in $LINE_NUMBERS; do
-                sed -i '' "$line s/$(printf '%s' "$CHECK_LINE_FROM_FILE" | sed 's/[]\/$*.^|[]/\\&/g')/$(printf '%s' "$ORIGINAL_LINE $ORIGINAL_COMMENT" | sed 's/[]\/$*.^|[]/\\&/g')\n$(printf '%s' "$MODIFIED_LINE $MODIFIED_COMMENT" | sed 's/[]\/$*.^|[]/\\&/g')/" $FILE
+                INDENTATION=$(echo "$ORIGINAL_LINE" | grep -o '^[[:space:]]*')
+                # get line from file
+                MODIFIED_ORIGINAL_LINE=$(echo "$ORIGINAL_LINE" | sed 's/^[[:space:]]*//')
+                MODIFIED_ORIGINAL_LINE=$(echo "$INDENTATION# $MODIFIED_ORIGINAL_LINE")
+                sed -i '' "$line s/$(printf '%s' "$CHECK_LINE_FROM_FILE" | sed 's/[]\/$*.^|[]/\\&/g')/$(printf '%s' "$MODIFIED_ORIGINAL_LINE $ORIGINAL_COMMENT" | sed 's/[]\/$*.^|[]/\\&/g')\n$(printf '%s' "$MODIFIED_LINE $MODIFIED_COMMENT" | sed 's/[]\/$*.^|[]/\\&/g')/" $FILE
                 echo "Modified:     line replace replaced '$ORIGINAL_LINE' with '$MODIFIED_LINE' in $FILE"
                 if [[ $WHERE == "first" ]]; then
                     break
