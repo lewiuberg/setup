@@ -6,6 +6,7 @@
 clear
 source functions.sh
 source constants.sh
+set -e
 
 # Information #################################################################
 frame_text "Setting up new Mac"

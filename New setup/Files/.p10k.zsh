@@ -36,7 +36,7 @@
     vcs                     # git status
     # prompt_char           # prompt symbol
     # =========================[ Line #2 ]========================= #! Lewi changed this
-    newline                 # \n #! Lewi changed this
+    newline                 # \n #! Lewi changed this # has to be above prompt_char
     prompt_char             # prompt symbol #! Lewi changed this
   )
 
@@ -376,7 +376,7 @@
 
   # Branch icon. Set this parameter to '\UE0A0 ' for the popular Powerline branch icon.
   # typeset -g POWERLEVEL9K_VCS_BRANCH_ICON= #! Lewi changed this
-  typeset -g POWERLEVEL9K_VCS_BRANCH_ICON=' '
+  typeset -g POWERLEVEL9K_VCS_BRANCH_ICON='\uF126 '
 
   # Untracked files icon. It's really a question mark, your font isn't broken.
   # Change the value of this parameter to show a different icon.
