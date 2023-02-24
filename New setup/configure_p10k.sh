@@ -1,53 +1,7 @@
 #!/usr/bin/env bash
-# source ~/.zshrc
+
 source functions.sh
-# # check if homebrew has installed powerlevel10k, if not abort
-# # frame_text "Powerlevel10k"
-# if ! brew list --formula | grep -q "powerlevel10k"; then
-#   echo "Powerlevel10k is not installed. Aborting..."
-#   exit 1
-# fi
-# # check if file '.p10k.zsh' exists at home directory, if not run 'p10k configure'
-# # if true, continue
-# if [ ! -f ~/.p10k.zsh ]; then
-#   echo "File '.p10k.zsh' does not exist. Running 'p10k configure'...\n"
-#   # echo "p10k configure"
-#   # echo "here"
-#   # zsh
-#   # p10k configure
-#   # zsh -is eval "p10k configure"
-#   # zsh -c 'p10k configure; exec zsh'
-#   # zsh -c "$(p10k configure)"
-#   # echo "After the scripts exits, please close this terminal window, open a new one and run 'p10k configure'.
-#   # After that, run 'zsh install.sh' again."
-#   echo "Powerlevel10k is not configured. Please run 'p10k configure' and then run 'zsh install.sh' again."
-#   # sleep 5
-#   # exit and exit parent script
-#   # exit 0
-#   # exit parent script
-#   # exit 1 #!!!!!!!!!!!!!!
-#   exec zsh
 
-# else
-#   echo "File '.p10k.zsh' exists. Continuing..."
-#   echo ""
-# fi
-
-# # ask the user if they want to apply the custom modifications to the file. If not, abort
-# # if true, continue
-# # read -p "Do you want to apply the custom modifications to the file? [y/N] " -n 1 -r
-# read -k1 "?Do you want to apply the custom modifications to the file? [y/N] "
-
-# # echo "Do you want to apply the custom modifications to the file? [y/N]"
-# # read -k1 -s "?"
-
-# if [[ ! $REPLY =~ ^[Yy]$ ]]; then
-#   echo "\nAborting..."
-#   echo ""
-#   exit 1
-# fi
-
-# echo "\nApplying custom modifications..."
 line uncomment first "    # os_icon               # os identifier" in ~/.p10k.zsh
 line add "    os_icon                 # os identifier" below "    # =========================[ Line #1 ]=========================" in ~/.p10k.zsh
 line add "    # =========================[ Line #2 ]=========================" below "    vcs                     # git status" in ~/.p10k.zsh
@@ -55,7 +9,6 @@ line replace first "    # newline               # \n" with "    newline         
 line add "    newline                 # \n" below "    # prompt_char           # prompt symbol" in ~/.p10k.zsh
 line add "    prompt_char             # prompt symbol" below "    newline                 # \n" in ~/.p10k.zsh
 line comment first "    vi_mode                 # vi mode (you don't need this if you've enabled prompt_char)" in ~/.p10k.zsh
-# line uncomment first "    # dotnet_version        # .NET version (https://dotnet.microsoft.com)" in ~/.p10k.zsh
 line comment first "    pyenv                   # python environment (https://github.com/pyenv/pyenv)" in ~/.p10k.zsh
 line uncomment first "    # battery               # internal battery" in ~/.p10k.zsh
 line add "  # Multiple Homebrews on Apple Silicon

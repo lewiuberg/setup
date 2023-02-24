@@ -4,12 +4,11 @@ source functions.sh
 source constants.sh
 
 # Manual Installations #########################################################
-sleep 1
 frame_text "Manual Installations"
 
 # Manual Installations: App Store ##############################################
-# sleep 1
 frame_text "App Store"
+sleep 1
 echo "
 - [BetterJSON](https://apps.apple.com/no/app/betterjson-for-safari/id1511935951?l=nb&mt=12)
 - [BetterSnapTool](https://apps.apple.com/no/app/bettersnaptool/id417375580?l=nb&mt=12)
