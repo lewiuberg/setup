@@ -3,14 +3,15 @@
 source functions.sh
 source constants.sh
 
-# Homebrew: Install ###########################################################
-sleep 1
+#h! Homebrew: Install ###########################################################
 frame_text "Homebrew"
 
 if [ -d "/opt/homebrew" ] || [ -d "/usr/local" ]; then
     echo "Homebrew is already installed"
+    sleep 1
 else
     echo "Installing Homebrew"
+    sleep 1
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
     brew doctor
     brew update
@@ -44,6 +45,7 @@ if [[ "$(cat ~/.zprofile)" != *"$ZPROFILE_HOMEBREW"* ]]; then
 else
     echo "Homebrew settings already in .zprofile"
 fi
+sleep 1
 
 # source shell
 if [ "$ARCH_ARM64" = true ]; then
@@ -53,10 +55,9 @@ elif [ "$ARCH_86_64" = true ]; then
     eval "$(/usr/local/bin/brew shellenv)"
     echo "Sourced shell for x86_64/i386"
 fi
-
 echo ""
 
-# Homebrew: Install Packages ##################################################
+#h! Homebrew: Install Packages ##################################################
 # Read brew_formulas.sh to get all packages, casks, and taps
 brew_taps=$(grep -E "^\s*brew tap" brew_formulas.sh | sed -e "s/brew tap //g" | sed -e "s/#.*//g" | sed -e "s/ && brew install.*//g")
 brew_formulas=$(grep -E "^\s*brew install | && brew install" brew_formulas.sh | grep -vE "^\s*#" | sed -e "s/#.*//g" | sed -e "s/.*&& brew install //g" | sed -e "s/brew install //g")
@@ -78,9 +79,9 @@ brew_packages=$(echo "$brew_packages" | grep -vF "$brew_packages_installed")
 # remove all casks that are already installed
 brew_casks=$(echo "$brew_casks" | grep -vF "$brew_casks_installed")
 
-# Homebrew: Tap Repositories ##################################################
-sleep 1
+#h! Homebrew: Tap Repositories ##################################################
 frame_text "Homebrew: Tap Repositories"
+sleep 1
 
 # if brew_taps is not empty
 if [ -n "$brew_taps" ]; then
@@ -97,9 +98,9 @@ else
 fi
 echo ""
 
-# Homebrew: Install Packages ##################################################
-sleep 1
+#h! Homebrew: Install Packages ##################################################
 frame_text "Homebrew: Install Packages"
+sleep 1
 
 # if brew_packages is not empty
 if [ -n "$brew_packages" ]; then
@@ -116,9 +117,9 @@ else
 fi
 echo ""
 
-# Homebrew: Install Casks ####################################################
-sleep 1
+#h! Homebrew: Install Casks ####################################################
 frame_text "Homebrew: Install Casks"
+sleep 1
 
 # if brew_casks is not empty
 if [ -n "$brew_casks" ]; then
@@ -135,12 +136,11 @@ else
 fi
 echo ""
 
-# Homebrew: Cleanup ##########################################################
-sleep 1
+#h! Homebrew: Cleanup ##########################################################
 frame_text "Homebrew: Cleanup"
+sleep 1
 
 echo "Cleaning up Homebrew"
 #! brew cleanup
 echo "Finished cleaning up Homebrew"
-
 echo ""

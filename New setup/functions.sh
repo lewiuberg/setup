@@ -8,6 +8,25 @@ function frame_text() {
     echo "└$(printf "%0.s─" $(seq 1 ${#text}))──┘"
 }
 
+function frame_multiline_text() {
+    text="$1"
+    lines=$(echo "$text" | wc -l)
+    # longest_line=$(echo "$text" | awk '{ print length }' | sort -nr | head -1) # +1
+    longest_line=$(echo "$text" | awk '{ print length }' | sort -nr | head -1)
+    longest_line=$(($longest_line + 1))
+    echo "┌$(printf "%0.s─" $(seq 1 $longest_line))──┐"
+    for ((i = 1; i <= $lines; i++)); do
+        # line=$(echo "$text" | sed -n "$i p")
+        # echo "│ $line │"
+        # take the remaining space and add it to the line
+        line=$(echo "$text" | sed -n "$i p")
+        line_length=$(echo "$line" | awk '{ print length }')
+        remaining_space=$(($longest_line - $line_length))
+        echo "│ $line$(printf "%0.s " $(seq 1 $remaining_space)) │"
+    done
+    echo "└$(printf "%0.s─" $(seq 1 $longest_line))──┘"
+}
+
 function line() {
     ORIGINAL_COMMENT="#! ORIGINAL"
     MODIFIED_COMMENT="#* MODIFIED"

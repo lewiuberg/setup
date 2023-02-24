@@ -95,9 +95,9 @@ line add "  # Multiple Homebrews on Apple Silicon
   }
 " above "  # User-defined prompt segments may optionally provide an instant_prompt_* function. Its job" in ~/.p10k.zsh
 line add "    show_arch               # custom architecture promt" above "    # example               # example user-defined segment (see prompt_example function below)" in ~/.p10k.zsh
-line add "    show_time               # custom time promt" below "    # time                  # current time" in ~/.p10k.zsh
-line add "    dotnet_ver             # custom dotnet version promt" below "    # time                  # current time" in ~/.p10k.zsh
 line add "    pyenv_ver              # custom pyenv version promt" below "    # time                  # current time" in ~/.p10k.zsh
+line add "    dotnet_ver             # custom dotnet version promt" below "    pyenv_ver              # custom pyenv version promt" in ~/.p10k.zsh
+line add "    show_time               # custom time promt" below "    dotnet_ver             # custom dotnet version promt" in ~/.p10k.zsh
 line replace first "  typeset -g POWERLEVEL9K_MODE=compatible" with "  typeset -g POWERLEVEL9K_MODE=nerdfont-complete" in ~/.p10k.zsh
 line replace first "  typeset -g POWERLEVEL9K_PROMPT_ADD_NEWLINE=false" with "  typeset -g POWERLEVEL9K_PROMPT_ADD_NEWLINE=true" in ~/.p10k.zsh
 line replace first "  typeset -g POWERLEVEL9K_MULTILINE_FIRST_PROMPT_PREFIX='%242F╭─'" with "  typeset -g POWERLEVEL9K_MULTILINE_FIRST_PROMPT_PREFIX=" in ~/.p10k.zsh
@@ -117,4 +117,3 @@ line replace first "  typeset -g POWERLEVEL9K_DIR_BACKGROUND=4" with "  typeset 
 line replace first "  typeset -g POWERLEVEL9K_DIR_TRUNCATE_BEFORE_MARKER=true" with "  typeset -g POWERLEVEL9K_DIR_TRUNCATE_BEFORE_MARKER=false" in ~/.p10k.zsh
 line replace first "  typeset -g POWERLEVEL9K_VCS_BRANCH_ICON=" with "  typeset -g POWERLEVEL9K_VCS_BRANCH_ICON='\uF126 '" in ~/.p10k.zsh
 line replace first "  typeset -g POWERLEVEL9K_INSTANT_PROMPT=verbose" with "  typeset -g POWERLEVEL9K_INSTANT_PROMPT=quiet" in ~/.p10k.zsh
-echo ""

@@ -13,8 +13,8 @@ brew install pyenv                    # pyenv is a simple Python version managem
 brew install pyenv-virtualenv         # pyenv-virtualenv is a pyenv plugin to manage virtualenv (a.k.a. python-virtualenv)
 brew install smudge/smudge/nightlight # nightlight is a simple command line tool to change the color temperature of your display
 brew install tree                     # tree is a recursive directory listing command that produces a depth indented listing of files
-brew install zsh-syntax-highlighting  # zsh-syntax-highlighting is a fish shell like syntax highlighting for Zsh
-brew install zsh-autosuggestions      # zsh-autosuggestions is a fish-like autosuggestions for zsh
+# brew install zsh-syntax-highlighting  # zsh-syntax-highlighting is a fish shell like syntax highlighting for Zsh
+# brew install zsh-autosuggestions # zsh-autosuggestions is a fish-like autosuggestions for zsh
 # brew install direnv                   # direnv is an environment switcher for the shell
 # brew install docker-machine           # docker-machine is a tool that lets you install Docker Engine on virtual hosts, and manage the hosts with docker-machine commands.
 # brew install dotnet-sdk               # dotnet-sdk is a .NET SDK
@@ -77,11 +77,3 @@ brew install --cask font-fira-code          # font-fira-code is a font
 brew tap homebrew/cask-drivers # cask-drivers is a driver manager
 # brew install --cask logitech-options # logitech-options is a logitech driver
 brew install --cask philips-hue-sync # philips-hue-sync is a hue sync driver
-
-# Test
-# brew tap packages/package && brew install --cask font
-# brew tap packages2/package2
-# brew install --cask driver1
-# brew install --cask driver2
-# brew install leinot
-# brew install fortnite
