@@ -46,7 +46,15 @@ line add "  # Multiple Homebrews on Apple Silicon
     _p9k_pyenv_compute || return
     p10k segment -b 7 -f 'black' -i '' -t \"\${_p9k__pyenv_version//\%/%%}\"
   }
+  # Modified virtualenv
+  function prompt_show_venv() {
+    if [[ -n \$VIRTUAL_ENV ]]; then
+      p10k segment -b 248 -f 'black' -i '' -t \"\${VIRTUAL_ENV##*/}\"
+    fi
+  }
 " above "  # User-defined prompt segments may optionally provide an instant_prompt_* function. Its job" in ~/.p10k.zsh
+line comment first "    virtualenv              # python virtual environment (https://docs.python.org/3/library/venv.html)" in ~/.p10k.zsh
+line add "    show_venv               # python virtual environment (https://docs.python.org/3/library/venv.html)" below "    # virtualenv              # python virtual environment (https://docs.python.org/3/library/venv.html)" in ~/.p10k.zsh
 line add "    show_arch               # custom architecture promt" above "    # example               # example user-defined segment (see prompt_example function below)" in ~/.p10k.zsh
 line add "    pyenv_ver              # custom pyenv version promt" below "    # time                  # current time" in ~/.p10k.zsh
 line add "    dotnet_ver             # custom dotnet version promt" below "    pyenv_ver              # custom pyenv version promt" in ~/.p10k.zsh

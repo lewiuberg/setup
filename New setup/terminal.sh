@@ -310,11 +310,49 @@ else
     echo "Poetry settings already in .zshrc"
 fi
 
-# # ------------------------------------------------------------------------------
-# # Direnv
-# # ------------------------------------------------------------------------------
-# eval "$(direnv hook zsh)"
-# export EDITOR="code --wait"
+if [ ! -L ~/.virtualenvs-alias-poetry ]; then
+    echo "Creating alias for Poetry virtualenvs"
+    ln -s "$HOME/Library/Caches/pypoetry/virtualenvs" ~/.virtualenvs-alias-poetry
+    echo "Alias created"
+else
+    echo "Alias for Poetry virtualenvs already exists"
+fi
+
+# Make poetry use the active python version. Like pyenv local 3.8.2
+poetry config virtualenvs.prefer-active-python true
+
+#h! Terminal; Direnv ###########################################################
+frame_text "Terminal: Direnv"
+sleep 1
+
+DIRENV='# ------------------------------------------------------------------------------
+# Direnv
+# ------------------------------------------------------------------------------
+eval "$(direnv hook zsh)"
+export EDITOR="code --wait"'
+
+if brew list --formula | grep -q "direnv"; then
+    echo "direnv is already installed"
+else
+    echo "Installing direnv"
+    brew install direnv
+    echo "direnv is installed"
+fi
+
+if [[ "$(cat ~/.zshrc)" != *"$DIRENV"* ]]; then
+    echo "Appending direnv settings"
+    if [ -s ~/.zshrc ]; then
+        if [ "$(tail -c 1 ~/.zshrc)" != "" ]; then
+            echo "\n" >>~/.zshrc
+        else
+            echo "" >>~/.zshrc
+        fi
+    fi
+    echo "$DIRENV" >>~/.zshrc
+else
+    echo "direnv settings already in .zshrc"
+fi
+echo ""
 
 # # ------------------------------------------------------------------------------
 # # Dotnet
@@ -327,16 +365,30 @@ fi
 # in zprofile
 #! export PATH="$PATH:/Users/lewiuberg/.dotnet/tools"
 
-# # ------------------------------------------------------------------------------
-# # Aliases
-# # ------------------------------------------------------------------------------
-# alias lss='ls -alhS'
-# alias lsla='ls -la'
-# alias ch='history | grep "git commit"'
-# alias pih='history | grep "pip install"'
-# alias hg='history | grep'
-# alias ppip="python3 -m pip"
+ALIASES='# ------------------------------------------------------------------------------
+# Aliases
+# ------------------------------------------------------------------------------
+alias lss="ls -alhS"
+alias lsla="ls -la"
+alias ch="history | grep \"git commit\""
+alias pih="history | grep \"pip install\""
+alias hg="history | grep"
+alias ppip="python3 -m pip"
+alias show="defaults write com.apple.finder AppleShowAllFiles -bool true && killall Finder"
+alias hide="defaults write com.apple.finder AppleShowAllFiles -bool false && killall Finder"
+alias back="cd .. && echo "" && cd -"'
 
-# # Show/hide hidden files in Finder
-# alias show="defaults write com.apple.finder AppleShowAllFiles -bool true && killall Finder"
-# alias hide="defaults write com.apple.finder AppleShowAllFiles -bool false && killall Finder"
+if [[ "$(cat ~/.zshrc)" != *"$ALIASES"* ]]; then
+    echo "Appending aliases"
+    if [ -s ~/.zshrc ]; then
+        if [ "$(tail -c 1 ~/.zshrc)" != "" ]; then
+            echo "\n" >>~/.zshrc
+        else
+            echo "" >>~/.zshrc
+        fi
+    fi
+    echo "$ALIASES" >>~/.zshrc
+else
+    echo "Aliases already in .zshrc"
+fi
+echo ""
