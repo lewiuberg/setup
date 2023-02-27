@@ -3,7 +3,7 @@
 source functions.sh
 source constants.sh
 
-#h! Homebrew: Install ###########################################################
+#h! Homebrew: Install #########################################################
 frame_text "Homebrew"
 
 if [ -d "/opt/homebrew" ] || [ -d "/usr/local" ]; then
@@ -15,7 +15,9 @@ else
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
     brew doctor
     brew update
+    echo "Homebrew is installed"
 fi
+echo ""
 
 ZPROFILE_HOMEBREW='# ------------------------------------------------------------------------------
 # Homebrew
@@ -57,7 +59,20 @@ elif [ "$ARCH_86_64" = true ]; then
 fi
 echo ""
 
-#h! Homebrew: Install Packages ##################################################
+#h! Homebrew: Install x86 version #############################################
+frame_text "Homebrew x86"
+# ask the user if they want to install the x86 version of Homebrew
+read -p "Do you install the x84 version of Homebrew? [y/N] " -n 1 -r REPLY
+if [[ ! $REPLY =~ ^[Yy]$ ]]; then
+    echo "\nSkipping Homebrew x86"
+else
+    echo ""
+    arch -x86_64 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+    echo "Homebrew x86 is installed"
+fi
+echo ""
+
+#h! Homebrew: Install Packages ################################################
 # Read brew_formulas.sh to get all packages, casks, and taps
 brew_taps=$(grep -E "^\s*brew tap" brew_formulas.sh | sed -e "s/brew tap //g" | sed -e "s/#.*//g" | sed -e "s/ && brew install.*//g")
 brew_formulas=$(grep -E "^\s*brew install | && brew install" brew_formulas.sh | grep -vE "^\s*#" | sed -e "s/#.*//g" | sed -e "s/.*&& brew install //g" | sed -e "s/brew install //g")
@@ -87,7 +102,7 @@ sleep 1
 if [ -n "$brew_taps" ]; then
     for brew_tap in $brew_taps; do
         echo "Tapping $brew_tap"
-        #! brew tap $brew_tap
+        brew tap $brew_tap
         echo "brew tap $brew_tap"
         echo "Repository tapped"
         echo ""
@@ -106,7 +121,7 @@ sleep 1
 if [ -n "$brew_packages" ]; then
     for brew_package in $brew_packages; do
         echo "Installing package: $brew_package"
-        #! brew install $brew_package
+        brew install $brew_package
         echo "brew install $brew_package"
         echo "Package installed"
         echo ""
@@ -125,7 +140,7 @@ sleep 1
 if [ -n "$brew_casks" ]; then
     for brew_cask in $brew_casks; do
         echo "Installing cask: $brew_cask"
-        #! brew install --cask $brew_cask
+        brew install --cask $brew_cask
         echo "brew install --cask $brew_cask"
         echo "Cask installed"
         echo ""
@@ -141,6 +156,6 @@ frame_text "Homebrew: Cleanup"
 sleep 1
 
 echo "Cleaning up Homebrew"
-#! brew cleanup
+brew cleanup
 echo "Finished cleaning up Homebrew"
 echo ""

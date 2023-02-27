@@ -13,11 +13,11 @@ line comment first "    pyenv                   # python environment (https://gi
 line uncomment first "    # battery               # internal battery" in ~/.p10k.zsh
 line add "  # Multiple Homebrews on Apple Silicon
   function prompt_show_arch() {
-    if [ \"arm64\" = \"arm64\" ]; then
+    if [ \"\$(arm64)\" = \"arm64\" ]; then
         architecture=\"arm64\"
-    elif [ \"arm64\" = \"x86_64\" ]; then
+    elif [ \"\$(arm64)\" = \"x86_64\" ]; then
         architecture=\"x86_64\"
-    elif [ \"arm64\" = \"i386\" ]; then
+    elif [ \"\$(arm64)\" = \"i386\" ]; then
         architecture=\"i386\"
     else
         architecture=\"x86\"

@@ -61,6 +61,9 @@ brew install --cask unite                    # unite is a file manager
 brew install --cask unite                    # unite is a file manager
 brew install --cask visual-studio-code       # visual-studio-code is a code editor
 brew install --cask vnc-viewer               # vnc-viewer is a remote access software
+# Git credential manager core
+brew tap microsoft/git                          # microsoft/git is a git credential manager
+brew install --cask git-credential-manager-core # git-credential-manager-core is a git credential manager
 # brew install --cask fork                     # fork is a git client
 # brew install --cask github                   # github is a git client
 # brew install --cask sourcetree               # sourcetree is a git client
