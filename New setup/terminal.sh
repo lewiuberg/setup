@@ -393,39 +393,39 @@ echo ""
 frame_text "Terminal: Dotnet-sdk"
 sleep 1
 
-#! OLD, But kept for reference
-# # check if dotnet-sdk is installed
-# if brew list --formula | grep -q "dotnet-sdk"; then
-#     echo "dotnet-sdk is already installed"
-# else
-#     # brew install spesific version of dotnet-sdk
-#     formula_file_to_download="https://raw.githubusercontent.com/Homebrew/homebrew-cask/e5fdbb2d63b55aec9393bfd64048a6826e78a80b/Casks/dotnet-sdk.rb"
-#     # Download the formula file to ~/Downloads if it does not exsist
-#     if [ ! -f ~/Downloads/dotnet-sdk.rb ]; then
-#         echo "Downloading dotnet-sdk.rb"
-#         curl -o ~/Downloads/dotnet-sdk.rb $formula_file_to_download
-#         echo "dotnet-sdk.rb downloaded"
-#     fi
-
-#     echo "Installing dotnet-sdk"
-#     cd ~/Downloads
-#     brew install --cask dotnet-sdk.rb
-#     cd -
-#     echo "dotnet-sdk is installed"
-# fi
-#! OLD, But kept for reference
-
-DOTNET_VERSION="dotnet-sdk6-0-400"
-# check if dotnet-sdk is installed via brew
-if brew list --cask | grep -q "$DOTNET_VERSION"; then
-    echo "$DOTNET_VERSION is already installed"
+# check if dotnet-sdk is installed
+if brew list --formula | grep -q "dotnet-sdk"; then
+    echo "dotnet-sdk is already installed"
 else
-    # install dotnet-sdk via brew
-    echo "Installing $DOTNET_VERSION"
-    brew tap isen-ng/dotnet-sdk-versions
-    brew install --cask $DOTNET_VERSION
-    echo "$DOTNET_VERSION is installed"
+    # brew install spesific version of dotnet-sdk
+    formula_file_to_download="https://raw.githubusercontent.com/Homebrew/homebrew-cask/e5fdbb2d63b55aec9393bfd64048a6826e78a80b/Casks/dotnet-sdk.rb"
+    # Download the formula file to ~/Downloads if it does not exsist
+    if [ ! -f ~/Downloads/dotnet-sdk.rb ]; then
+        echo "Downloading dotnet-sdk.rb"
+        curl -o ~/Downloads/dotnet-sdk.rb $formula_file_to_download
+        echo "dotnet-sdk.rb downloaded"
+    fi
+
+    echo "Installing dotnet-sdk"
+    cd ~/Downloads
+    brew install --cask dotnet-sdk.rb
+    cd -
+    echo "dotnet-sdk is installed"
 fi
+
+#! Not yet working as expected
+# DOTNET_VERSION="dotnet-sdk6-0-400"
+# # check if dotnet-sdk is installed via brew
+# if brew list --cask | grep -q "$DOTNET_VERSION"; then
+#     echo "$DOTNET_VERSION is already installed"
+# else
+#     # install dotnet-sdk via brew
+#     echo "Installing $DOTNET_VERSION"
+#     brew tap isen-ng/dotnet-sdk-versions
+#     brew install --cask $DOTNET_VERSION
+#     echo "$DOTNET_VERSION is installed"
+# fi
+#! Not yet working as expected
 
 # export DOTNET_ROOT=$HOME/dotnet
 #export DOTNET_ROOT=/usr/local/bin/dotnet
