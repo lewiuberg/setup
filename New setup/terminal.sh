@@ -198,19 +198,19 @@ if ! [ -f "$FILE" ]; then
     echo ""
     echo "zsh-autoswitch-virtualenv is installed"
     sleep 1
-
-    if [ -f "$FILE" ]; then
-        if grep -qF "$FUNCTION" "$FILE"; then
-            line_number=$(grep -n "$FUNCTION" "$FILE" | cut -d: -f1)
-            line remove range "$line_number" to end in $FILE
-            printf "%s\n" "$SNIPPET" >>"$FILE"
-            echo "Modified:     Temporary fix for zsh-autoswitch-virtualenv and pyenv implemented"
-        else
-            echo "Not found:    $FILE does not contain the function that needs to be replaced"
-        fi
-    else
-        echo "Not found:    $FILE does not exist"
-    fi
+# ! Issue is fixed. Verify on next install.
+#     if [ -f "$FILE" ]; then
+#         if grep -qF "$FUNCTION" "$FILE"; then
+#             line_number=$(grep -n "$FUNCTION" "$FILE" | cut -d: -f1)
+#             line remove range "$line_number" to end in $FILE
+#             printf "%s\n" "$SNIPPET" >>"$FILE"
+#             echo "Modified:     Temporary fix for zsh-autoswitch-virtualenv and pyenv implemented"
+#         else
+#             echo "Not found:    $FILE does not contain the function that needs to be replaced"
+#         fi
+#     else
+#         echo "Not found:    $FILE does not exist"
+#     fi
 else
     echo "zsh-autoswitch-virtualenv is already installed"
 fi
