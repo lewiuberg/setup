@@ -3,9 +3,10 @@ name = "setup"
 version = "0.1.0"
 description = ""
 authors = ["Lewi Uberg <lewiuberg@icloud.com>"]
+maintainers = ["Lewi Uberg <lewiuberg@icloud.com>"]
 
 [tool.poetry.dependencies]
-python = "^3.7.9"
+python = "^3.10.5"
 
 [tool.poetry.dev-dependencies]
 peodd = "^0.2.2"  # Usage: poetry run peodd -o requirements-dev.txt
@@ -16,6 +17,11 @@ debugpy = "^1.4.3"
 black = "^21.9b0"
 flake8 = "^3.9.2"
 isort = "^5.9.3"
+
+[tool.poetry.group.docs.dependencies]
+mkdocs = "^1.4.2"
+mkdocs-material = "^9.1.9"
+mkdocs-macros-plugin = "^0.7.0"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
