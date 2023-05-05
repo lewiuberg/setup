@@ -104,15 +104,22 @@ extra:
 copyright: Copyright &copy; 2023 - 2023 Lewi Lie Uberg
 nav:
   # - Home: /
-  - Package Managers:
-      - macOS:
-          - package-managers/homebrew.md
-      - Windows:
-          - package-managers/chocolatey.md
-  - Python Managers:
-      - macOS:
-          - python-managers/pyenv.md
-      - Windows:
-          - python-managers/pyenv-win.md
+  - Installation:
+      - installation/index.md
+      - Package Managers:
+          - installation/homebrew.md
+          - installation/chocolatey.md
+      - Python Managers:
+          - installation/pyenv.md
+          - installation/pyenv-win.md
+      - Dependency Managers:
+          - installation/poetry.md
+  - Usage:
+      - usage/index.md
+  - Templates:
+      - temps/index.md
+  - Snippets:
+      - snippets/index.md
+
   # - People: /people/
   # - About: /about/

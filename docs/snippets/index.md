@@ -2,6 +2,6 @@
 author: "Lewi Lie Uberg"
 ---
 
-# Homebrew
+# Snippets <!-- omit in toc -->
 
 some text

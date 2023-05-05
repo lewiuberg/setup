@@ -1,3 +1,0 @@
-# Pyenv
-
-some text
