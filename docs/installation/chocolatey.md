@@ -4,7 +4,7 @@ author: "Lewi Lie Uberg"
 
 # Chocolatey
 
-[Chocolatey](https://chocolatey.org/) is a machine-level package manager and installer for software packages, like Homebrew for macOS. It is an execution engine using the NuGet packaging infrastructure and Windows PowerShell to provide an automation tool for installing software on Windows machines, designed to simplify the process from the user perspective. The name is an extension on a pun of NuGet (from "nougat") "because everyone loves Chocolatey nougat".
+[Chocolatey][1] is a machine-level package manager and installer for software packages, like Homebrew for macOS. It is an execution engine using the NuGet packaging infrastructure and Windows PowerShell to provide an automation tool for installing software on Windows machines, designed to simplify the process from the user perspective. The name is an extension on a pun of NuGet (from "nougat") "because everyone loves Chocolatey nougat".
 
 ## Install Chocolatey
 
@@ -30,3 +30,5 @@ if (Test-Path(`$ChocolateyProfile)) {
 }
 " | Out-File $PROFILE -Encoding UTF8 -Append
 ```
+
+[1]: https://chocolatey.org/
