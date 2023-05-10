@@ -116,6 +116,9 @@ nav:
           - installation/poetry.md
   - Usage:
       - usage/index.md
+      - Package Managers:
+          - usage/homebrew.md
+          - usage/chocolatey.md
   - Templates:
       - temps/index.md
   - Snippets:
