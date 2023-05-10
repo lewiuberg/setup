@@ -2,37 +2,62 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://uberg.me/</loc>
-         <lastmod>2023-05-05</lastmod>
+         <lastmod>2023-05-10</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://uberg.me/installation/</loc>
-         <lastmod>2023-05-05</lastmod>
+         <lastmod>2023-05-10</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://uberg.me/installation/chocolatey/</loc>
-         <lastmod>2023-05-05</lastmod>
+         <lastmod>2023-05-10</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://uberg.me/installation/homebrew/</loc>
-         <lastmod>2023-05-05</lastmod>
+         <lastmod>2023-05-10</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://uberg.me/installation/pyenv-win/</loc>
+         <lastmod>2023-05-10</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://uberg.me/installation/pyenv/</loc>
+         <lastmod>2023-05-10</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://uberg.me/snippets/</loc>
-         <lastmod>2023-05-05</lastmod>
+         <lastmod>2023-05-10</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://uberg.me/temps/</loc>
-         <lastmod>2023-05-05</lastmod>
+         <lastmod>2023-05-10</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://uberg.me/usage/</loc>
-         <lastmod>2023-05-05</lastmod>
+         <lastmod>2023-05-10</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://uberg.me/usage/chocolatey/</loc>
+         <lastmod>2023-05-10</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://uberg.me/usage/homebrew/</loc>
+         <lastmod>2023-05-10</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://uberg.me/usage/pyenv-win/</loc>
+         <lastmod>2023-05-10</lastmod>
          <changefreq>daily</changefreq>
     </url>
 </urlset>

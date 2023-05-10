@@ -9,6 +9,8 @@
         <meta name="description" content="Setup Documentation">
       
       
+        <meta name="author" content="Lewi Lie Uberg">
+      
       
         <link rel="canonical" href="https://uberg.me/installation/chocolatey/">
       
@@ -16,7 +18,7 @@
         <link rel="prev" href="../homebrew/">
       
       
-        <link rel="next" href="../../usage/">
+        <link rel="next" href="../pyenv/">
       
       <link rel="icon" href="../../assets/img/favicon.ico">
       <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.1.9">
@@ -73,6 +75,11 @@
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
+      
+        
+        <a href="#chocolatey" class="md-skip">
+          Skip to content
+        </a>
       
     </div>
     <div data-md-component="announce">
@@ -422,10 +429,50 @@
       <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
       
       
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Chocolatey
+          <span class="md-nav__icon md-icon"></span>
+        </label>
       
       <a href="./" class="md-nav__link md-nav__link--active">
         Chocolatey
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#install-chocolatey" class="md-nav__link">
+    Install Chocolatey
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#powershell-auto-completion" class="md-nav__link">
+    PowerShell Auto-Completion
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -478,8 +525,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../pyenv.md" class="md-nav__link">
-        None
+      <a href="../pyenv/" class="md-nav__link">
+        Pyenv
       </a>
     </li>
   
@@ -492,8 +539,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../pyenv-win.md" class="md-nav__link">
-        None
+      <a href="../pyenv-win/" class="md-nav__link">
+        Pyenv-win
       </a>
     </li>
   
@@ -586,12 +633,18 @@
             
           
         
+          
+        
       
       
         
         
         <div class="md-nav__link md-nav__link--index ">
           <a href="../../usage/">Usage</a>
+          
+            <label for="__nav_2">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
           
         </div>
       
@@ -602,6 +655,74 @@
         </label>
         <ul class="md-nav__list" data-md-scrollfix>
           
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2" >
+      
+      
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
+          Package Managers
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_2">
+          <span class="md-nav__icon md-icon"></span>
+          Package Managers
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../usage/homebrew/" class="md-nav__link">
+        Homebrew
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../usage/chocolatey/" class="md-nav__link">
+        Chocolatey
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
             
           
         </ul>
@@ -718,9 +839,25 @@
   
 
 
-  <h1>Chocolatey</h1>
-
-
+<h1 id="chocolatey">Chocolatey<a class="headerlink" href="#chocolatey" title="Permanent link">&para;</a></h1>
+<p><a href="https://chocolatey.org/">Chocolatey</a> is a machine-level package manager and installer for software packages, like Homebrew for macOS. It is an execution engine using the NuGet packaging infrastructure and Windows PowerShell to provide an automation tool for installing software on Windows machines, designed to simplify the process from the user perspective. The name is an extension on a pun of NuGet (from "nougat") "because everyone loves Chocolatey nougat".</p>
+<h2 id="install-chocolatey">Install Chocolatey<a class="headerlink" href="#install-chocolatey" title="Permanent link">&para;</a></h2>
+<p><a href="https://docs.chocolatey.org/en-us/choco/setup">Installing</a> chocolatey is done by opening a PowerShell window as an <strong>administrator</strong> and run the following command, which checks if the PowerShell profile exists, if not it creates it. Then it installs Chocolatey and refreshes the environment variables.</p>
+<div class="highlight"><pre><span></span><code><span class="nb">Set-Location</span> <span class="nv">$env:USERPROFILE</span>
+<span class="k">If</span> <span class="p">(</span> <span class="p">!</span> <span class="p">(</span> <span class="nb">Test-Path</span> <span class="nv">$PROFILE</span> <span class="p">)</span> <span class="p">)</span> <span class="p">{</span> <span class="nb">New-Item</span> <span class="n">-Force</span> <span class="n">-ItemType</span> <span class="n">File</span> <span class="n">-Path</span> <span class="nv">$PROFILE</span><span class="p">;</span> <span class="nb">Add-Content</span> <span class="n">-Path</span> <span class="nv">$PROFILE</span> <span class="n">-Encoding</span> <span class="n">UTF8</span> <span class="n">-Value</span> <span class="s2">&quot;# Powershell Profile&quot;</span><span class="p">;</span> <span class="p">}</span>
+<span class="nb">Set-ExecutionPolicy</span> <span class="n">Bypass</span> <span class="n">-Scope</span> <span class="k">Process</span> <span class="n">-Force</span><span class="p">;</span> <span class="nb">iex </span><span class="p">((</span><span class="nb">New-Object</span> <span class="n">System</span><span class="p">.</span><span class="n">Net</span><span class="p">.</span><span class="n">WebClient</span><span class="p">).</span><span class="n">DownloadString</span><span class="p">(</span><span class="s1">&#39;https://chocolatey.org/install.ps1&#39;</span><span class="p">))</span>
+<span class="n">RefreshEnv</span><span class="p">.</span><span class="n">cmd</span>
+</code></pre></div>
+<h2 id="powershell-auto-completion">PowerShell Auto-Completion<a class="headerlink" href="#powershell-auto-completion" title="Permanent link">&para;</a></h2>
+<p>Chocolatey provides PowerShell auto-completion for the <code>choco</code> command. To enable it, run the following command in PowerShell:</p>
+<div class="highlight"><pre><span></span><code><span class="nb">echo </span><span class="s2">&quot;</span>
+<span class="s2"># Chocolatey</span>
+<span class="se">`$</span><span class="s2">ChocolateyProfile = &quot;&quot;</span><span class="se">`$</span><span class="s2">env:ChocolateyInstall\helpers\chocolateyProfile.psm1&quot;&quot;</span>
+<span class="s2">if (Test-Path(</span><span class="se">`$</span><span class="s2">ChocolateyProfile)) {</span>
+<span class="s2">    Import-Module &quot;&quot;</span><span class="se">`$</span><span class="s2">ChocolateyProfile&quot;&quot;</span>
+<span class="s2">}</span>
+<span class="s2">&quot;</span> <span class="p">|</span> <span class="nb">Out-File</span> <span class="nv">$PROFILE</span> <span class="n">-Encoding</span> <span class="n">UTF8</span> <span class="n">-Append</span>
+</code></pre></div>
 
 
 
