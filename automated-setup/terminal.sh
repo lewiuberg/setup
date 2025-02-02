@@ -273,6 +273,7 @@ fi
 PYENV='# ------------------------------------------------------------------------------
 # pyenv
 # ------------------------------------------------------------------------------
+export PIP_REQUIRE_VIRTUALENV=true
 export PYENV_ROOT="$HOME/.pyenv"
 command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
