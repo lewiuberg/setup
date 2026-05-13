@@ -1,0 +1,8 @@
+# Apps not available via Homebrew or the App Store.
+# The wizard opens `url` in the default browser one by one.
+
+[[item]]
+name = "Example app"
+description = "Replace with real entries; opens download URL in browser"
+url = "https://example.com/download"
+default = false

@@ -1,0 +1,18 @@
+# `wd` (warp directory) shortcuts. Each entry becomes `<key>:<path>` in ~/.warprc.
+# Edit before running the wizard to add your own.
+
+[[item]]
+name = "dev"
+path = "~/Documents/Development"
+
+[[item]]
+name = "puzzel"
+path = "~/Puzzel"
+
+[[item]]
+name = "home"
+path = "~"
+
+[[item]]
+name = "repo"
+path = "~/Documents/Development/Projects/Repository"

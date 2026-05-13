@@ -1,0 +1,12 @@
+# Font casks. MesloLG Nerd Font is required for the TUI's Nerd Font glyphs to render.
+
+[[item]]
+name = "font-meslo-lg-nerd-font"
+description = "MesloLG Nerd Font (powers TUI icons + Powerlevel10k)"
+required = true
+default = true
+
+[[item]]
+name = "font-fira-code"
+description = "Fira Code monospace font with programming ligatures"
+default = true

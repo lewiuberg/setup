@@ -1,0 +1,1641 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Master-Data Integration Hub &mdash; Cheatsheet</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      color-scheme: dark;
+      --bg: #0d1117;
+      --fg: #e6edf3;
+      --muted: #7d8590;
+      --card-bg: #161b22;
+      --card-border: #30363d;
+      --hover: #1c2128;
+      --divider: #21262d;
+      --code-bg: #21262d;
+      --code-fg: #c9d1d9;
+      --pill-bg: #21262d;
+      --pill-border: #30363d;
+      --pill-fg: #c9d1d9;
+      --pill-strong-bg: #1f3a5c;
+      --pill-strong-border: #1f3a5c;
+      --pill-strong-fg: #79c0ff;
+      --accent-blue: #58a6ff;
+      --accent-blue-bg: #1f3a5c;
+      --accent-blue-soft: #111a24;
+      --accent-green: #3fb950;
+      --accent-green-bg: #1b3a2a;
+      --accent-orange: #d29922;
+      --accent-orange-bg: #3b2a1b;
+      --accent-orange-soft: #1c1f23;
+      --accent-purple: #bc8cff;
+      --accent-purple-bg: #2a1b3b;
+      --accent-purple-soft: #1c1a24;
+      --accent-red: #f85149;
+      --accent-red-bg: #3b1b1b;
+      --accent-red-soft: #241515;
+      --layer-blue: #79c0ff;
+      --table-border: #21262d;
+      --flow-arrow: #30363d;
+      --risk-bg: #1c2128;
+      --diagram-bg: #0d1117;
+      --diagram-border: #21262d;
+      --btn-bg: #21262d;
+      --btn-border: #30363d;
+      --btn-fg: #c9d1d9;
+      --btn-hover-bg: #30363d;
+      --toolbar-bg: rgba(22, 27, 34, 0.85);
+      --toolbar-border: #30363d;
+    }
+
+    [data-theme="light"] {
+      color-scheme: light;
+      --bg: #f6f8fa;
+      --fg: #1f2328;
+      --muted: #656d76;
+      --card-bg: #ffffff;
+      --card-border: #d0d7de;
+      --hover: #f6f8fa;
+      --divider: #eaeef2;
+      --code-bg: #eff1f3;
+      --code-fg: #1f2328;
+      --pill-bg: #eaeef2;
+      --pill-border: #d0d7de;
+      --pill-fg: #1f2328;
+      --pill-strong-bg: #ddf4ff;
+      --pill-strong-border: #b6e3ff;
+      --pill-strong-fg: #0550ae;
+      --accent-blue: #0969da;
+      --accent-blue-bg: #ddf4ff;
+      --accent-blue-soft: #ddf4ff;
+      --accent-green: #1a7f37;
+      --accent-green-bg: #dafbe1;
+      --accent-orange: #9a6700;
+      --accent-orange-bg: #fff8c5;
+      --accent-orange-soft: #fff8c5;
+      --accent-purple: #8250df;
+      --accent-purple-bg: #fbefff;
+      --accent-purple-soft: #fbefff;
+      --accent-red: #cf222e;
+      --accent-red-bg: #ffebe9;
+      --accent-red-soft: #ffebe9;
+      --layer-blue: #0969da;
+      --table-border: #eaeef2;
+      --flow-arrow: #d0d7de;
+      --risk-bg: #f6f8fa;
+      --diagram-bg: #f6f8fa;
+      --diagram-border: #d0d7de;
+      --btn-bg: #ffffff;
+      --btn-border: #d0d7de;
+      --btn-fg: #1f2328;
+      --btn-hover-bg: #f6f8fa;
+      --toolbar-bg: rgba(255, 255, 255, 0.9);
+      --toolbar-border: #d0d7de;
+    }
+
+    html, body { background: var(--bg); }
+
+    body {
+      font-family: ui-monospace, "Cascadia Code", "Fira Code", monospace;
+      color: var(--fg);
+      padding: 2rem;
+      min-height: 100vh;
+      transition: background 0.2s ease, color 0.2s ease;
+    }
+
+    h1 {
+      font-size: 1.1rem;
+      color: var(--muted);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 0.35rem;
+    }
+
+    .subtitle {
+      font-size: 0.8rem;
+      color: var(--muted);
+      margin-bottom: 2rem;
+    }
+
+    .theme-toggle {
+      position: fixed;
+      top: 1rem;
+      right: 1rem;
+      z-index: 100;
+      background: var(--btn-bg);
+      border: 1px solid var(--btn-border);
+      color: var(--btn-fg);
+      font-family: inherit;
+      font-size: 0.7rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.55rem 0.9rem;
+      border-radius: 999px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+      transition: background 0.15s ease, border-color 0.15s ease;
+    }
+    .theme-toggle:hover { background: var(--btn-hover-bg); }
+    .theme-toggle .icon {
+      width: 0.9rem;
+      height: 0.9rem;
+      display: inline-block;
+      border-radius: 50%;
+      background: currentColor;
+      box-shadow: inset -0.25rem 0 0 0 var(--btn-bg);
+      transition: box-shadow 0.2s ease;
+    }
+    [data-theme="light"] .theme-toggle .icon {
+      box-shadow: inset 0.25rem 0 0 0 var(--btn-bg);
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+      max-width: 1200px;
+    }
+
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 8px;
+      padding: 1.25rem 1.5rem;
+    }
+
+    .card-title {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--muted);
+      margin-bottom: 1rem;
+    }
+
+    .badge {
+      display: inline-block;
+      font-size: 0.7rem;
+      padding: 0.15em 0.55em;
+      border-radius: 99px;
+      margin-left: 0.5em;
+      vertical-align: middle;
+    }
+    .badge-blue   { background: var(--accent-blue-bg);   color: var(--accent-blue); }
+    .badge-green  { background: var(--accent-green-bg);  color: var(--accent-green); }
+    .badge-orange { background: var(--accent-orange-bg); color: var(--accent-orange); }
+    .badge-purple { background: var(--accent-purple-bg); color: var(--accent-purple); }
+    .badge-red    { background: var(--accent-red-bg);    color: var(--accent-red); }
+    .badge-gray   { background: var(--pill-bg);          color: var(--muted); }
+
+    .step-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+    }
+
+    .step {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+      padding: 0.55rem 0.75rem;
+      border-radius: 6px;
+      font-size: 0.85rem;
+      line-height: 1.4;
+    }
+
+    .step:hover { background: var(--hover); }
+
+    .step-num {
+      flex-shrink: 0;
+      width: 1.4em;
+      height: 1.4em;
+      border-radius: 50%;
+      background: var(--pill-bg);
+      color: var(--muted);
+      font-size: 0.7rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 0.1em;
+    }
+
+    .step-content { flex: 1; }
+    .step-label { color: var(--fg); }
+    .step-detail {
+      color: var(--muted);
+      font-size: 0.78rem;
+      margin-top: 0.15em;
+    }
+
+    .divider {
+      border: none;
+      border-top: 1px solid var(--divider);
+      margin: 0.75rem 0;
+    }
+
+    .pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-top: 0.5rem;
+    }
+
+    .pill {
+      font-size: 0.72rem;
+      padding: 0.2em 0.6em;
+      border-radius: 4px;
+      border: 1px solid var(--pill-border);
+      color: var(--pill-fg);
+      background: var(--pill-bg);
+    }
+
+    .pill-strong {
+      background: var(--pill-strong-bg);
+      border-color: var(--pill-strong-border);
+      color: var(--pill-strong-fg);
+    }
+
+    .note-box {
+      margin-top: 1rem;
+      border-left: 3px solid var(--accent-orange);
+      padding: 0.5rem 0.75rem;
+      background: var(--accent-orange-soft);
+      border-radius: 0 6px 6px 0;
+      font-size: 0.78rem;
+      color: var(--fg);
+      line-height: 1.5;
+    }
+
+    .info-box {
+      margin-top: 1rem;
+      border-left: 3px solid var(--accent-blue);
+      padding: 0.5rem 0.75rem;
+      background: var(--accent-blue-soft);
+      border-radius: 0 6px 6px 0;
+      font-size: 0.78rem;
+      color: var(--fg);
+      line-height: 1.5;
+    }
+
+    .danger-box {
+      margin-top: 1rem;
+      border-left: 3px solid var(--accent-red);
+      padding: 0.5rem 0.75rem;
+      background: var(--accent-red-soft);
+      border-radius: 0 6px 6px 0;
+      font-size: 0.78rem;
+      color: var(--fg);
+      line-height: 1.5;
+    }
+
+    .todo-box {
+      margin-top: 0.75rem;
+      border-left: 3px solid var(--accent-purple);
+      padding: 0.5rem 0.75rem;
+      background: var(--accent-purple-soft);
+      border-radius: 0 6px 6px 0;
+      font-size: 0.78rem;
+      color: var(--fg);
+      line-height: 1.5;
+    }
+
+    .trigger-label {
+      font-size: 0.72rem;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 0.5rem;
+    }
+
+    .card-wide { grid-column: 1 / -1; }
+
+    .two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+
+    .three-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 1rem;
+    }
+
+    .sub-title {
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--accent-blue);
+      margin-bottom: 0.6rem;
+    }
+
+    code {
+      font-family: inherit;
+      background: var(--code-bg);
+      padding: 0.1em 0.35em;
+      border-radius: 3px;
+      color: var(--code-fg);
+      font-size: 0.9em;
+    }
+
+    .flow-row {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+      font-size: 0.82rem;
+      line-height: 2;
+    }
+
+    .flow-arrow { color: var(--flow-arrow); }
+
+    table.stack {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.8rem;
+    }
+    table.stack th,
+    table.stack td {
+      text-align: left;
+      padding: 0.45rem 0.6rem;
+      border-bottom: 1px solid var(--table-border);
+      vertical-align: top;
+    }
+    table.stack th {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--muted);
+      font-weight: normal;
+    }
+    table.stack td.layer {
+      color: var(--layer-blue);
+      white-space: nowrap;
+      width: 30%;
+    }
+    table.stack td.tool { color: var(--fg); }
+    table.stack td.why  { color: var(--muted); font-size: 0.75rem; }
+
+    .risk-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+
+    .risk-item {
+      padding: 0.6rem 0.75rem;
+      border-radius: 6px;
+      background: var(--risk-bg);
+      font-size: 0.8rem;
+      line-height: 1.5;
+      border-left: 3px solid var(--accent-red);
+    }
+    .risk-item.med { border-left-color: var(--accent-orange); }
+    .risk-tag {
+      font-size: 0.7rem;
+      letter-spacing: 0.05em;
+      color: var(--accent-red);
+      font-weight: bold;
+    }
+    .risk-item.med .risk-tag { color: var(--accent-orange); }
+
+    /* Legend / glossary */
+    .legend-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.25rem 2rem;
+    }
+    .legend-list {
+      display: grid;
+      grid-template-columns: min-content 1fr;
+      column-gap: 0.9rem;
+      row-gap: 0.35rem;
+      font-size: 0.8rem;
+      align-items: baseline;
+    }
+    .legend-list dt {
+      color: var(--accent-blue);
+      font-weight: 600;
+      white-space: nowrap;
+      grid-column: 1;
+    }
+    .legend-list dd {
+      color: var(--fg);
+      grid-column: 2;
+      line-height: 1.4;
+    }
+    .legend-list dd .gloss {
+      color: var(--muted);
+      font-size: 0.75rem;
+    }
+
+    /* Mermaid / diagram viewport + toolbar */
+    .mermaid-wrap {
+      position: relative;
+      background: var(--diagram-bg);
+      border: 1px solid var(--diagram-border);
+      border-radius: 6px;
+      margin-top: 0.5rem;
+      overflow: hidden;
+    }
+    .mermaid-viewport {
+      height: 540px;
+      width: 100%;
+      overflow: hidden;
+      cursor: grab;
+      touch-action: none;
+    }
+    .mermaid-viewport:active { cursor: grabbing; }
+    .mermaid-viewport .mermaid {
+      width: 100%;
+      height: 100%;
+      font-family: ui-monospace, "Cascadia Code", "Fira Code", monospace !important;
+    }
+    .mermaid-viewport .mermaid svg {
+      width: 100% !important;
+      height: 100% !important;
+      max-width: none !important;
+      display: block;
+    }
+
+    .mermaid-toolbar {
+      position: absolute;
+      top: 0.6rem;
+      right: 0.6rem;
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+      background: var(--toolbar-bg);
+      border: 1px solid var(--toolbar-border);
+      border-radius: 999px;
+      padding: 0.3rem 0.55rem;
+      backdrop-filter: blur(6px);
+      z-index: 3;
+    }
+    .mermaid-toolbar button {
+      background: var(--btn-bg);
+      border: 1px solid var(--btn-border);
+      color: var(--btn-fg);
+      font-family: inherit;
+      font-size: 0.85rem;
+      width: 1.8rem;
+      height: 1.8rem;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: background 0.15s ease;
+      line-height: 1;
+    }
+    .mermaid-toolbar button:hover { background: var(--btn-hover-bg); }
+    .mermaid-toolbar .hint {
+      font-size: 0.65rem;
+      color: var(--muted);
+      letter-spacing: 0.05em;
+      padding: 0 0.35rem;
+      white-space: nowrap;
+    }
+    @media (max-width: 720px) {
+      .mermaid-toolbar .hint { display: none; }
+    }
+
+    /* Avoid horizontal page scroll introduced by floating toolbar */
+    body { overflow-x: hidden; }
+  </style>
+</head>
+<body>
+
+<button id="theme-toggle" class="theme-toggle" type="button" aria-label="Toggle theme">
+  <span class="icon" aria-hidden="true"></span>
+  <span class="label">LIGHT</span>
+</button>
+
+<h1>Master-Data Integration Hub &mdash; System Cheatsheet</h1>
+<div class="subtitle">From 105 Logic Apps to four .NET 10 services on Kubernetes. Source: <code>workbench/proposed-application-design/take-2</code> + <code>workbench/plans/take-1</code>.</div>
+
+<div class="grid">
+
+  <!-- TODAY vs TOMORROW -->
+  <div class="card">
+    <div class="card-title">&#9654; Today (legacy) <span class="badge badge-orange">being replaced</span></div>
+
+    <div class="trigger-label">Stack</div>
+    <div class="pill-row" style="margin-bottom:0.6rem">
+      <span class="pill">Azure Logic Apps (90 enabled + 15 disabled)</span>
+      <span class="pill">Azure SQL</span>
+      <span class="pill">Custom Connectors (12)</span>
+    </div>
+
+    <hr class="divider" />
+
+    <ul class="step-list">
+      <li class="step">
+        <span class="step-num">1</span>
+        <div class="step-content">
+          <div class="step-label">Producer LAs poll Salesforce</div>
+          <div class="step-detail">5 min for <code>Account</code> / <code>Solution__c</code>, 3 h for <code>Platform__c</code></div>
+        </div>
+      </li>
+      <li class="step">
+        <span class="step-num">2</span>
+        <div class="step-content">
+          <div class="step-label">Classify via <code>CompareAccountObject</code> SP</div>
+          <div class="step-detail">Decides Customer / Partner / Internal / Prospect; returns Terminate | Continue</div>
+        </div>
+      </li>
+      <li class="step">
+        <span class="step-num">3</span>
+        <div class="step-content">
+          <div class="step-label">UPSERT into Azure SQL</div>
+          <div class="step-detail"><code>Customer</code> / <code>Partner</code> / <code>Solution</code> / <code>Platform</code></div>
+        </div>
+      </li>
+      <li class="step">
+        <span class="step-num">4</span>
+        <div class="step-content">
+          <div class="step-label">79 consumer LAs poll SQL every 3 min</div>
+          <div class="step-detail">Each fans out <code>POST/PUT/DELETE</code> to its downstream product</div>
+        </div>
+      </li>
+      <li class="step">
+        <span class="step-num">5</span>
+        <div class="step-content">
+          <div class="step-label">Winner writes <code>Solution.consumerSolutionId</code></div>
+          <div class="step-detail">Single <code>VARCHAR(100)</code> slot shared by 11 writers &mdash; pain point P4</div>
+        </div>
+      </li>
+    </ul>
+
+    <div class="danger-box">
+      <strong>Pain points:</strong> SQL injection surface, three inconsistent platform-routing styles, <code>retryPolicy: none</code>, no DLQ, pervasive wall-clock polling, ~8&nbsp;min end-to-end latency floor.
+    </div>
+  </div>
+
+  <!-- NEW -->
+  <div class="card">
+    <div class="card-title">&#9654; Tomorrow (proposed) <span class="badge badge-green">.NET 10 on K8s</span></div>
+
+    <div class="trigger-label">Hard constraints honoured</div>
+    <div class="pill-row" style="margin-bottom:0.6rem">
+      <span class="pill pill-strong">.NET 10 only</span>
+      <span class="pill pill-strong">Kubernetes only</span>
+      <span class="pill">Azure SQL unchanged</span>
+      <span class="pill">Salesforce = origin</span>
+      <span class="pill">Consumer contracts byte-frozen</span>
+      <span class="pill">Cloud-agnostic outside Azure SQL</span>
+    </div>
+
+    <hr class="divider" />
+
+    <ul class="step-list">
+      <li class="step">
+        <span class="step-num">1</span>
+        <div class="step-content">
+          <div class="step-label">Salesforce Pub/Sub CDC (gRPC) replaces polling</div>
+          <div class="step-detail">Sub-second push of <code>AccountChangeEvent</code> etc.</div>
+        </div>
+      </li>
+      <li class="step">
+        <span class="step-num">2</span>
+        <div class="step-content">
+          <div class="step-label">Transactional outbox replaces consumer polling</div>
+          <div class="step-detail">UPSERT + <code>IntegrationOutbox</code> INSERT + checkpoint in one SQL tx</div>
+        </div>
+      </li>
+      <li class="step">
+        <span class="step-num">3</span>
+        <div class="step-content">
+          <div class="step-label">RabbitMQ fan-out replaces 79 polling LAs</div>
+          <div class="step-detail">Topic exchange <code>masterdata.events</code> + per-consumer durable queues + DLX</div>
+        </div>
+      </li>
+      <li class="step">
+        <span class="step-num">4</span>
+        <div class="step-content">
+          <div class="step-label"><code>ConsumerDeliveryLog</code> replaces the single-slot column</div>
+          <div class="step-detail">Per-(consumer, aggregate, id) idempotency cursor; mirror to old column only during cutover</div>
+        </div>
+      </li>
+      <li class="step">
+        <span class="step-num">5</span>
+        <div class="step-content">
+          <div class="step-label">Polly v8 replaces <code>retryPolicy: none</code></div>
+          <div class="step-detail">Retry + circuit breaker + timeout per consumer; DLX + <code>RetryDeadLetter</code> for poison events</div>
+        </div>
+      </li>
+    </ul>
+
+    <div class="info-box">
+      <strong>Latency goal:</strong> seconds end-to-end vs. today's ~8&nbsp;min. The PCC &rarr; Solution Admin 10&nbsp;s bridge stays (preserved as a dedicated <code>Channel</code>-based worker).
+    </div>
+  </div>
+
+  <!-- SERVICE MAP -->
+  <div class="card card-wide">
+    <div class="card-title">&#9654; Service map <span class="badge badge-blue">4 deployables + 1 one-shot Job</span></div>
+
+    <div class="three-col">
+
+      <div class="sub-section">
+        <div class="sub-title">salesforce-ingest</div>
+        <div class="pill-row" style="margin-bottom:0.6rem">
+          <span class="pill">Deployment</span>
+          <span class="pill">1 active + 1 standby</span>
+          <span class="pill">lease-elected</span>
+        </div>
+        <ul class="step-list">
+          <li class="step"><span class="step-num">&bull;</span><div class="step-content"><div class="step-label">Pub/Sub gRPC subscriber (leader only)</div></div></li>
+          <li class="step"><span class="step-num">&bull;</span><div class="step-content"><div class="step-label">Classify + UPSERT + outbox write, one tx</div></div></li>
+          <li class="step"><span class="step-num">&bull;</span><div class="step-content"><div class="step-label">Co-hosts <code>outbox-relay</code> &rarr; RabbitMQ</div></div></li>
+          <li class="step"><span class="step-num">&bull;</span><div class="step-content"><div class="step-label"><code>--mode=reload</code> one-shot bulk path</div></div></li>
+        </ul>
+        <div class="info-box" style="margin-top:0.75rem">
+          <strong>Invariants:</strong> no event without a committed row; no <code>publishedToBroker</code> stamp before <code>basic.ack</code>.
+        </div>
+      </div>
+
+      <div class="sub-section">
+        <div class="sub-title">consumer-dispatch</div>
+        <div class="pill-row" style="margin-bottom:0.6rem">
+          <span class="pill">Deployment</span>
+          <span class="pill">HPA 2 &rarr; 12</span>
+          <span class="pill">KEDA RabbitMQ scaler</span>
+        </div>
+        <ul class="step-list">
+          <li class="step"><span class="step-num">&bull;</span><div class="step-content"><div class="step-label">One worker class per <code>(consumer &times; entity)</code></div></div></li>
+          <li class="step"><span class="step-num">&bull;</span><div class="step-content"><div class="step-label">Unleash flag checked per iteration</div></div></li>
+          <li class="step"><span class="step-num">&bull;</span><div class="step-content"><div class="step-label">Mapperly &rarr; frozen JSON &rarr; Polly &rarr; <code>PUT</code></div></div></li>
+          <li class="step"><span class="step-num">&bull;</span><div class="step-content"><div class="step-label">PCC &rarr; SolAdmin 10&nbsp;s bridge, PT dual target</div></div></li>
+        </ul>
+        <div class="info-box" style="margin-top:0.75rem">
+          <strong>Contract gate:</strong> wire-snapshot tests in <code>tests/WireSnapshots/&lt;Consumer&gt;/</code> must byte-match Logic App captures.
+        </div>
+      </div>
+
+      <div class="sub-section">
+        <div class="sub-title">reconciliation</div>
+        <div class="pill-row" style="margin-bottom:0.6rem">
+          <span class="pill">Deployment</span>
+          <span class="pill">1 active + 1 standby</span>
+          <span class="pill">lease-elected</span>
+        </div>
+        <ul class="step-list">
+          <li class="step"><span class="step-num">&bull;</span><div class="step-content"><div class="step-label">~30 weekly <code>Weekly&lt;Consumer&gt;&lt;Entity&gt;SyncWorker</code>, Mon 03:00&ndash;03:30 UTC</div></div></li>
+          <li class="step"><span class="step-num">&bull;</span><div class="step-content"><div class="step-label">Daily 04:00 IdP / IdP-UK platform push</div></div></li>
+          <li class="step"><span class="step-num">&bull;</span><div class="step-content"><div class="step-label">5&nbsp;min UK1 <code>platformArea</code> cascade</div></div></li>
+          <li class="step"><span class="step-num">&bull;</span><div class="step-content"><div class="step-label">Writes <code>SyncRunLog</code> row per run</div></div></li>
+        </ul>
+        <div class="info-box" style="margin-top:0.75rem">
+          Not a <code>CronJob</code> &mdash; lease-based Deployment avoids cold-start tax for the 5&nbsp;min cascade.
+        </div>
+      </div>
+
+    </div>
+
+    <hr class="divider" style="margin-top:1.25rem" />
+
+    <div class="two-col" style="margin-top:0.75rem">
+      <div class="sub-section">
+        <div class="sub-title">admin-api</div>
+        <div class="pill-row" style="margin-bottom:0.6rem">
+          <span class="pill">Deployment</span>
+          <span class="pill">2 replicas</span>
+          <span class="pill">mTLS + Entra ID</span>
+        </div>
+        <ul class="step-list">
+          <li class="step"><span class="step-num">&bull;</span><div class="step-content"><div class="step-label">Operator-triggered bulk backfills (Bulk API 2.0 inside)</div></div></li>
+          <li class="step"><span class="step-num">&bull;</span><div class="step-content"><div class="step-label"><code>GET /admin/flags</code> &mdash; read-only Unleash view</div></div></li>
+          <li class="step"><span class="step-num">&bull;</span><div class="step-content"><div class="step-label"><code>POST /admin/dlq/{id}/replay</code> &mdash; requeue a dead-lettered event</div></div></li>
+        </ul>
+      </div>
+
+      <div class="sub-section">
+        <div class="sub-title">db-migrator</div>
+        <div class="pill-row" style="margin-bottom:0.6rem">
+          <span class="pill">K8s Job</span>
+          <span class="pill">one-shot / release</span>
+          <span class="pill">Dapper scripts</span>
+        </div>
+        <ul class="step-list">
+          <li class="step"><span class="step-num">&bull;</span><div class="step-content"><div class="step-label">Applies additive DDL before Deployments roll</div></div></li>
+          <li class="step"><span class="step-num">&bull;</span><div class="step-content"><div class="step-label">Ships embedded <code>.sql</code> bundle from Sub-plan 1</div></div></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- ARCHITECTURE DIAGRAM -->
+  <div class="card card-wide">
+    <div class="card-title">&#9654; Architecture diagram <span class="badge badge-purple">context</span></div>
+    <div class="mermaid-wrap">
+      <div class="mermaid-toolbar">
+        <span class="hint">drag to pan &middot; scroll to zoom</span>
+        <button type="button" data-action="zoom-out" title="Zoom out" aria-label="Zoom out">&minus;</button>
+        <button type="button" data-action="reset" title="Fit to view" aria-label="Fit">&#11200;</button>
+        <button type="button" data-action="zoom-in" title="Zoom in" aria-label="Zoom in">+</button>
+      </div>
+      <div class="mermaid-viewport">
+        <pre class="mermaid">
+flowchart LR
+  SF["Salesforce&lt;br/&gt;Account / Solution__c / Platform__c"]
+
+  subgraph K8s["Kubernetes cluster"]
+    direction TB
+    Ingest["salesforce-ingest&lt;br/&gt;1 active + 1 standby&lt;br/&gt;lease-elected"]
+    Relay["outbox-relay&lt;br/&gt;co-hosted (500 ms poll)"]
+    RMQ[("RabbitMQ&lt;br/&gt;masterdata.events&lt;br/&gt;+ DLX")]
+    Dispatch["consumer-dispatch&lt;br/&gt;HPA 2 -> 12 (KEDA)"]
+    Recon["reconciliation&lt;br/&gt;1 active + 1 standby&lt;br/&gt;lease-elected"]
+    Admin["admin-api&lt;br/&gt;mTLS + Entra ID"]
+  end
+
+  SQL[("Azure SQL&lt;br/&gt;Customer / Partner / Solution / Platform&lt;br/&gt;+ IntegrationOutbox&lt;br/&gt;+ ConsumerDeliveryLog&lt;br/&gt;+ SyncRunLog&lt;br/&gt;+ RetryDeadLetter&lt;br/&gt;+ SalesforceIngestCheckpoint")]
+
+  DS["12 downstream products:&lt;br/&gt;AI / Analytics / IdP / IdP-UK /&lt;br/&gt;NumberAdmin / PCC / PT (opo + uk1) /&lt;br/&gt;SI / SMS / SolAdmin / Tribess / WFM"]
+
+  SF -- "gRPC Pub/Sub CDC" --> Ingest
+  Ingest -- "UPSERT + outbox tx" --> SQL
+  Ingest --> Relay
+  Relay -- "confirm-select publish" --> RMQ
+  RMQ -- "per-consumer queues" --> Dispatch
+  Dispatch -- "PUT / POST / DELETE (frozen)" --> DS
+  Dispatch -. "Solution_External_Id__c write-back" .-> SF
+  Dispatch -. "ConsumerDeliveryLog + mirror" .-> SQL
+  Recon -- "diff-and-apply + UK1 cascade" --> SQL
+  Recon -- "weekly sync + daily IdP push" --> DS
+  Admin -- "bulk backfill" --> Ingest
+  Admin -- "DLQ replay" --> SQL
+        </pre>
+      </div>
+    </div>
+    <div class="info-box">
+      Four Deployments + one one-shot <code>Job</code>. The outbox in Azure SQL is the transactional boundary; RabbitMQ is the fan-out transport; OpenTelemetry spans tie every hop together.
+    </div>
+  </div>
+
+  <!-- SALESFORCE TO SQL FLOW -->
+  <div class="card">
+    <div class="card-title">&#9654; Ingest flow <span class="badge badge-blue">salesforce-ingest</span></div>
+
+    <div class="trigger-label">Trigger</div>
+    <div class="pill-row" style="margin-bottom:0.6rem">
+      <span class="pill">Pub/Sub API gRPC CDC</span>
+      <span class="pill">AccountChangeEvent</span>
+      <span class="pill">Solution__cChangeEvent</span>
+      <span class="pill">Platform__cChangeEvent</span>
+    </div>
+
+    <hr class="divider" />
+
+    <ul class="step-list">
+      <li class="step">
+        <span class="step-num">1</span>
+        <div class="step-content">
+          <div class="step-label">Leader pod subscribes via gRPC</div>
+          <div class="step-detail">Elected by <code>coordination.k8s.io/Lease</code>; warm standby stays idle</div>
+        </div>
+      </li>
+      <li class="step">
+        <span class="step-num">2</span>
+        <div class="step-content">
+          <div class="step-label">Open one Azure SQL <code>DbTransaction</code></div>
+          <div class="step-detail">Wraps the entire handler</div>
+        </div>
+      </li>
+      <li class="step">
+        <span class="step-num">3</span>
+        <div class="step-content">
+          <div class="step-label">Run <code>Account_CompareAndResolve.sql</code></div>
+          <div class="step-detail">Ported from <code>CompareAccountObject</code> SP; returns Terminate | Continue + ISO codes</div>
+        </div>
+      </li>
+      <li class="step">
+        <span class="step-num">4</span>
+        <div class="step-content">
+          <div class="step-label">UPSERT into <code>Customer</code> / <code>Partner</code> / <code>Solution</code></div>
+        </div>
+      </li>
+      <li class="step">
+        <span class="step-num">5</span>
+        <div class="step-content">
+          <div class="step-label"><code>IIntegrationOutboxRepository.AppendAsync</code></div>
+          <div class="step-detail">Row with <code>aggregateType</code>, <code>aggregateId</code>, <code>changeType</code>, serialized projection</div>
+        </div>
+      </li>
+      <li class="step">
+        <span class="step-num">6</span>
+        <div class="step-content">
+          <div class="step-label">Commit</div>
+          <div class="step-detail">Invariant 1: no event without a committed row</div>
+        </div>
+      </li>
+      <li class="step">
+        <span class="step-num">7</span>
+        <div class="step-content">
+          <div class="step-label">Advance <code>SalesforceIngestCheckpoint.lastReplayId</code></div>
+          <div class="step-detail">Only after commit &mdash; resumes cleanly after pod restart</div>
+        </div>
+      </li>
+    </ul>
+
+    <div class="note-box">
+      <strong>&#9888; Q6:</strong> Salesforce CDC retention is ~72&nbsp;h. Outages longer than that need the out-of-band <code>--mode=reload</code> path + DBA runbook.
+    </div>
+  </div>
+
+  <!-- OUTBOX RELAY -->
+  <div class="card">
+    <div class="card-title">&#9654; Outbox relay <span class="badge badge-blue">co-hosted in salesforce-ingest</span></div>
+
+    <div class="trigger-label">Poll interval</div>
+    <div class="pill-row" style="margin-bottom:0.6rem">
+      <span class="pill">500 ms</span>
+      <span class="pill"><code>BatchSize = 1</code></span>
+      <span class="pill"><code>ConfirmTimeout = 5 s</code></span>
+      <span class="pill"><code>AlertThreshold = 500</code></span>
+    </div>
+
+    <hr class="divider" />
+
+    <ul class="step-list">
+      <li class="step">
+        <span class="step-num">1</span>
+        <div class="step-content">
+          <div class="step-label">Row-lock next unpublished row</div>
+          <div class="step-detail"><code>SELECT TOP (1) &hellip; WITH (UPDLOCK, READPAST, ROWLOCK) WHERE publishedToBroker IS NULL ORDER BY id</code></div>
+        </div>
+      </li>
+      <li class="step">
+        <span class="step-num">2</span>
+        <div class="step-content">
+          <div class="step-label">Publish to <code>masterdata.events</code> topic exchange</div>
+          <div class="step-detail">Routing key <code>&lt;aggregate&gt;.&lt;changeType&gt;</code> e.g. <code>customer.updated</code>; <code>MessageId = outboxRow.id</code></div>
+        </div>
+      </li>
+      <li class="step">
+        <span class="step-num">3</span>
+        <div class="step-content">
+          <div class="step-label"><code>WaitForConfirmsOrDie(ConfirmTimeout)</code></div>
+          <div class="step-detail">RabbitMQ publisher confirms (<code>ConfirmSelect()</code>) before we stamp</div>
+        </div>
+      </li>
+      <li class="step">
+        <span class="step-num">4</span>
+        <div class="step-content">
+          <div class="step-label">Stamp <code>publishedToBroker = SYSUTCDATETIME()</code></div>
+          <div class="step-detail">Short standalone tx; Invariant 2: no stamp before <code>basic.ack</code></div>
+        </div>
+      </li>
+      <li class="step">
+        <span class="step-num">5</span>
+        <div class="step-content">
+          <div class="step-label">Release row-lock &amp; loop</div>
+          <div class="step-detail"><code>/healthz/ready</code> flips unhealthy if channel closed &gt; <code>UnhealthyAfter = 60 s</code></div>
+        </div>
+      </li>
+    </ul>
+
+    <div class="info-box">
+      The <code>UPDLOCK, READPAST</code> window + <code>BatchSize = 1</code> is what prevents double-publish during rolling deploy.
+    </div>
+  </div>
+
+  <!-- DISPATCH FLOW -->
+  <div class="card card-wide">
+    <div class="card-title">&#9654; Dispatch flow <span class="badge badge-blue">consumer-dispatch worker</span></div>
+
+    <div class="two-col">
+      <div class="sub-section">
+        <div class="sub-title">Per-message pipeline</div>
+        <ul class="step-list">
+          <li class="step">
+            <span class="step-num">1</span>
+            <div class="step-content">
+              <div class="step-label">Receive from bound queue</div>
+              <div class="step-detail">e.g. <code>masterdata.consumer.sms.customer</code></div>
+            </div>
+          </li>
+          <li class="step">
+            <span class="step-num">2</span>
+            <div class="step-content">
+              <div class="step-label">Idempotency check on <code>ConsumerDeliveryLog</code></div>
+              <div class="step-detail">If <code>(consumer, aggregateType, aggregateId, lastOutboxId)</code> already dispatched &rarr; ACK + skip</div>
+            </div>
+          </li>
+          <li class="step">
+            <span class="step-num">3</span>
+            <div class="step-content">
+              <div class="step-label">Evaluate Unleash flag for this consumer</div>
+              <div class="step-detail">If <code>off</code> &rarr; ACK + <code>continue</code>; no downstream call</div>
+            </div>
+          </li>
+          <li class="step">
+            <span class="step-num">4</span>
+            <div class="step-content">
+              <div class="step-label">Apply per-consumer routing</div>
+              <div class="step-detail">AI: <code>PlatformId</code>; Analytics: <code>PlatformIds=[8,9]</code>; NumberAdmin: <code>PlatformNames=["PCC","SI"]</code></div>
+            </div>
+          </li>
+          <li class="step">
+            <span class="step-num">5</span>
+            <div class="step-content">
+              <div class="step-label">Mapperly &rarr; frozen DTO (with AfterMap quirks)</div>
+              <div class="step-detail">SMS flattened billing, SolAdmin <code>customerKey = Solution.producerExternalId</code>, PCC trim padding &hellip;</div>
+            </div>
+          </li>
+          <li class="step">
+            <span class="step-num">6</span>
+            <div class="step-content">
+              <div class="step-label">Typed <code>HttpClient</code> + Polly v8</div>
+              <div class="step-detail"><code>Retry(3, 1&ndash;8&nbsp;s, jitter) &rarr; CircuitBreaker(50% / 1&nbsp;min, break 30&nbsp;s) &rarr; Timeout(30&nbsp;s)</code></div>
+            </div>
+          </li>
+          <li class="step">
+            <span class="step-num">7</span>
+            <div class="step-content">
+              <div class="step-label">On 2xx: write <code>ConsumerDeliveryLog</code> &amp; ACK</div>
+              <div class="step-detail">First-winner also mirrors id to <code>Solution.consumerSolutionId</code> during migration window</div>
+            </div>
+          </li>
+          <li class="step">
+            <span class="step-num">8</span>
+            <div class="step-content">
+              <div class="step-label">On failure past <code>maxRetry = 5</code>: NACK &amp; DLX</div>
+              <div class="step-detail">DLX consumer writes <code>RetryDeadLetter</code>; operator replays via <code>admin-api</code></div>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+      <div class="sub-section">
+        <div class="sub-title">Special workers</div>
+        <ul class="step-list">
+          <li class="step">
+            <span class="step-num">A</span>
+            <div class="step-content">
+              <div class="step-label"><code>PccToSolutionAdminBridgeWorker</code></div>
+              <div class="step-detail">PCC-origin solution events &rarr; SolAdmin via 10&nbsp;s <code>Channel</code>; replaces the <code>pcc-solution-create-solutionadmin-customer</code> 10&nbsp;s bridge LA</div>
+            </div>
+          </li>
+          <li class="step">
+            <span class="step-num">B</span>
+            <div class="step-content">
+              <div class="step-label"><code>PtSolutionWorker</code> (dual target)</div>
+              <div class="step-detail"><code>platformArea == OPO</code> &rarr; <code>pt-opo</code>; <code>UK1</code> &rarr; <code>pt-uk1</code>; unknown &rarr; DLQ with alert (R5)</div>
+            </div>
+          </li>
+          <li class="step">
+            <span class="step-num">C</span>
+            <div class="step-content">
+              <div class="step-label"><code>SalesforceSolutionWriteBackHandler</code></div>
+              <div class="step-detail">First-successful solution provisioner calls <code>ISalesforceSolutionWriter.WriteExternalIdAsync</code> to patch <code>Solution__c.Solution_External_Id__c</code></div>
+            </div>
+          </li>
+          <li class="step">
+            <span class="step-num">D</span>
+            <div class="step-content">
+              <div class="step-label">Startup platform-id health check</div>
+              <div class="step-detail">Every configured <code>platformId</code> must resolve to a <code>Platform.producerExternalId</code>; otherwise pod refuses <code>Ready</code> (R2)</div>
+            </div>
+          </li>
+        </ul>
+
+        <div class="info-box" style="margin-top:0.75rem">
+          Every worker is always DI-registered. Feature-flag gating lives inside the loop &mdash; flipping a flag re-activates a disabled Logic App in &le; 30&nbsp;s with no redeploy.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SEQUENCE DIAGRAM -->
+  <div class="card card-wide">
+    <div class="card-title">&#9654; Sequence &mdash; Salesforce Account update, end-to-end <span class="badge badge-green">happy path</span></div>
+    <div class="mermaid-wrap">
+      <div class="mermaid-toolbar">
+        <span class="hint">drag to pan &middot; scroll to zoom</span>
+        <button type="button" data-action="zoom-out" title="Zoom out" aria-label="Zoom out">&minus;</button>
+        <button type="button" data-action="reset" title="Fit to view" aria-label="Fit">&#11200;</button>
+        <button type="button" data-action="zoom-in" title="Zoom in" aria-label="Zoom in">+</button>
+      </div>
+      <div class="mermaid-viewport">
+        <pre class="mermaid">
+sequenceDiagram
+  autonumber
+  actor SF as Salesforce
+  participant Ing as salesforce-ingest (leader)
+  participant SQL as Azure SQL
+  participant Rel as outbox-relay
+  participant RMQ as RabbitMQ
+  participant Disp as consumer-dispatch worker
+  actor DS as Downstream REST API
+
+  SF->>Ing: AccountChangeEvent (gRPC, replayId)
+  Ing->>SQL: BEGIN TRAN
+  Ing->>SQL: Account_CompareAndResolve.sql
+  SQL-->>Ing: result=Continue, ISO codes
+  Ing->>SQL: UPSERT Customer / Partner
+  Ing->>SQL: INSERT IntegrationOutbox
+  Ing->>SQL: COMMIT
+  Ing->>SQL: UPDATE SalesforceIngestCheckpoint.lastReplayId
+
+  Note over Rel,SQL: every 500 ms
+  Rel->>SQL: SELECT TOP 1 WITH UPDLOCK, READPAST&lt;br/&gt;WHERE publishedToBroker IS NULL
+  SQL-->>Rel: outbox row
+  Rel->>RMQ: basicPublish (ConfirmSelect, MessageId = row.id)
+  RMQ-->>Rel: basic.ack (within ConfirmTimeout=5s)
+  Rel->>SQL: UPDATE publishedToBroker = SYSUTCDATETIME()
+
+  RMQ->>Disp: deliver on masterdata.consumer.{x}.customer
+  Disp->>SQL: SELECT ConsumerDeliveryLog (idempotency)
+  Disp->>Disp: Unleash flag check + routing + Mapperly
+  Disp->>DS: PUT /customers/{id} (Polly: retry + CB + timeout)
+  DS-->>Disp: 200 OK
+  Disp->>SQL: INSERT ConsumerDeliveryLog (+ mirror consumerSolutionId)
+  Disp->>RMQ: basic.ack
+        </pre>
+      </div>
+    </div>
+    <div class="info-box">
+      Two invariants shown explicitly: the ingest commit happens <em>before</em> the checkpoint advances, and the <code>publishedToBroker</code> stamp happens <em>after</em> RabbitMQ confirms. Either pod can crash anywhere and no event is lost or duplicated.
+    </div>
+  </div>
+
+  <!-- TECH STACK -->
+  <div class="card card-wide">
+    <div class="card-title">&#9654; Tech stack <span class="badge badge-purple">cloud-agnostic outside Azure SQL</span></div>
+
+    <table class="stack">
+      <thead>
+        <tr>
+          <th>Layer</th>
+          <th>Choice</th>
+          <th>Why</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td class="layer">Runtime</td>                    <td class="tool">.NET 10 Generic Host + <code>BackgroundService</code></td> <td class="why">Hard constraint: .NET 10 only. No Azure Functions.</td></tr>
+        <tr><td class="layer">Ingestion</td>                  <td class="tool">Salesforce Pub/Sub API (gRPC) + CDC events</td>                 <td class="why">Tier 1 is REST <code>SystemModstamp</code> polling; Tier 2 is CDC subscriber. PushTopic / Streaming rejected (CometD legacy).</td></tr>
+        <tr><td class="layer">Database</td>                   <td class="tool">Azure SQL (unchanged)</td>                                       <td class="why">System of record. Additive schema only &mdash; five new tables, no drops until Phase 6.</td></tr>
+        <tr><td class="layer">Data access</td>                <td class="tool">Dapper + embedded <code>.sql</code> scripts</td>                 <td class="why">Per <code>.cursor/rules/database.mdc</code>. Schema ownership in files, not magic strings.</td></tr>
+        <tr><td class="layer">SQL resilience</td>             <td class="tool"><code>ReliableSqlDbConnection</code> + Polly</td>                 <td class="why">Retries on Azure SQL transient set 4060 / 40197 / 40501 / 40613 / 49918 / 49919 / 49920 / 11001.</td></tr>
+        <tr><td class="layer">Messaging</td>                  <td class="tool">RabbitMQ topic exchange + per-consumer queues + DLX</td>         <td class="why">Transactional outbox is the source of truth; RabbitMQ is the transport. NATS JetStream is the future-fallback.</td></tr>
+        <tr><td class="layer">Autoscaling</td>                <td class="tool">KEDA RabbitMQ scaler &rarr; HPA (2 &rarr; 12)</td>                <td class="why">Queue depth drives scale-out for <code>consumer-dispatch</code>.</td></tr>
+        <tr><td class="layer">Leader election</td>            <td class="tool"><code>coordination.k8s.io/Lease</code> via <code>KubernetesClient.Lease</code></td> <td class="why">Single subscriber + single scheduler invariant; 30&nbsp;s TTL, 10&nbsp;s renewal.</td></tr>
+        <tr><td class="layer">HTTP resilience</td>            <td class="tool">Polly v8 pipelines + <code>IHttpClientFactory</code></td>        <td class="why">Retry(3, 1&ndash;8&nbsp;s jitter) &rarr; CircuitBreaker(50% / 1&nbsp;min, 30&nbsp;s break) &rarr; Timeout(30&nbsp;s).</td></tr>
+        <tr><td class="layer">Object mapping</td>             <td class="tool">Mapperly partial mappers</td>                                    <td class="why">Per <code>.cursor/rules/csharp.mdc</code> &sect;11; per-consumer <code>AfterMap</code> hooks for the SMS / SolAdmin / PCC quirks.</td></tr>
+        <tr><td class="layer">Feature flags</td>              <td class="tool">OpenFeature SDK + Unleash provider (flagd pattern)</td>          <td class="why">Disabled-LA reactivation without redeploy; R1 cutover gate; ~15&nbsp;s toggle latency.</td></tr>
+        <tr><td class="layer">Scheduling</td>                 <td class="tool">In-process <code>PeriodicTimer</code> / NCrontab + <code>TimeProvider</code></td> <td class="why">Weekly Mon 03:00&ndash;03:30 UTC stagger, daily 04:00, 5&nbsp;min cascade. Unit-testable with <code>FakeTimeProvider</code>.</td></tr>
+        <tr><td class="layer">Observability</td>              <td class="tool">OpenTelemetry SDK &rarr; Collector &rarr; Grafana / Loki / Tempo / Mimir</td> <td class="why">Per <code>.cursor/rules/observability.mdc</code>. Metrics gate SLOs and HPA.</td></tr>
+        <tr><td class="layer">Secrets &amp; config</td>       <td class="tool"><code>ConfigMap</code> + Secret Store CSI Driver</td>            <td class="why"><code>IOptions&lt;T&gt;</code> everywhere; vault backend swaps without code change.</td></tr>
+        <tr><td class="layer">Ingress</td>                    <td class="tool">NGINX Ingress Controller + cert-manager (mTLS)</td>              <td class="why">Only <code>admin-api</code> has a surface; no external traffic.</td></tr>
+        <tr><td class="layer">Packaging</td>                  <td class="tool">OCI images (aspnet:10.0-alpine) + Helm charts</td>                <td class="why">One chart per service, per-env values. Azure DevOps builds and deploys.</td></tr>
+      </tbody>
+    </table>
+
+    <div class="info-box">
+      <strong>Explicit non-choices:</strong> no Azure Service Bus, no Azure Functions, no Logic Apps, no Azure App Configuration, no API Management. App Insights OTLP exporter is optional &mdash; not load-bearing.
+    </div>
+  </div>
+
+  <!-- SCHEMA -->
+  <div class="card">
+    <div class="card-title">&#9654; New SQL surface <span class="badge badge-green">additive only</span></div>
+
+    <ul class="step-list">
+      <li class="step">
+        <span class="step-num">1</span>
+        <div class="step-content">
+          <div class="step-label"><code>IntegrationOutbox</code></div>
+          <div class="step-detail">Append-only; includes <code>publishedToBroker DATETIME2 NULL</code>; <code>(aggregateType, id)</code> index</div>
+        </div>
+      </li>
+      <li class="step">
+        <span class="step-num">2</span>
+        <div class="step-content">
+          <div class="step-label"><code>ConsumerDeliveryLog</code></div>
+          <div class="step-detail">Per-consumer cursor + idempotency; replaces the shared <code>Solution.consumerSolutionId</code> slot</div>
+        </div>
+      </li>
+      <li class="step">
+        <span class="step-num">3</span>
+        <div class="step-content">
+          <div class="step-label"><code>SyncRunLog</code></div>
+          <div class="step-detail">One row per reconciliation run: kind, timing, rows compared / created / updated / deleted, status</div>
+        </div>
+      </li>
+      <li class="step">
+        <span class="step-num">4</span>
+        <div class="step-content">
+          <div class="step-label"><code>RetryDeadLetter</code></div>
+          <div class="step-detail">DLX consumer writes here; <code>admin-api</code> exposes <code>POST /admin/dlq/{id}/replay</code></div>
+        </div>
+      </li>
+      <li class="step">
+        <span class="step-num">5</span>
+        <div class="step-content">
+          <div class="step-label"><code>SalesforceIngestCheckpoint</code></div>
+          <div class="step-detail">Per-entity <code>lastReplayId</code>; advanced only after tx commits</div>
+        </div>
+      </li>
+    </ul>
+
+    <hr class="divider" />
+
+    <div class="trigger-label">Ported T-SQL scripts (embedded resources)</div>
+    <div class="pill-row">
+      <span class="pill"><code>Account_CompareAndResolve.sql</code></span>
+      <span class="pill"><code>SalesforceAccountsTemp_StageBatch.sql</code></span>
+      <span class="pill"><code>CustomerPartner_SoftDeleteAbsent.sql</code></span>
+      <span class="pill"><code>Solution_CascadeUk1PlatformArea.sql</code></span>
+      <span class="pill"><code>DlqReplay.sql</code></span>
+    </div>
+
+    <div class="danger-box">
+      <strong>Parity gate:</strong> running <code>Account_CompareAndResolve.sql</code> and <code>exec dbo.CompareAccountObject</code> against the same fixture must return byte-identical <code>result</code> / <code>currencyUpdated</code> / ISO codes. The 15,000-row guard in <code>SoftDeleteAbsent</code> and the <code>COLLATE Latin1_General_BIN</code> equality joins are non-negotiable.
+    </div>
+  </div>
+
+  <!-- RISKS -->
+  <div class="card">
+    <div class="card-title">&#9654; Top migration risks <span class="badge badge-red">R1&ndash;R5</span></div>
+
+    <ul class="risk-list">
+      <li class="risk-item">
+        <span class="risk-tag">R1 &mdash; HIGH</span>
+        <div style="margin-top:0.25em"><strong>Double-firing during cutover.</strong> If both a Logic App and its worker run simultaneously, downstream sees two <code>PUT</code>s / <code>DELETE</code>s (creates have a partial guard; updates / deletes don't). <em>Mitigation:</em> per-consumer Unleash flag flipped <strong>only after</strong> the LA is disabled; single-writer <code>Lease</code>; contract tests green first.</div>
+      </li>
+      <li class="risk-item">
+        <span class="risk-tag">R2 &mdash; HIGH</span>
+        <div style="margin-top:0.25em"><strong><code>Platform.id</code> IDENTITY drift + three routing styles.</strong> IDENTITY values differ by env; Analytics hardcodes <code>IN (8,9)</code>, NumberAdmin uses <code>P.[name]</code>. <em>Mitigation:</em> resolve <code>Platform.id</code> by Salesforce Id at startup; pod refuses <code>Ready</code> if resolution fails; routing values live in <code>ConfigMap</code>.</div>
+      </li>
+      <li class="risk-item med">
+        <span class="risk-tag">R3 &mdash; MED-HIGH</span>
+        <div style="margin-top:0.25em"><strong>Tribess transport unknown.</strong> No <code>connector-masterdata-tribess.json</code> in the repo. <em>Mitigation:</em> capture wire-snapshots from production LA runs in Phase 0 (mandatory); migrate Tribess <strong>last</strong> in Phase 3.</div>
+      </li>
+      <li class="risk-item">
+        <span class="risk-tag">R4 &mdash; HIGH</span>
+        <div style="margin-top:0.25em"><strong>Single-slot <code>consumerSolutionId</code> during migration.</strong> 11 consumers historically share one column. <em>Mitigation:</em> <code>ConsumerDeliveryLog</code> is the new truth; first-winner mirrors to the old column until Phase 6; retire mirror when no external reader depends on it.</div>
+      </li>
+      <li class="risk-item med">
+        <span class="risk-tag">R5 &mdash; MED</span>
+        <div style="margin-top:0.25em"><strong>PT dual connector fan-out.</strong> <code>pt-opo</code> and <code>pt-uk1</code> must both fire keyed on <code>Solution.platformArea</code>. <em>Mitigation:</em> <code>PtSolutionWorker</code> is a dual-target dispatcher; unknown area &rarr; DLQ with alert; <strong>two-week</strong> shadow run before cutover (vs. one week for others).</div>
+      </li>
+    </ul>
+  </div>
+
+  <!-- PHASES -->
+  <div class="card card-wide">
+    <div class="card-title">&#9654; Phased cutover <span class="badge badge-orange">Phase 0 &rarr; 6</span></div>
+
+    <ul class="step-list">
+      <li class="step">
+        <span class="step-num">0</span>
+        <div class="step-content">
+          <div class="step-label">Capture wire-snapshots from prod Logic Apps</div>
+          <div class="step-detail">Agree DBA reload runbook (Q6); confirm <code>Platform.id</code> IDENTITY stability (Q3); capture Tribess transport (Q1)</div>
+        </div>
+      </li>
+      <li class="step">
+        <span class="step-num">1</span>
+        <div class="step-content">
+          <div class="step-label">DBA applies additive DDL; cluster infra baseline up</div>
+          <div class="step-detail">RabbitMQ topology, Unleash flags (all <code>false</code>), OTel collector, KEDA</div>
+        </div>
+      </li>
+      <li class="step">
+        <span class="step-num">2</span>
+        <div class="step-content">
+          <div class="step-label">Deploy <code>salesforce-ingest</code>; Logic App producers stay enabled</div>
+          <div class="step-detail">Pub/Sub subscriber writes to outbox; <code>outbox-relay</code> publishes; <code>Account_CompareAndResolve.sql</code> is now the compare path. <strong>Exit criterion:</strong> lag metric green 72&nbsp;h.</div>
+        </div>
+      </li>
+      <li class="step">
+        <span class="step-num">3</span>
+        <div class="step-content">
+          <div class="step-label">Deploy <code>consumer-dispatch</code>; cut over consumer-by-consumer</div>
+          <div class="step-detail">For each: (a) wire-snapshot test green, (b) disable LA in Azure portal, (c) flip flag. <strong>Tribess last.</strong> <strong>PT</strong> shadows two weeks.</div>
+        </div>
+      </li>
+      <li class="step">
+        <span class="step-num">4</span>
+        <div class="step-content">
+          <div class="step-label">Deploy <code>reconciliation</code>; disable <code>*-sync</code> LAs</div>
+          <div class="step-detail">Weekly syncs, daily IdP push, UK1 cascade all move to workers. Staging / soft-delete SPs become dormant.</div>
+        </div>
+      </li>
+      <li class="step">
+        <span class="step-num">5</span>
+        <div class="step-content">
+          <div class="step-label">Disable producer Logic Apps</div>
+          <div class="step-detail">Pub/Sub has been primary since Phase 2; flip legacy-producer Unleash flags selectively if product requires</div>
+        </div>
+      </li>
+      <li class="step">
+        <span class="step-num">6</span>
+        <div class="step-content">
+          <div class="step-label">DBA drops legacy SPs; retire <code>consumerSolutionId</code> mirror</div>
+          <div class="step-detail"><code>CompareAccountObject</code>, <code>InsertSalesforceAccountsFromJson</code>, <code>SoftDeleteCustomerPartner</code> gone. Mirror retired once Q4 ("first successful consumer wins" semantic) is confirmed.</div>
+        </div>
+      </li>
+    </ul>
+
+    <div class="danger-box">
+      <strong>Non-negotiable:</strong> at no point may a Logic App and its replacement worker be enabled simultaneously (R1). Flag flip is the <em>last</em> step per consumer, not the first.
+    </div>
+  </div>
+
+  <!-- RABBITMQ TOPOLOGY -->
+  <div class="card card-wide">
+    <div class="card-title">&#9654; RabbitMQ topology <span class="badge badge-green">topic exchange + per-consumer queues + DLX</span></div>
+    <div class="mermaid-wrap">
+      <div class="mermaid-toolbar">
+        <span class="hint">drag to pan &middot; scroll to zoom</span>
+        <button type="button" data-action="zoom-out" title="Zoom out" aria-label="Zoom out">&minus;</button>
+        <button type="button" data-action="reset" title="Fit to view" aria-label="Fit">&#11200;</button>
+        <button type="button" data-action="zoom-in" title="Zoom in" aria-label="Zoom in">+</button>
+      </div>
+      <div class="mermaid-viewport">
+        <pre class="mermaid">
+flowchart LR
+  Rel["outbox-relay&lt;br/&gt;publishes MessageId = outbox.id&lt;br/&gt;routing keys:&lt;br/&gt;customer.updated, partner.updated,&lt;br/&gt;solution.created, platform.updated, ..."]
+
+  EX{{"masterdata.events&lt;br/&gt;topic exchange"}}
+
+  subgraph Qs["Per-consumer durable queues (bound by aggregate.*)"]
+    direction TB
+    Qai["masterdata.consumer.ai.customer&lt;br/&gt;+ .partner + .solution"]
+    Qsms["masterdata.consumer.sms.customer&lt;br/&gt;+ .partner + .solution"]
+    Qidp["masterdata.consumer.idp.customer&lt;br/&gt;+ .partner + .solution + .platform"]
+    Qpt["masterdata.consumer.pt.solution&lt;br/&gt;(dispatcher fans to pt-opo / pt-uk1)"]
+    Qmore["... 8 more consumers&lt;br/&gt;(analytics, idp-uk, numberadmin,&lt;br/&gt;pcc, si, soladmin, tribess, wfm)"]
+  end
+
+  DLX{{"masterdata.dlx&lt;br/&gt;dead-letter exchange"}}
+  DLQ[("RetryDeadLetter table&lt;br/&gt;+ admin-api replay endpoint")]
+
+  Rel --> EX
+  EX -- "customer.*" --> Qai
+  EX -- "customer.*" --> Qsms
+  EX -- "customer.* / partner.* / solution.* / platform.*" --> Qidp
+  EX -- "solution.*" --> Qpt
+  EX -- "aggregate.*" --> Qmore
+
+  Qai  -. "x-dead-letter-exchange&lt;br/&gt;after maxRetry=5" .-> DLX
+  Qsms -. "x-dead-letter-exchange" .-> DLX
+  Qidp -. "x-dead-letter-exchange" .-> DLX
+  Qpt  -. "x-dead-letter-exchange" .-> DLX
+  Qmore -. "x-dead-letter-exchange" .-> DLX
+
+  DLX --> DLQ
+        </pre>
+      </div>
+    </div>
+    <div class="info-box">
+      Queue depth is the signal KEDA scales on (<code>rabbitmq_queue_messages_ready</code>). Each worker's Unleash flag is checked inside the consume loop, so a disabled consumer ACKs immediately without calling the downstream &mdash; no backlog builds behind an off flag.
+    </div>
+  </div>
+
+  <!-- LEGEND / GLOSSARY -->
+  <div class="card card-wide">
+    <div class="card-title">&#9654; Legend &mdash; acronyms &amp; shorthands <span class="badge badge-gray">glossary</span></div>
+
+    <div class="legend-grid">
+
+      <div class="sub-section">
+        <div class="sub-title">Kubernetes &amp; cluster</div>
+        <dl class="legend-list">
+          <dt>K8s</dt>         <dd>Kubernetes &mdash; container orchestration</dd>
+          <dt>HPA</dt>         <dd>Horizontal Pod Autoscaler</dd>
+          <dt>KEDA</dt>        <dd>Kubernetes Event-driven Autoscaling <span class="gloss">&mdash; scales on external metrics (queue depth, etc.)</span></dd>
+          <dt>Lease</dt>       <dd><code>coordination.k8s.io/Lease</code> &mdash; K8s leader-election primitive</dd>
+          <dt>Deployment</dt>  <dd>K8s workload kind for long-running replicas</dd>
+          <dt>Job</dt>         <dd>K8s workload kind for one-shot tasks</dd>
+          <dt>CronJob</dt>     <dd>K8s scheduled workload kind (intentionally not used here)</dd>
+          <dt>ConfigMap</dt>   <dd>K8s object for non-secret config</dd>
+          <dt>Secret</dt>      <dd>K8s object for credentials / sensitive config</dd>
+          <dt>Helm</dt>        <dd>K8s package manager (charts = templated manifests)</dd>
+          <dt>CSI</dt>         <dd>Container Storage Interface <span class="gloss">&mdash; vendor-neutral volume / secret plug-in spec</span></dd>
+          <dt>OCI</dt>         <dd>Open Container Initiative <span class="gloss">&mdash; container-image standard</span></dd>
+          <dt>CNCF</dt>        <dd>Cloud Native Computing Foundation</dd>
+        </dl>
+      </div>
+
+      <div class="sub-section">
+        <div class="sub-title">Messaging, resilience &amp; tooling</div>
+        <dl class="legend-list">
+          <dt>CDC</dt>         <dd>Change Data Capture <span class="gloss">&mdash; row-level change stream</span></dd>
+          <dt>gRPC</dt>        <dd>Google RPC &mdash; high-perf binary RPC over HTTP/2</dd>
+          <dt>DLX</dt>         <dd>Dead-Letter Exchange (RabbitMQ)</dd>
+          <dt>DLQ</dt>         <dd>Dead-Letter Queue</dd>
+          <dt>ACK / NACK</dt>  <dd>RabbitMQ <code>basic.ack</code> / <code>basic.nack</code></dd>
+          <dt>ConfirmSelect</dt><dd>RabbitMQ publisher-confirms mode <span class="gloss">&mdash; broker ACKs each publish</span></dd>
+          <dt>Outbox</dt>      <dd>Transactional outbox pattern <span class="gloss">&mdash; DB row + event in one tx</span></dd>
+          <dt>CB</dt>          <dd>Circuit Breaker (Polly resilience strategy)</dd>
+          <dt>DTO</dt>         <dd>Data Transfer Object</dd>
+          <dt>DI</dt>          <dd>Dependency Injection</dd>
+          <dt>Polly</dt>       <dd>.NET resilience library &mdash; retry / CB / timeout / rate-limit</dd>
+          <dt>Mapperly</dt>    <dd>.NET source-generator object mapper</dd>
+          <dt>Dapper</dt>      <dd>.NET micro-ORM for raw SQL</dd>
+          <dt>Unleash</dt>     <dd>Open-source feature-flag server</dd>
+          <dt>OpenFeature</dt> <dd>CNCF-incubating vendor-neutral feature-flag spec</dd>
+          <dt>NCrontab</dt>    <dd>.NET cron-expression parser / scheduler</dd>
+          <dt>NATS</dt>        <dd>Lightweight CNCF messaging broker <span class="gloss">&mdash; documented fallback, not in use</span></dd>
+        </dl>
+      </div>
+
+      <div class="sub-section">
+        <div class="sub-title">Salesforce &amp; SQL</div>
+        <dl class="legend-list">
+          <dt>Pub/Sub API</dt> <dd>Salesforce gRPC event stream &mdash; modern CDC transport</dd>
+          <dt>PushTopic</dt>   <dd>Legacy Salesforce CometD-based stream (rejected)</dd>
+          <dt>Bulk API 2.0</dt><dd>Salesforce batch REST API (used inside <code>admin-api</code>)</dd>
+          <dt>SystemModstamp</dt><dd>Salesforce built-in row last-modified timestamp</dd>
+          <dt>replayId</dt>    <dd>Pub/Sub cursor for resuming a CDC stream after restart</dd>
+          <dt>CometD</dt>      <dd>Legacy long-poll HTTP protocol (PushTopic / Streaming)</dd>
+          <dt>SP</dt>          <dd>Stored Procedure</dd>
+          <dt>DDL</dt>         <dd>Data Definition Language <span class="gloss">&mdash; CREATE / ALTER / DROP</span></dd>
+          <dt>UPSERT</dt>      <dd>UPDATE-or-INSERT (atomic merge)</dd>
+          <dt>UPDLOCK</dt>     <dd>T-SQL hint: take an update lock on selected rows</dd>
+          <dt>READPAST</dt>    <dd>T-SQL hint: skip rows already locked by others</dd>
+          <dt>ROWLOCK</dt>     <dd>T-SQL hint: use row-level locking</dd>
+          <dt>IDENTITY</dt>    <dd>SQL auto-increment column</dd>
+          <dt>OPENJSON</dt>    <dd>SQL Server built-in JSON-parse function</dd>
+          <dt>tx</dt>          <dd>Transaction</dd>
+          <dt>DBA</dt>         <dd>Database Administrator</dd>
+        </dl>
+      </div>
+
+      <div class="sub-section">
+        <div class="sub-title">Observability &amp; security</div>
+        <dl class="legend-list">
+          <dt>OTel</dt>        <dd>OpenTelemetry <span class="gloss">&mdash; vendor-neutral traces / metrics / logs SDK</span></dd>
+          <dt>OTLP</dt>        <dd>OpenTelemetry Protocol <span class="gloss">&mdash; the wire format</span></dd>
+          <dt>LGTM</dt>        <dd>Loki + Grafana + Tempo + Mimir <span class="gloss">&mdash; Grafana's observability stack</span></dd>
+          <dt>Loki</dt>        <dd>Log aggregation backend</dd>
+          <dt>Tempo</dt>       <dd>Distributed-tracing backend</dd>
+          <dt>Mimir</dt>       <dd>Prometheus-compatible metrics backend</dd>
+          <dt>TLS</dt>         <dd>Transport Layer Security</dd>
+          <dt>mTLS</dt>        <dd>Mutual TLS <span class="gloss">&mdash; both client and server present certificates</span></dd>
+          <dt>Entra ID</dt>    <dd>Microsoft Entra ID <span class="gloss">(formerly Azure AD)</span></dd>
+          <dt>SLO / SLA</dt>   <dd>Service Level Objective / Agreement</dd>
+          <dt>TTL</dt>         <dd>Time To Live</dd>
+          <dt>UTC</dt>         <dd>Coordinated Universal Time</dd>
+        </dl>
+      </div>
+
+      <div class="sub-section">
+        <div class="sub-title">Puzzel products &amp; platform tags</div>
+        <dl class="legend-list">
+          <dt>LA</dt>          <dd>Logic App (Azure) &mdash; the thing being replaced</dd>
+          <dt>PCC</dt>         <dd>Puzzel Contact Centre <span class="gloss">(legacy platform)</span></dd>
+          <dt>PT</dt>          <dd>Puzzel Ticketing <span class="gloss">&mdash; fan-out via two connectors (opo + uk1)</span></dd>
+          <dt>PCM</dt>         <dd>Puzzel Case Management <span class="gloss">&mdash; forward-compat stub only (§2.3, A4)</span></dd>
+          <dt>SolAdmin</dt>    <dd>Solution Admin <span class="gloss">&mdash; platform administration tool</span></dd>
+          <dt>NumberAdmin</dt> <dd>Number Admin <span class="gloss">&mdash; telephone-number management</span></dd>
+          <dt>IdP</dt>         <dd>Identity Provider <span class="gloss">(auth service)</span></dd>
+          <dt>IdP-UK</dt>      <dd>Identity Provider, UK instance</dd>
+          <dt>WFM</dt>         <dd>Workforce Management</dd>
+          <dt>AI / Analytics / SI / SMS / Tribess</dt>
+                               <dd>Other downstream consumer products <span class="gloss">&mdash; Tribess transport is the R3 unknown</span></dd>
+          <dt>OPO / UK1</dt>   <dd>PT platform areas <span class="gloss">&mdash; region codes routed to <code>pt-opo</code> / <code>pt-uk1</code></span></dd>
+        </dl>
+      </div>
+
+      <div class="sub-section">
+        <div class="sub-title">Design-doc cross-references</div>
+        <dl class="legend-list">
+          <dt>R1&ndash;R5</dt>  <dd>Top migration risks <span class="gloss">(see Risks card)</span></dd>
+          <dt>Q1&ndash;Q8</dt>  <dd>Open questions awaiting product / architecture sign-off</dd>
+          <dt>P1&ndash;P12</dt> <dd>Pain points observed in the legacy Logic-App implementation</dd>
+          <dt>A1&ndash;A6</dt>  <dd>Explicit assumptions stated in the design doc</dd>
+          <dt>&sect;2.1 etc.</dt><dd>Section numbers refer to <code>opus4.7-max_update_03.md</code></dd>
+        </dl>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- END TO END FLOW ROW -->
+  <div class="card card-wide">
+    <div class="card-title">End-to-end flow</div>
+    <div class="flow-row">
+      <span class="badge badge-blue">Salesforce edit</span>
+      <span class="flow-arrow">&#9656;</span>
+      <span><code>AccountChangeEvent</code> (gRPC CDC)</span>
+      <span class="flow-arrow">&#9656;</span>
+      <span><code>salesforce-ingest</code> leader</span>
+      <span class="flow-arrow">&#9656;</span>
+      <span><code>Account_CompareAndResolve.sql</code></span>
+      <span class="flow-arrow">&#9656;</span>
+      <span>UPSERT + <code>IntegrationOutbox</code> + checkpoint (one tx)</span>
+      <span class="flow-arrow">&#9656;</span>
+      <span><code>outbox-relay</code> (500 ms poll)</span>
+      <span class="flow-arrow">&#9656;</span>
+      <span class="badge badge-green">RabbitMQ <code>masterdata.events</code></span>
+      <span class="flow-arrow">&#9656;</span>
+      <span>per-consumer queue</span>
+      <span class="flow-arrow">&#9656;</span>
+      <span><code>consumer-dispatch</code> worker</span>
+      <span class="flow-arrow">&#9656;</span>
+      <span>Unleash flag check</span>
+      <span class="flow-arrow">&#9656;</span>
+      <span><code>ConsumerDeliveryLog</code> idempotency</span>
+      <span class="flow-arrow">&#9656;</span>
+      <span>Mapperly &rarr; frozen DTO</span>
+      <span class="flow-arrow">&#9656;</span>
+      <span>Polly pipeline</span>
+      <span class="flow-arrow">&#9656;</span>
+      <span class="badge badge-green"><code>PUT /customers/{id}</code></span>
+      <span class="flow-arrow">&#9656;</span>
+      <span>ACK + log</span>
+      <span class="flow-arrow">&#9656;</span>
+      <span class="badge badge-red">DLX &rarr; <code>RetryDeadLetter</code> on failure</span>
+    </div>
+  </div>
+
+</div>
+
+<!-- svg-pan-zoom (UMD, exposes window.svgPanZoom) -->
+<script src="https://cdn.jsdelivr.net/npm/svg-pan-zoom@3.6.2/dist/svg-pan-zoom.min.js"></script>
+
+<script type="module">
+  import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs";
+
+  const DARK_MERMAID = {
+    darkMode: true,
+    background: "#0d1117",
+    primaryColor: "#161b22",
+    primaryTextColor: "#e6edf3",
+    primaryBorderColor: "#30363d",
+    secondaryColor: "#1f3a5c",
+    tertiaryColor: "#1c2128",
+    lineColor: "#7d8590",
+    textColor: "#e6edf3",
+    mainBkg: "#161b22",
+    secondBkg: "#1c2128",
+    clusterBkg: "#0d1117",
+    clusterBorder: "#30363d",
+    edgeLabelBackground: "#161b22",
+    noteBkgColor: "#1c1f23",
+    noteTextColor: "#c9d1d9",
+    noteBorderColor: "#d29922",
+    actorBkg: "#1f3a5c",
+    actorBorder: "#58a6ff",
+    actorTextColor: "#e6edf3",
+    actorLineColor: "#30363d",
+    signalColor: "#e6edf3",
+    signalTextColor: "#e6edf3",
+    labelBoxBkgColor: "#161b22",
+    labelBoxBorderColor: "#30363d",
+    labelTextColor: "#e6edf3",
+    loopTextColor: "#e6edf3",
+    activationBkgColor: "#21262d",
+    activationBorderColor: "#58a6ff",
+    sequenceNumberColor: "#0d1117"
+  };
+
+  const LIGHT_MERMAID = {
+    darkMode: false,
+    background: "#f6f8fa",
+    primaryColor: "#ffffff",
+    primaryTextColor: "#1f2328",
+    primaryBorderColor: "#d0d7de",
+    secondaryColor: "#ddf4ff",
+    tertiaryColor: "#eaeef2",
+    lineColor: "#656d76",
+    textColor: "#1f2328",
+    mainBkg: "#ffffff",
+    secondBkg: "#f6f8fa",
+    clusterBkg: "#f6f8fa",
+    clusterBorder: "#d0d7de",
+    edgeLabelBackground: "#ffffff",
+    noteBkgColor: "#fff8c5",
+    noteTextColor: "#1f2328",
+    noteBorderColor: "#9a6700",
+    actorBkg: "#ddf4ff",
+    actorBorder: "#0969da",
+    actorTextColor: "#0550ae",
+    actorLineColor: "#d0d7de",
+    signalColor: "#1f2328",
+    signalTextColor: "#1f2328",
+    labelBoxBkgColor: "#ffffff",
+    labelBoxBorderColor: "#d0d7de",
+    labelTextColor: "#1f2328",
+    loopTextColor: "#1f2328",
+    activationBkgColor: "#eaeef2",
+    activationBorderColor: "#0969da",
+    sequenceNumberColor: "#ffffff"
+  };
+
+  const mermaidBlocks = Array.from(document.querySelectorAll(".mermaid"));
+  // Capture the original diagram source before mermaid mutates the DOM
+  mermaidBlocks.forEach(b => { b.dataset.source = b.textContent; });
+
+  let panZoomInstances = [];
+
+  async function renderDiagrams(theme) {
+    // Tear down any existing pan/zoom wrappers so we can re-render cleanly
+    panZoomInstances.forEach(inst => { try { inst.destroy(); } catch (_) { /* noop */ } });
+    panZoomInstances = [];
+
+    // Reset each mermaid container to its original source. Use textContent
+    // (not innerHTML) so that literal "<br/>" in the source stays as text
+    // for mermaid to parse, instead of the browser turning it into a BR node.
+    mermaidBlocks.forEach(b => {
+      b.textContent = b.dataset.source;
+      b.removeAttribute("data-processed");
+    });
+
+    mermaid.initialize({
+      startOnLoad: false,
+      securityLevel: "loose",
+      theme: "base",
+      fontFamily: 'ui-monospace, "Cascadia Code", "Fira Code", monospace',
+      themeVariables: theme === "light" ? LIGHT_MERMAID : DARK_MERMAID,
+      flowchart: { htmlLabels: true, curve: "basis", padding: 14, useMaxWidth: false },
+      sequence: { useMaxWidth: false, boxMargin: 10, messageMargin: 30, mirrorActors: false }
+    });
+
+    await mermaid.run({ nodes: mermaidBlocks });
+
+    mermaidBlocks.forEach(block => {
+      const svg = block.querySelector("svg");
+      if (!svg) return;
+
+      // Let svg-pan-zoom fully drive sizing
+      svg.setAttribute("width", "100%");
+      svg.setAttribute("height", "100%");
+      svg.style.maxWidth = "none";
+      svg.style.display = "block";
+
+      const pz = window.svgPanZoom(svg, {
+        zoomEnabled: true,
+        controlIconsEnabled: false,
+        dblClickZoomEnabled: true,
+        mouseWheelZoomEnabled: true,
+        preventMouseEventsDefault: true,
+        fit: true,
+        center: true,
+        minZoom: 0.2,
+        maxZoom: 20,
+        zoomScaleSensitivity: 0.3,
+        contain: false
+      });
+      panZoomInstances.push(pz);
+
+      const wrap = block.closest(".mermaid-wrap");
+      if (!wrap) return;
+      const zin  = wrap.querySelector('[data-action="zoom-in"]');
+      const zout = wrap.querySelector('[data-action="zoom-out"]');
+      const rst  = wrap.querySelector('[data-action="reset"]');
+      if (zin)  zin.onclick  = () => pz.zoomIn();
+      if (zout) zout.onclick = () => pz.zoomOut();
+      if (rst)  rst.onclick  = () => { pz.resetZoom(); pz.center(); pz.fit(); };
+    });
+  }
+
+  // --- Theme wiring ------------------------------------------------------
+  const root = document.documentElement;
+  const toggleBtn = document.getElementById("theme-toggle");
+  const toggleLabel = toggleBtn.querySelector(".label");
+  const STORAGE_KEY = "masterdata-cheatsheet-theme";
+
+  function applyTheme(theme) {
+    root.setAttribute("data-theme", theme);
+    try { localStorage.setItem(STORAGE_KEY, theme); } catch (_) { /* noop */ }
+    toggleLabel.textContent = theme === "dark" ? "LIGHT" : "DARK";
+  }
+
+  function currentTheme() {
+    return root.getAttribute("data-theme") || "dark";
+  }
+
+  // Initial theme: stored choice > system preference > dark
+  let initialTheme = null;
+  try { initialTheme = localStorage.getItem(STORAGE_KEY); } catch (_) { /* noop */ }
+  if (!initialTheme) {
+    initialTheme = window.matchMedia && window.matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark";
+  }
+  applyTheme(initialTheme);
+
+  toggleBtn.addEventListener("click", async () => {
+    const next = currentTheme() === "dark" ? "light" : "dark";
+    applyTheme(next);
+    await renderDiagrams(next);
+  });
+
+  // First render
+  await renderDiagrams(currentTheme());
+</script>
+
+</body>
+</html>

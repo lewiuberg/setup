@@ -1,0 +1,39 @@
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon
+._*
+.Spotlight-V100
+.Trashes
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+.venv/
+venv/
+env/
+.pytest_cache/
+.coverage
+.mypy_cache/
+.ruff_cache/
+
+# uv
+# (uv.lock is committed)
+
+# Build
+build/
+dist/
+*.egg-info/
+
+# Editor / OS
+.idea/
+*.swp
+*.swo
+
+# macsetup runtime state (never committed)
+config/user.toml
+~/.macsetup-backups/

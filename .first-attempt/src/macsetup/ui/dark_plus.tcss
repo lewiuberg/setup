@@ -1,0 +1,103 @@
+/* VS Code Default Dark+ palette
+ *   background       #1e1e1e
+ *   foreground       #d4d4d4
+ *   accent (blue)    #007acc
+ *   selection        #264f78
+ *   success (green)  #6a9955
+ *   error (red)      #f44747
+ *   warning (yellow) #dcdcaa
+ *   comment grey     #6a9955
+ */
+
+Screen {
+    background: #1e1e1e;
+    color: #d4d4d4;
+}
+
+Header {
+    background: #007acc;
+    color: #ffffff;
+}
+
+Footer {
+    background: #007acc;
+    color: #ffffff;
+}
+
+/* Home screen ----------------------------------------------------------------- */
+
+ListView {
+    background: #1e1e1e;
+    color: #d4d4d4;
+    padding: 1 2;
+    height: 1fr;
+}
+
+ListItem {
+    background: #1e1e1e;
+    padding: 0 1;
+    height: 1;
+    border-left: blank;
+}
+
+/* Highlighted row when ListView is unfocused — still visible but subdued. */
+ListItem.--highlight {
+    background: #37373d;
+    border-left: thick #007acc;
+}
+
+/* Active focus — VS Code's actual list.activeSelection palette. */
+ListView:focus > ListItem.--highlight {
+    background: #094771;
+    color: #ffffff;
+    text-style: bold;
+    border-left: thick #ffffff;
+}
+
+/* Section screen -------------------------------------------------------------- */
+
+#section-title {
+    background: #252526;
+    color: #d4d4d4;
+    padding: 1 2;
+    margin-bottom: 1;
+}
+
+DataTable {
+    background: #1e1e1e;
+    color: #d4d4d4;
+}
+
+DataTable > .datatable--header {
+    background: #252526;
+    color: #d4d4d4;
+}
+
+DataTable > .datatable--cursor {
+    background: #264f78;
+    color: #ffffff;
+}
+
+DataTable > .datatable--odd-row {
+    background: #232323;
+}
+
+DataTable > .datatable--even-row {
+    background: #1e1e1e;
+}
+
+/* Progress screen ------------------------------------------------------------- */
+
+#progress-title {
+    background: #252526;
+    color: #d4d4d4;
+    padding: 1 2;
+}
+
+RichLog {
+    background: #1e1e1e;
+    color: #d4d4d4;
+    padding: 1 2;
+    border: tall #264f78;
+    height: 1fr;
+}

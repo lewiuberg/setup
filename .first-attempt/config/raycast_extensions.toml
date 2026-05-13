@@ -1,0 +1,27 @@
+# Raycast Store URLs. Free-tier Raycast has no programmatic install — the
+# setup tool opens each ticked URL in your browser; click "Install Extension"
+# on the Store page to hand off to Raycast (one Return press completes it).
+#
+# Detection lists folders under
+#   ~/Library/Application Support/com.raycast.macos/extensions/
+# and matches slugs.
+#
+# Add your favourites here. A small seed list to start with:
+
+[[item]]
+name = "raycast/github"
+description = "GitHub repos, PRs, issues, actions"
+url = "https://www.raycast.com/raycast/github"
+default = true
+
+[[item]]
+name = "raycast/visual-studio-code"
+description = "Search VS Code recent projects"
+url = "https://www.raycast.com/thomas/visual-studio-code"
+default = true
+
+[[item]]
+name = "raycast/brew"
+description = "Search and install Homebrew packages"
+url = "https://www.raycast.com/nhojb/brew"
+default = true

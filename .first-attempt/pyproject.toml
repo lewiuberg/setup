@@ -1,0 +1,36 @@
+[project]
+name = "macsetup"
+version = "0.1.0"
+description = "Interactive macOS setup tool"
+readme = "README.md"
+requires-python = ">=3.9"
+authors = [
+    { name = "Lewi Lie Uberg", email = "lewiuberg@icloud.com" },
+]
+maintainers = [
+    { name = "Lewi Lie Uberg", email = "lewiuberg@icloud.com" },
+]
+dependencies = [
+    "textual>=0.85",
+    "tomlkit>=0.13",
+    "rich>=13.7",
+    "click>=8.1",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/macsetup"]
+
+[dependency-groups]
+dev = [
+    "pytest>=8.0",
+    "pytest-asyncio>=0.23",
+    "textual-dev>=1.5",
+]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = ["tests"]

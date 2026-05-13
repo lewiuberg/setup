@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>macsetup — Usage guide</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      color-scheme: dark;
+      --bg: #0d1117; --fg: #e6edf3; --muted: #7d8590;
+      --card-bg: #161b22; --card-border: #30363d; --hover: #1c2128;
+      --divider: #21262d; --code-bg: #21262d; --code-fg: #c9d1d9;
+      --pill-bg: #21262d; --pill-border: #30363d; --pill-fg: #c9d1d9;
+      --accent-blue: #58a6ff; --accent-blue-bg: #1f3a5c; --accent-blue-soft: #111a24;
+      --accent-green: #3fb950; --accent-green-bg: #1b3a2a;
+      --accent-orange: #d29922; --accent-orange-bg: #3b2a1b; --accent-orange-soft: #1c1f23;
+      --accent-purple: #bc8cff; --accent-purple-bg: #2a1b3b;
+      --accent-red: #f85149; --accent-red-bg: #3b1b1b; --accent-red-soft: #241515;
+      --btn-bg: #21262d; --btn-border: #30363d; --btn-fg: #c9d1d9; --btn-hover-bg: #30363d;
+    }
+
+    [data-theme="light"] {
+      color-scheme: light;
+      --bg: #f6f8fa; --fg: #1f2328; --muted: #656d76;
+      --card-bg: #ffffff; --card-border: #d0d7de; --hover: #f6f8fa;
+      --divider: #eaeef2; --code-bg: #eff1f3; --code-fg: #1f2328;
+      --pill-bg: #eaeef2; --pill-border: #d0d7de; --pill-fg: #1f2328;
+      --accent-blue: #0969da; --accent-blue-bg: #ddf4ff; --accent-blue-soft: #ddf4ff;
+      --accent-green: #1a7f37; --accent-green-bg: #dafbe1;
+      --accent-orange: #9a6700; --accent-orange-bg: #fff8c5; --accent-orange-soft: #fff8c5;
+      --accent-purple: #8250df; --accent-purple-bg: #fbefff;
+      --accent-red: #cf222e; --accent-red-bg: #ffebe9; --accent-red-soft: #ffebe9;
+      --btn-bg: #ffffff; --btn-border: #d0d7de; --btn-fg: #1f2328; --btn-hover-bg: #f6f8fa;
+    }
+
+    html, body { background: var(--bg); }
+    body {
+      font-family: ui-monospace, "Cascadia Code", "Fira Code", monospace;
+      color: var(--fg);
+      padding: 2rem;
+      min-height: 100vh;
+      transition: background 0.2s ease, color 0.2s ease;
+    }
+
+    h1 {
+      font-size: 1.1rem; color: var(--muted);
+      letter-spacing: 0.1em; text-transform: uppercase;
+      margin-bottom: 0.35rem;
+    }
+    .subtitle {
+      font-size: 0.8rem; color: var(--muted); margin-bottom: 2rem;
+    }
+
+    .theme-toggle {
+      position: fixed; top: 1rem; right: 1rem; z-index: 100;
+      background: var(--btn-bg); border: 1px solid var(--btn-border);
+      color: var(--btn-fg);
+      font-family: inherit; font-size: 0.7rem;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      padding: 0.55rem 0.9rem; border-radius: 999px;
+      cursor: pointer; box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+      transition: background 0.15s ease;
+    }
+    .theme-toggle:hover { background: var(--btn-hover-bg); }
+
+    .grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 1.5rem; max-width: 1200px;
+    }
+    @media (max-width: 800px) { .grid { grid-template-columns: 1fr; } }
+
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 8px;
+      padding: 1.25rem 1.5rem;
+    }
+    .card-title {
+      font-size: 0.75rem; text-transform: uppercase;
+      letter-spacing: 0.12em; color: var(--muted);
+      margin-bottom: 1rem;
+    }
+    .card p, .card li { font-size: 0.85rem; line-height: 1.5; margin-bottom: 0.4rem; }
+    .card ul { list-style: none; }
+
+    code, pre {
+      font-family: inherit;
+      background: var(--code-bg); color: var(--code-fg);
+      border-radius: 4px;
+    }
+    code { padding: 0.1em 0.35em; font-size: 0.82em; }
+    pre {
+      padding: 0.65rem 0.85rem;
+      margin-top: 0.4rem; margin-bottom: 0.6rem;
+      overflow-x: auto; font-size: 0.78rem; line-height: 1.5;
+    }
+
+    .pill-row { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 0.5rem; }
+    .pill {
+      font-size: 0.72rem; padding: 0.2em 0.6em;
+      border-radius: 4px; border: 1px solid var(--pill-border);
+      color: var(--pill-fg); background: var(--pill-bg);
+    }
+
+    .info-box {
+      margin-top: 1rem; border-left: 3px solid var(--accent-blue);
+      padding: 0.5rem 0.75rem; background: var(--accent-blue-soft);
+      border-radius: 0 6px 6px 0;
+      font-size: 0.78rem; line-height: 1.5;
+    }
+    .note-box {
+      margin-top: 1rem; border-left: 3px solid var(--accent-orange);
+      padding: 0.5rem 0.75rem; background: var(--accent-orange-soft);
+      border-radius: 0 6px 6px 0;
+      font-size: 0.78rem; line-height: 1.5;
+    }
+
+    table { width: 100%; border-collapse: collapse; margin-top: 0.4rem; }
+    th, td {
+      padding: 0.4rem 0.6rem; border-bottom: 1px solid var(--divider);
+      text-align: left; font-size: 0.8rem;
+    }
+    th { color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em; font-size: 0.7rem; }
+  </style>
+</head>
+<body>
+  <button class="theme-toggle" type="button" id="theme-toggle">
+    <span id="theme-toggle-label">Light theme</span>
+  </button>
+
+  <h1>macsetup — Usage guide</h1>
+  <p class="subtitle">Generated {{ generated_at }} from your wizard selections.</p>
+
+  <div class="grid">
+    {% if include_mise %}
+    <div class="card">
+      <div class="card-title">mise — polyglot runtime manager</div>
+      <p>One tool for Python, Node, Go, Rust, .NET. Same workflow across all of them.</p>
+      <pre>mise use --global python@latest   # set the global default
+mise use python@3.12              # pin per-directory (writes .mise.toml)
+mise shell python@3.11            # one shell session
+mise ls                           # what's installed
+mise upgrade                      # bump everything</pre>
+      <div class="info-box">
+        Replaces pyenv + asdf + zsh-autoswitch-virtualenv. Cd into a directory with
+        <code>.mise.toml</code> and the runtime auto-activates.
+      </div>
+      {% if mise_runtimes %}
+      <p style="margin-top:0.75rem;color:var(--muted);">Installed by the wizard:</p>
+      <div class="pill-row">
+        {% for name, version in mise_runtimes %}<span class="pill">{{ name }}@{{ version }}</span>{% endfor %}
+      </div>
+      {% endif %}
+    </div>
+    {% endif %}
+
+    {% if include_uv %}
+    <div class="card">
+      <div class="card-title">uv — Python project manager</div>
+      <pre>uv init my-project       # create a new project
+uv add requests          # add a dependency
+uv sync                  # install/update from pyproject.toml + uv.lock
+uv run python script.py  # run inside the project venv
+uv python install 3.12   # download a Python version</pre>
+      <div class="info-box">
+        For new Python projects. Faster than Poetry; uses standard
+        <code>pyproject.toml</code>.
+      </div>
+    </div>
+    {% endif %}
+
+    {% if include_poetry %}
+    <div class="card">
+      <div class="card-title">Poetry — legacy projects</div>
+      <pre>poetry install              # install from pyproject.toml + poetry.lock
+poetry add requests         # add a dependency
+poetry run pytest           # run a command inside the venv
+poetry shell                # spawn a shell inside the venv</pre>
+      {% if poetry_v2 %}
+      <div class="info-box">
+        Poetry 2.x is installed. <code>virtualenvs.prefer-active-python</code> is gone;
+        the default already uses the active Python.
+      </div>
+      {% else %}
+      <div class="info-box">
+        Poetry 1.x: wizard already set
+        <code>virtualenvs.prefer-active-python = true</code>.
+        With mise managing Python, Poetry will pick up the active version automatically.
+      </div>
+      {% endif %}
+      <div class="note-box">
+        New <code>pyproject.toml</code> files: use
+        <code>[tool.poetry.group.dev.dependencies]</code>, not the deprecated
+        <code>poetry.dev-dependencies</code>.
+      </div>
+    </div>
+    {% endif %}
+
+    <div class="card">
+      <div class="card-title">Powerlevel10k</div>
+      <pre>p10k configure             # rerun the configurator any time
+source ~/.p10k.zsh         # reload after manual edits</pre>
+      <div class="info-box">
+        Powerlevel10k needs a Nerd Font. The wizard installed
+        <code>font-meslo-lg-nerd-font</code>; set it in your terminal preferences
+        if it isn't already the default.
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Aliases (from ~/.zshrc)</div>
+      <ul>
+        <li><code>azsh</code> — run zsh in ARM mode</li>
+        <li><code>izsh</code> — run zsh in Intel/Rosetta mode</li>
+        <li><code>aliases</code> — list every alias</li>
+        <li><code>lss</code> — list files by size</li>
+        <li><code>lsla</code> — list all files including hidden</li>
+        <li><code>ch</code> — history grep for git commits</li>
+        <li><code>pih</code> — history grep for pip installs</li>
+        <li><code>poh</code> — history grep for poetry add</li>
+        <li><code>hg</code> — history | grep</li>
+        <li><code>ppip</code> — python3 -m pip</li>
+        <li><code>show</code> / <code>hide</code> — toggle hidden files in Finder</li>
+      </ul>
+    </div>
+
+    {% if warp_shortcuts %}
+    <div class="card">
+      <div class="card-title">Warp directory (~/.warprc)</div>
+      <p>Type <code>wd &lt;name&gt;</code> to jump to any of these:</p>
+      <table>
+        <thead><tr><th>name</th><th>path</th></tr></thead>
+        <tbody>
+          {% for key, path in warp_shortcuts %}<tr><td><code>{{ key }}</code></td><td>{{ path }}</td></tr>{% endfor %}
+        </tbody>
+      </table>
+    </div>
+    {% endif %}
+
+    {% if raycast_extensions %}
+    <div class="card">
+      <div class="card-title">Raycast extensions</div>
+      <p>The wizard opened each Store page; install whichever you tracked:</p>
+      <ul>
+        {% for name, url in raycast_extensions %}<li>
+          <code>{{ name }}</code>
+          <a href="{{ url }}" style="color:var(--accent-blue);">{{ url }}</a>
+        </li>{% endfor %}
+      </ul>
+    </div>
+    {% endif %}
+
+    {% if include_github_auth or include_azure_devops %}
+    <div class="card">
+      <div class="card-title">Authentication</div>
+      {% if include_github_auth %}
+      <p><strong>GitHub:</strong> already authenticated via <code>gh auth login</code>.</p>
+      <pre>gh auth status             # verify
+gh repo clone &lt;user/repo&gt;  # works over SSH or HTTPS now</pre>
+      {% endif %}
+      {% if include_azure_devops %}
+      <p style="margin-top:0.75rem;"><strong>Azure DevOps:</strong> SSH public key copied; paste into User Settings → SSH public keys at <a href="https://dev.azure.com" style="color:var(--accent-blue);">dev.azure.com</a>.</p>
+      {% endif %}
+    </div>
+    {% endif %}
+
+    <div class="card">
+      <div class="card-title">Re-running the wizard</div>
+      <pre>cd ~/Repositories/setup
+./bootstrap.sh</pre>
+      <div class="info-box">
+        Re-runs are idempotent: every section detects existing installs and
+        reports <code>already installed</code>. Existing dotfiles are backed up
+        to <code>~/.dotfile-backups/&lt;timestamp&gt;/</code> before being rewritten.
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const toggle = document.getElementById('theme-toggle');
+    const label = document.getElementById('theme-toggle-label');
+    const html = document.documentElement;
+    const stored = localStorage.getItem('macsetup-theme');
+    if (stored) html.dataset.theme = stored;
+    else if (window.matchMedia('(prefers-color-scheme: light)').matches) html.dataset.theme = 'light';
+    const sync = () => label.textContent = html.dataset.theme === 'dark' ? 'Light theme' : 'Dark theme';
+    sync();
+    toggle.addEventListener('click', () => {
+      html.dataset.theme = html.dataset.theme === 'dark' ? 'light' : 'dark';
+      localStorage.setItem('macsetup-theme', html.dataset.theme);
+      sync();
+    });
+  </script>
+</body>
+</html>

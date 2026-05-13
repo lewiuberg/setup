@@ -1,0 +1,275 @@
+# Baseline VS Code extensions. The wizard compares this to `code --list-extensions`
+# after you confirm Settings Sync is signed in, then offers to install missing ones.
+# Salvaged from .old-root/automated-setup/vscode_extensions.sh (67 entries) plus ruff.
+
+[[item]]
+name = "abusaidm.html-snippets"
+description = "HTML snippets"
+
+[[item]]
+name = "alexcvzz.vscode-sqlite"
+description = "SQLite explorer"
+
+[[item]]
+name = "almenon.arepl"
+description = "Real-time Python evaluator"
+
+[[item]]
+name = "atlassian.atlascode"
+description = "Atlassian (Jira, Bitbucket) integration"
+
+[[item]]
+name = "bungcip.better-toml"
+description = "TOML syntax (legacy — superseded by tamasfe.even-better-toml)"
+
+[[item]]
+name = "christian-kohler.path-intellisense"
+description = "Path autocomplete"
+
+[[item]]
+name = "DavidAnson.vscode-markdownlint"
+description = "Markdown linting"
+
+[[item]]
+name = "davidbabel.vscode-simpler-icons"
+description = "File icon theme"
+
+[[item]]
+name = "donjayamanne.githistory"
+description = "Git history view"
+
+[[item]]
+name = "eamodio.gitlens"
+description = "Git superpowers"
+
+[[item]]
+name = "ecmel.vscode-html-css"
+description = "HTML / CSS support"
+
+[[item]]
+name = "EFanZh.graphviz-preview"
+description = "Graphviz preview"
+
+[[item]]
+name = "emilast.LogFileHighlighter"
+description = "Log file syntax highlighting"
+
+[[item]]
+name = "ericadamski.carbon-now-sh"
+description = "Share code via carbon.now.sh"
+
+[[item]]
+name = "esbenp.prettier-vscode"
+description = "Code formatter"
+
+[[item]]
+name = "felipecaputo.git-project-manager"
+description = "Switch between Git projects"
+
+[[item]]
+name = "figstack.vsc"
+description = "Figstack docs"
+
+[[item]]
+name = "foxundermoon.shell-format"
+description = "Shell-script formatter"
+
+[[item]]
+name = "GitHub.copilot"
+description = "AI pair programmer"
+
+[[item]]
+name = "GrapeCity.gc-excelviewer"
+description = "Excel / CSV viewer"
+
+[[item]]
+name = "hbenl.vscode-test-explorer"
+description = "Test explorer UI"
+
+[[item]]
+name = "hediet.debug-visualizer"
+description = "Debug data visualiser"
+
+[[item]]
+name = "HookyQR.minify"
+description = "JS / CSS minifier"
+
+[[item]]
+name = "James-Yu.latex-workshop"
+description = "LaTeX support"
+
+[[item]]
+name = "joaompinto.vscode-graphviz"
+description = "Graphviz language support"
+
+[[item]]
+name = "keewek.compare-helper"
+description = "Compare helper"
+
+[[item]]
+name = "KevinRose.vsc-python-indent"
+description = "Python indentation"
+
+[[item]]
+name = "lei.theme-chromodynamics"
+description = "Chromodynamics theme"
+
+[[item]]
+name = "littlefoxteam.vscode-python-test-adapter"
+description = "Python test adapter (legacy)"
+
+[[item]]
+name = "magicstack.MagicPython"
+description = "Python syntax (legacy — built into VS Code now)"
+
+[[item]]
+name = "mechatroner.rainbow-csv"
+description = "Rainbow CSV"
+
+[[item]]
+name = "moshfeu.compare-folders"
+description = "Compare folders"
+
+[[item]]
+name = "ms-azuretools.vscode-docker"
+description = "Docker support"
+
+[[item]]
+name = "ms-dotnettools.csharp"
+description = "C# support"
+
+[[item]]
+name = "ms-python.python"
+description = "Python language support"
+
+[[item]]
+name = "ms-python.vscode-pylance"
+description = "Pylance language server"
+
+[[item]]
+name = "ms-toolsai.jupyter"
+description = "Jupyter notebooks"
+
+[[item]]
+name = "ms-toolsai.jupyter-keymap"
+description = "Jupyter keybindings"
+
+[[item]]
+name = "ms-toolsai.jupyter-renderers"
+description = "Jupyter renderers"
+
+[[item]]
+name = "ms-vscode-remote.remote-containers"
+description = "Dev containers"
+
+[[item]]
+name = "ms-vscode-remote.remote-ssh"
+description = "Remote — SSH"
+
+[[item]]
+name = "ms-vscode-remote.remote-ssh-edit"
+description = "Remote — SSH config editing"
+
+[[item]]
+name = "ms-vscode-remote.remote-wsl"
+description = "Remote — WSL (Windows hosts only; harmless on macOS)"
+
+[[item]]
+name = "ms-vscode-remote.vscode-remote-extensionpack"
+description = "Remote Development pack"
+
+[[item]]
+name = "ms-vscode.test-adapter-converter"
+description = "Test adapter converter"
+
+[[item]]
+name = "msrvida.vscode-sanddance"
+description = "SandDance data visualisation"
+
+[[item]]
+name = "mtxr.sqltools"
+description = "SQL tools"
+
+[[item]]
+name = "mtxr.sqltools-driver-sqlite"
+description = "SQLite driver for SQLTools"
+
+[[item]]
+name = "njpwerner.autodocstring"
+description = "Python docstring generator"
+
+[[item]]
+name = "rangav.vscode-thunder-client"
+description = "Thunder Client (API testing)"
+
+[[item]]
+name = "redhat.vscode-yaml"
+description = "YAML language support"
+
+[[item]]
+name = "ritwickdey.LiveServer"
+description = "Live HTML preview server"
+
+[[item]]
+name = "rogalmic.bash-debug"
+description = "Bash debugger"
+
+[[item]]
+name = "rogalmic.zsh-debug"
+description = "Zsh debugger"
+
+[[item]]
+name = "shardulm94.trailing-spaces"
+description = "Highlight trailing whitespace"
+
+[[item]]
+name = "shd101wyy.markdown-preview-enhanced"
+description = "Enhanced Markdown preview"
+
+[[item]]
+name = "sidthesloth.html5-boilerplate"
+description = "HTML5 boilerplate"
+
+[[item]]
+name = "sleistner.vscode-fileutils"
+description = "File utilities"
+
+[[item]]
+name = "streetsidesoftware.code-spell-checker"
+description = "Spell checker"
+
+[[item]]
+name = "tombonnike.vscode-status-bar-format-toggle"
+description = "Format-on-save toggle"
+
+[[item]]
+name = "trond-snekvik.simple-rst"
+description = "reStructuredText support"
+
+[[item]]
+name = "VisualStudioExptTeam.vscodeintellicode"
+description = "IntelliCode"
+
+[[item]]
+name = "vscode-nested-tags.vscode-nested-tags"
+description = "Nested tags"
+
+[[item]]
+name = "wix.vscode-import-cost"
+description = "Show import size inline"
+
+[[item]]
+name = "wwm.better-align"
+description = "Better alignment"
+
+[[item]]
+name = "yzhang.markdown-all-in-one"
+description = "Markdown editing tools"
+
+[[item]]
+name = "aaron-bond.better-comments"
+description = "Better comments"
+
+[[item]]
+name = "charliermarsh.ruff"
+description = "Ruff linter / formatter (modern Python tooling)"

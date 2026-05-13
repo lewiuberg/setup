@@ -1,0 +1,67 @@
+# Zsh plugins. Two kinds:
+#  - Built-in Oh My Zsh plugins (loaded by name in plugins=(...) array in .zshrc)
+#  - External plugins git-cloned into ~/.oh-my-zsh/custom/plugins/
+
+# Built-in OMZ plugins (no install, just enable):
+[[item]]
+name = "brew"
+description = "Homebrew completions and aliases"
+type = "omz-builtin"
+default = true
+
+[[item]]
+name = "git"
+description = "Git aliases and completions"
+required = true
+type = "omz-builtin"
+default = true
+
+[[item]]
+name = "gh"
+description = "GitHub CLI completions"
+type = "omz-builtin"
+default = true
+
+[[item]]
+name = "wd"
+description = "Warp directories (jump shortcuts)"
+type = "omz-builtin"
+default = true
+
+[[item]]
+name = "dotnet"
+description = ".NET CLI completions"
+type = "omz-builtin"
+default = true
+
+[[item]]
+name = "vscode"
+description = "VS Code aliases"
+type = "omz-builtin"
+default = true
+
+[[item]]
+name = "poetry"
+description = "Poetry completions (loaded even if Poetry not installed — harmless)"
+type = "omz-builtin"
+default = true
+
+[[item]]
+name = "docker"
+description = "Docker completions"
+type = "omz-builtin"
+default = true
+
+[[item]]
+name = "docker-compose"
+description = "Docker Compose completions"
+type = "omz-builtin"
+default = true
+
+# External plugins (git clone):
+[[item]]
+name = "autoswitch_virtualenv"
+description = "Auto-switch Python virtualenvs on cd (MichaelAquilina)"
+type = "git"
+repo = "https://github.com/MichaelAquilina/zsh-autoswitch-virtualenv.git"
+default = true

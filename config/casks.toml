@@ -1,0 +1,101 @@
+# GUI applications installed via `brew install --cask`.
+
+[[item]]
+name = "visual-studio-code"
+description = "Code editor"
+
+[[item]]
+name = "warp"
+description = "Modern terminal"
+
+[[item]]
+name = "raycast"
+description = "Launcher"
+
+[[item]]
+name = "google-chrome"
+description = "Browser"
+
+[[item]]
+name = "docker"
+description = "Container runtime (Docker Desktop)"
+
+[[item]]
+name = "microsoft-teams"
+description = "Microsoft Teams"
+
+[[item]]
+name = "slack"
+description = "Slack"
+
+[[item]]
+name = "postman"
+description = "API client"
+
+[[item]]
+name = "notion"
+description = "Notes / docs"
+
+[[item]]
+name = "git-credential-manager-core"
+description = "Cross-platform Git credential helper (needs microsoft/git tap)"
+
+[[item]]
+name = "applepi-baker"
+description = "SD card formatter"
+
+[[item]]
+name = "autodesk-fusion360"
+description = "CAD software"
+
+[[item]]
+name = "avast-security"
+description = "Antivirus"
+
+[[item]]
+name = "balenaetcher"
+description = "SD card / USB image writer"
+
+[[item]]
+name = "betterzip"
+description = "Archive tool"
+
+[[item]]
+name = "jupyter-notebook-viewer"
+description = "Standalone .ipynb viewer"
+
+[[item]]
+name = "parallels"
+description = "Virtualisation"
+
+[[item]]
+name = "parallels-toolbox"
+description = "Parallels utilities"
+
+[[item]]
+name = "prince"
+description = "HTML → PDF converter"
+
+[[item]]
+name = "qlmarkdown"
+description = "QuickLook plugin for Markdown"
+
+[[item]]
+name = "qlstephen"
+description = "QuickLook plugin for plain-text files"
+
+[[item]]
+name = "raspberry-pi-imager"
+description = "Write Raspberry Pi OS to SD cards"
+
+[[item]]
+name = "sdformatter"
+description = "SD card formatter"
+
+[[item]]
+name = "syntax-highlight"
+description = "QuickLook syntax highlighting for source files"
+
+[[item]]
+name = "transmission-cli"
+description = "BitTorrent CLI"

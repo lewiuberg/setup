@@ -1,0 +1,20 @@
+# Python tooling.
+# Pyenv versions: installed by `pyenv install <ver>`. Section never runs
+# `pyenv global` — use `pyenv local` per project (.python-version file) or
+# `pyenv shell` per shell session.
+
+[pyenv]
+versions = ["3.11.9", "3.12.7", "3.13.0"]
+
+# Python project/dependency managers:
+[[item]]
+name = "uv"
+description = "Fast Python project & package manager (primary for new projects)"
+required = true
+default = true
+
+[[item]]
+name = "poetry"
+description = "Python dependency manager (legacy projects only)"
+required = false
+default = false

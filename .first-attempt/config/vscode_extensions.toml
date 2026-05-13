@@ -1,0 +1,343 @@
+# VS Code extensions installed via `code --install-extension <id>`.
+# Salvaged from .old-root/automated-setup/vscode_extensions.sh.
+# Edit freely. `code --list-extensions` on a tuned machine is the fastest way
+# to refresh this list.
+
+[[item]]
+name = "abusaidm.html-snippets"
+description = "HTML snippets"
+default = true
+
+[[item]]
+name = "alexcvzz.vscode-sqlite"
+description = "SQLite viewer"
+default = true
+
+[[item]]
+name = "almenon.arepl"
+description = "Real-time Python REPL"
+default = true
+
+[[item]]
+name = "atlassian.atlascode"
+description = "Atlassian Jira/Bitbucket integration"
+default = false
+
+[[item]]
+name = "bungcip.better-toml"
+description = "TOML syntax (legacy — consider tamasfe.even-better-toml)"
+default = true
+
+[[item]]
+name = "christian-kohler.path-intellisense"
+description = "Path autocomplete"
+default = true
+
+[[item]]
+name = "DavidAnson.vscode-markdownlint"
+description = "Markdown linter"
+default = true
+
+[[item]]
+name = "davidbabel.vscode-simpler-icons"
+description = "File icon theme"
+default = true
+
+[[item]]
+name = "donjayamanne.githistory"
+description = "Git history viewer"
+default = true
+
+[[item]]
+name = "eamodio.gitlens"
+description = "GitLens — supercharge Git in VS Code"
+required = true
+default = true
+
+[[item]]
+name = "ecmel.vscode-html-css"
+description = "HTML CSS support"
+default = true
+
+[[item]]
+name = "EFanZh.graphviz-preview"
+description = "Graphviz preview"
+default = true
+
+[[item]]
+name = "emilast.LogFileHighlighter"
+description = "Log file highlighter"
+default = true
+
+[[item]]
+name = "ericadamski.carbon-now-sh"
+description = "Carbon code screenshots"
+default = false
+
+[[item]]
+name = "esbenp.prettier-vscode"
+description = "Prettier formatter"
+required = true
+default = true
+
+[[item]]
+name = "felipecaputo.git-project-manager"
+description = "Switch Git projects"
+default = true
+
+[[item]]
+name = "figstack.vsc"
+description = "Figstack"
+default = false
+
+[[item]]
+name = "foxundermoon.shell-format"
+description = "Shell script formatter"
+default = true
+
+[[item]]
+name = "GitHub.copilot"
+description = "GitHub Copilot"
+default = true
+
+[[item]]
+name = "GrapeCity.gc-excelviewer"
+description = "Excel viewer"
+default = true
+
+[[item]]
+name = "hbenl.vscode-test-explorer"
+description = "Test Explorer UI"
+default = true
+
+[[item]]
+name = "hediet.debug-visualizer"
+description = "Debug data visualiser"
+default = false
+
+[[item]]
+name = "HookyQR.minify"
+description = "Minify HTML/JS/CSS"
+default = false
+
+[[item]]
+name = "James-Yu.latex-workshop"
+description = "LaTeX support"
+default = true
+
+[[item]]
+name = "joaompinto.vscode-graphviz"
+description = "Graphviz language support"
+default = true
+
+[[item]]
+name = "keewek.compare-helper"
+description = "Compare files helper"
+default = false
+
+[[item]]
+name = "KevinRose.vsc-python-indent"
+description = "Correct Python indentation"
+default = true
+
+[[item]]
+name = "lei.theme-chromodynamics"
+description = "Chromodynamics theme"
+default = false
+
+[[item]]
+name = "littlefoxteam.vscode-python-test-adapter"
+description = "Python test adapter"
+default = true
+
+[[item]]
+name = "magicstack.MagicPython"
+description = "Better Python syntax"
+default = true
+
+[[item]]
+name = "mechatroner.rainbow-csv"
+description = "Rainbow CSV"
+default = true
+
+[[item]]
+name = "moshfeu.compare-folders"
+description = "Compare folders"
+default = false
+
+[[item]]
+name = "ms-azuretools.vscode-docker"
+description = "Docker support"
+default = true
+
+[[item]]
+name = "ms-dotnettools.csharp"
+description = "C# support"
+default = true
+
+[[item]]
+name = "ms-python.python"
+description = "Python language support"
+required = true
+default = true
+
+[[item]]
+name = "ms-python.vscode-pylance"
+description = "Pylance — Python language server"
+required = true
+default = true
+
+[[item]]
+name = "ms-toolsai.jupyter"
+description = "Jupyter notebooks"
+default = true
+
+[[item]]
+name = "ms-toolsai.jupyter-keymap"
+description = "Jupyter keymap"
+default = true
+
+[[item]]
+name = "ms-toolsai.jupyter-renderers"
+description = "Jupyter renderers"
+default = true
+
+[[item]]
+name = "ms-vscode-remote.remote-containers"
+description = "Dev Containers"
+default = true
+
+[[item]]
+name = "ms-vscode-remote.remote-ssh"
+description = "Remote — SSH"
+default = true
+
+[[item]]
+name = "ms-vscode-remote.remote-ssh-edit"
+description = "Remote — SSH config editor"
+default = true
+
+[[item]]
+name = "ms-vscode-remote.remote-wsl"
+description = "Remote — WSL (unused on macOS)"
+default = false
+
+[[item]]
+name = "ms-vscode-remote.vscode-remote-extensionpack"
+description = "Remote development extension pack"
+default = true
+
+[[item]]
+name = "ms-vscode.test-adapter-converter"
+description = "Test adapter converter"
+default = true
+
+[[item]]
+name = "msrvida.vscode-sanddance"
+description = "SandDance data visualisation"
+default = false
+
+[[item]]
+name = "mtxr.sqltools"
+description = "SQLTools"
+default = true
+
+[[item]]
+name = "mtxr.sqltools-driver-sqlite"
+description = "SQLTools SQLite driver"
+default = true
+
+[[item]]
+name = "njpwerner.autodocstring"
+description = "Python docstring generator"
+default = true
+
+[[item]]
+name = "rangav.vscode-thunder-client"
+description = "Thunder Client — REST"
+default = true
+
+[[item]]
+name = "redhat.vscode-yaml"
+description = "YAML language support"
+default = true
+
+[[item]]
+name = "ritwickdey.LiveServer"
+description = "Live Server"
+default = true
+
+[[item]]
+name = "rogalmic.bash-debug"
+description = "Bash debugger"
+default = false
+
+[[item]]
+name = "rogalmic.zsh-debug"
+description = "Zsh debugger"
+default = false
+
+[[item]]
+name = "shardulm94.trailing-spaces"
+description = "Highlight trailing whitespace"
+default = true
+
+[[item]]
+name = "shd101wyy.markdown-preview-enhanced"
+description = "Enhanced Markdown preview"
+default = true
+
+[[item]]
+name = "sidthesloth.html5-boilerplate"
+description = "HTML5 boilerplate"
+default = false
+
+[[item]]
+name = "sleistner.vscode-fileutils"
+description = "File utilities"
+default = true
+
+[[item]]
+name = "streetsidesoftware.code-spell-checker"
+description = "Spell checker"
+default = true
+
+[[item]]
+name = "tombonnike.vscode-status-bar-format-toggle"
+description = "Toggle format-on-save in status bar"
+default = true
+
+[[item]]
+name = "trond-snekvik.simple-rst"
+description = "reStructuredText support"
+default = false
+
+[[item]]
+name = "VisualStudioExptTeam.vscodeintellicode"
+description = "IntelliCode"
+default = true
+
+[[item]]
+name = "vscode-nested-tags.vscode-nested-tags"
+description = "Nested tags"
+default = false
+
+[[item]]
+name = "wix.vscode-import-cost"
+description = "Show import package size"
+default = true
+
+[[item]]
+name = "wwm.better-align"
+description = "Better alignment"
+default = false
+
+[[item]]
+name = "yzhang.markdown-all-in-one"
+description = "Markdown All in One"
+default = true
+
+[[item]]
+name = "aaron-bond.better-comments"
+description = "Better comment colouring"
+default = true

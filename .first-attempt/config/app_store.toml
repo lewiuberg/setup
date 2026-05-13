@@ -1,0 +1,87 @@
+# Mac App Store apps installed via mas-cli.
+# The `id` field is the App Store numeric ID (extracted from the apps.apple.com URL).
+# Sign in to the App Store first; mas can install but not authenticate.
+
+[[item]]
+name = "BetterJSON for Safari"
+id = 1511935951
+description = "JSON formatter for Safari"
+default = true
+
+[[item]]
+name = "BetterSnapTool"
+id = 417375580
+description = "Window snapping"
+default = true
+
+[[item]]
+name = "Dark Reader for Safari"
+id = 1438243180
+description = "Dark mode for any website"
+default = true
+
+[[item]]
+name = "Dynamo"
+id = 1445910651
+description = "App configuration / launcher"
+default = false
+
+[[item]]
+name = "Graphic"
+id = 404705039
+description = "Vector illustration"
+default = false
+
+[[item]]
+name = "HP Easy Scan"
+id = 967004861
+description = "HP scanner driver app"
+default = false
+
+[[item]]
+name = "iStatistica Pro"
+id = 1447778660
+description = "System monitor in menu bar"
+default = true
+
+[[item]]
+name = "LanScan"
+id = 472226235
+description = "Network scanner"
+default = false
+
+[[item]]
+name = "New File Menu"
+id = 1064959555
+description = "Add 'New File' to Finder context menu"
+default = true
+
+[[item]]
+name = "Parcel — Delivery Tracking"
+id = 639968404
+description = "Track parcels"
+default = true
+
+[[item]]
+name = "RAR Extractor — Unarchiver Pro"
+id = 647505820
+description = "Archive utility"
+default = true
+
+[[item]]
+name = "Ring — Always Home"
+id = 1142753258
+description = "Ring doorbell / camera"
+default = false
+
+[[item]]
+name = "Smart Converter Pro 2"
+id = 660234210
+description = "Media converter"
+default = false
+
+[[item]]
+name = "Viper FTP Lite"
+id = 1001007066
+description = "FTP client"
+default = false

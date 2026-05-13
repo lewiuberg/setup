@@ -1,0 +1,172 @@
+# Homebrew casks (GUI apps and Mac-only binaries).
+# Salvaged from .old-root/automated-setup/brew_formulas.sh.
+
+[[item]]
+name = "raycast"
+description = "Productivity launcher (Spotlight replacement)"
+required = false
+default = true
+category = "productivity"
+
+[[item]]
+name = "visual-studio-code"
+description = "Code editor"
+required = true
+default = true
+category = "dev"
+
+[[item]]
+name = "docker"
+description = "Container runtime"
+default = true
+category = "dev"
+
+[[item]]
+name = "google-chrome"
+description = "Web browser"
+default = true
+category = "browser"
+
+[[item]]
+name = "git-credential-manager-core"
+description = "Cross-platform Git credential helper (requires microsoft/git tap)"
+default = true
+category = "git"
+
+[[item]]
+name = "jetbrains-toolbox"
+description = "JetBrains IDE manager"
+default = true
+category = "dev"
+
+[[item]]
+name = "rider"
+description = ".NET IDE (also available via JetBrains Toolbox)"
+default = false
+category = "dev"
+
+[[item]]
+name = "postman"
+description = "API testing client"
+default = true
+category = "dev"
+
+[[item]]
+name = "microsoft-office"
+description = "Word, Excel, PowerPoint"
+default = true
+category = "productivity"
+
+[[item]]
+name = "microsoft-teams"
+description = "Team chat"
+default = true
+category = "communication"
+
+[[item]]
+name = "slack"
+description = "Team chat"
+default = true
+category = "communication"
+
+[[item]]
+name = "notion"
+description = "Notes and docs"
+default = true
+category = "productivity"
+
+[[item]]
+name = "parallels"
+description = "Virtualisation"
+default = true
+category = "virtualisation"
+
+[[item]]
+name = "parallels-toolbox"
+description = "Parallels utilities"
+default = true
+category = "virtualisation"
+
+[[item]]
+name = "autodesk-fusion360"
+description = "CAD software"
+default = true
+category = "creative"
+
+[[item]]
+name = "jupyter-notebook-viewer"
+description = "View Jupyter notebooks outside the browser"
+default = false
+category = "dev"
+
+[[item]]
+name = "prince"
+description = "HTML-to-PDF converter"
+default = false
+category = "tools"
+
+[[item]]
+name = "qlmarkdown"
+description = "Quicklook plugin for Markdown"
+default = true
+category = "macos"
+
+[[item]]
+name = "qlstephen"
+description = "Quicklook plugin for files without extensions"
+default = true
+category = "macos"
+
+[[item]]
+name = "syntax-highlight"
+description = "Quicklook plugin for source code"
+default = true
+category = "macos"
+
+[[item]]
+name = "applepi-baker"
+description = "SD card imaging"
+default = false
+category = "tools"
+
+[[item]]
+name = "balenaetcher"
+description = "SD card flasher"
+default = true
+category = "tools"
+
+[[item]]
+name = "raspberry-pi-imager"
+description = "Official Raspberry Pi SD card writer"
+default = true
+category = "tools"
+
+[[item]]
+name = "sdformatter"
+description = "SD card formatter"
+default = false
+category = "tools"
+
+[[item]]
+name = "betterzip"
+description = "Archive utility"
+default = true
+category = "tools"
+
+[[item]]
+name = "transmission-cli"
+description = "BitTorrent client (CLI)"
+default = false
+category = "network"
+
+[[item]]
+name = "unite"
+description = "Turn websites into apps"
+default = false
+category = "productivity"
+
+[[item]]
+name = "avast-security"
+description = "Antivirus"
+default = false
+category = "security"

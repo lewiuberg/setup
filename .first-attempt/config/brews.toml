@@ -1,0 +1,163 @@
+# Homebrew formulae.
+# Salvaged from .old-root/automated-setup/brew_formulas.sh + terminal.sh.
+
+[[item]]
+name = "azure-cli"
+description = "Microsoft Azure CLI"
+default = true
+category = "cloud"
+
+[[item]]
+name = "gh"
+description = "GitHub CLI"
+required = true
+default = true
+category = "git"
+
+[[item]]
+name = "git"
+description = "Distributed version control"
+required = true
+default = true
+category = "git"
+
+[[item]]
+name = "git-lfs"
+description = "Git extension for versioning large files"
+default = true
+category = "git"
+
+[[item]]
+name = "graphviz"
+description = "Graph visualisation software"
+default = true
+category = "dev"
+
+[[item]]
+name = "lcov"
+description = "Front-end for gcov coverage testing"
+default = false
+category = "dev"
+
+[[item]]
+name = "lnav"
+description = "Log file navigator"
+default = true
+category = "terminal"
+
+[[item]]
+name = "node"
+description = "JavaScript runtime"
+default = true
+category = "dev"
+
+[[item]]
+name = "pyenv"
+description = "Python version manager (no global pin set by this tool)"
+required = true
+default = true
+category = "python"
+
+[[item]]
+name = "pyenv-virtualenv"
+description = "pyenv plugin for virtualenv management"
+default = true
+category = "python"
+
+[[item]]
+name = "smudge/smudge/nightlight"
+description = "Control macOS Night Shift from CLI (auto-taps smudge/smudge)"
+default = false
+category = "macos"
+
+[[item]]
+name = "tree"
+description = "Recursive directory listing"
+default = true
+category = "terminal"
+
+[[item]]
+name = "virtualenv"
+description = "Isolated Python environments (legacy — uv covers this)"
+default = false
+category = "python"
+
+[[item]]
+name = "asdf"
+description = "Multi-runtime version manager"
+default = false
+category = "dev"
+
+[[item]]
+name = "asdf-node"
+description = "asdf plugin for Node"
+default = false
+category = "dev"
+
+[[item]]
+name = "asdf-python"
+description = "asdf plugin for Python"
+default = false
+category = "dev"
+
+[[item]]
+name = "asdf-rust"
+description = "asdf plugin for Rust"
+default = false
+category = "dev"
+
+[[item]]
+name = "asdf-golang"
+description = "asdf plugin for Go"
+default = false
+category = "dev"
+
+[[item]]
+name = "asdf-dotnet"
+description = "asdf plugin for .NET"
+default = false
+category = "dev"
+
+[[item]]
+name = "uv"
+description = "Fast Python project & package manager (primary)"
+required = true
+default = true
+category = "python"
+
+[[item]]
+name = "direnv"
+description = "Per-directory environment switcher"
+default = true
+category = "terminal"
+
+[[item]]
+name = "romkatv/powerlevel10k/powerlevel10k"
+description = "Powerlevel10k zsh theme (auto-taps romkatv/powerlevel10k)"
+default = true
+category = "terminal"
+
+[[item]]
+name = "zsh-syntax-highlighting"
+description = "Fish-shell-like syntax highlighting for zsh"
+default = true
+category = "terminal"
+
+[[item]]
+name = "zsh-autosuggestions"
+description = "Fish-shell-like autosuggestions for zsh"
+default = true
+category = "terminal"
+
+# Optional / situational — defaulted off.
+[[item]]
+name = "docker-machine"
+description = "Manage Docker on remote VMs"
+default = false
+category = "dev"
+
+[[item]]
+name = "pwgen"
+description = "Password generator"
+default = false
+category = "security"

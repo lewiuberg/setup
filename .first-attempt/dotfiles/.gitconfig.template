@@ -1,0 +1,46 @@
+# =============================================================================
+# ~/.gitconfig.template — rendered by macsetup into ~/.gitconfig
+#
+# Placeholders ({{name}}, {{email}}, {{signing_key}}) are substituted at
+# render time using values from config/user.toml (which is gitignored).
+# =============================================================================
+
+[user]
+    name = {{name}}
+    email = {{email}}
+    signingkey = {{signing_key}}
+
+[init]
+    defaultBranch = main
+
+[pull]
+    rebase = false
+
+[push]
+    autoSetupRemote = true
+
+[commit]
+    gpgsign = true
+
+[gpg]
+    program = gpg
+
+[core]
+    editor = code --wait
+    autocrlf = input
+    excludesfile = ~/.gitignore_global
+
+[color]
+    ui = auto
+
+[diff]
+    colorMoved = zebra
+
+[alias]
+    co = checkout
+    br = branch
+    ci = commit
+    st = status
+    lg = log --oneline --graph --decorate --all
+    unstage = reset HEAD --
+    last = log -1 HEAD

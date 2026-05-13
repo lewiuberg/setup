@@ -1,0 +1,82 @@
+# Homebrew formulae installed via `brew install`.
+# Edit this file to add or remove items before running the wizard.
+
+[[item]]
+name = "git"
+description = "Distributed version control"
+
+[[item]]
+name = "gh"
+description = "GitHub CLI (handles auth and PRs)"
+
+[[item]]
+name = "git-lfs"
+description = "Git extension for versioning large files"
+
+[[item]]
+name = "mise"
+description = "Polyglot runtime manager (replaces pyenv + asdf)"
+
+[[item]]
+name = "uv"
+description = "Fast Python package and project manager"
+
+[[item]]
+name = "poetry"
+description = "Legacy Python dependency manager"
+
+[[item]]
+name = "azure-cli"
+description = "Microsoft Azure CLI"
+
+[[item]]
+name = "ripgrep"
+description = "Fast recursive grep"
+
+[[item]]
+name = "fzf"
+description = "Fuzzy finder"
+
+[[item]]
+name = "bat"
+description = "cat with syntax highlighting"
+
+[[item]]
+name = "eza"
+description = "Modern ls replacement"
+
+[[item]]
+name = "fd"
+description = "Fast find alternative"
+
+[[item]]
+name = "jq"
+description = "Command-line JSON processor"
+
+[[item]]
+name = "tmux"
+description = "Terminal multiplexer"
+
+[[item]]
+name = "mas"
+description = "Mac App Store CLI"
+
+[[item]]
+name = "tree"
+description = "Directory listing as a tree"
+
+[[item]]
+name = "graphviz"
+description = "Graph visualisation software"
+
+[[item]]
+name = "lcov"
+description = "Front-end for gcov code coverage"
+
+[[item]]
+name = "lnav"
+description = "Log file navigator"
+
+[[item]]
+name = "smudge/smudge/nightlight"
+description = "Control macOS Night Shift from the CLI (auto-taps smudge/smudge)"

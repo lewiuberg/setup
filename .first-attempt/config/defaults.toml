@@ -1,0 +1,23 @@
+# Section-level defaults — which sections are ticked on Home by default.
+# Sections still appear in the list regardless; this just sets the initial
+# selection. Per-item ticking comes from each section's own TOML.
+
+[sections]
+"Rosetta" = false                # only meaningful on Apple Silicon
+"Homebrew" = true
+"Brews" = true
+"Casks" = true
+"Fonts" = true
+"App Store" = true
+"Oh My Zsh" = true
+"Powerlevel10k" = true
+"pyenv" = true
+"Python tools" = true
+"direnv" = true
+".NET" = false                   # optional — only if you write .NET
+"zsh plugins" = true
+"Dotfiles" = true
+"VS Code" = true
+"Raycast" = true
+"Secrets" = true
+"Terminal profile" = true

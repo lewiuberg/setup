@@ -14,6 +14,13 @@ brew install pyenv-virtualenv         # pyenv-virtualenv is a pyenv plugin to ma
 brew install smudge/smudge/nightlight # nightlight is a simple command line tool to change the color temperature of your display
 brew install tree                     # tree is a recursive directory listing command that produces a depth indented listing of files
 brew install virtualenv               # virtualenv is a tool to create isolated Python environments
+brew install asdf                      # asdf is a tool that manages multiple runtime versions with a single CLI tool
+brew install asdf-node                 # asdf-node is a plugin for asdf to manage node versions
+brew install asdf-python               # asdf-python is a plugin for asdf to manage python versions
+brew install asdf-rust                 # asdf-rust is a plugin for asdf to manage rust versions
+brew install asdf-golang               # asdf-golang is a plugin for asdf to manage golang versions
+brew install asdf-dotnet               # asdf-dotnet is a plugin for asdf to manage dotnet versions
+brew install uv                        # uv is a package manager for Python that aims to be a faster and more reliable alternative to pip. It is built on top of the Rust programming language and uses the Cargo package manager to manage its dependencies.
 # brew install direnv                   # direnv is an environment switcher for the shell
 # brew install docker-machine           # docker-machine is a tool that lets you install Docker Engine on virtual hosts, and manage the hosts with docker-machine commands.
 # brew install dotnet-sdk               # dotnet-sdk is a .NET SDK
@@ -23,26 +30,26 @@ brew install virtualenv               # virtualenv is a tool to create isolated 
 brew install --cask applepi-baker            # applepi-baker is a SD card formatter
 brew install --cask autodesk-fusion360       # autodesk-fusion360 is a CAD software
 brew install --cask avast-security           # avast-security is a security software
-brew install --cask azure-data-studio        # azure-data-studio is a data editor
+# brew install --cask azure-data-studio        # azure-data-studio is a data editor
 brew install --cask balenaetcher             # balenaetcher is a SD card formatter
 brew install --cask betterzip                # betterzip is a zip tool
-brew install --cask blender                  # blender is a 3D software
-brew install --cask discord                  # discord is a chat software
+# brew install --cask blender                  # blender is a 3D software
+# brew install --cask discord                  # discord is a chat software
 brew install --cask docker                   # docker is a container software
-brew install --cask gitkraken                # gitkraken is a git client
+# brew install --cask gitkraken                # gitkraken is a git client
 brew install --cask google-chrome            # google-chrome is a web browser
-brew install --cask grammarly                # grammarly is a grammar checker
-brew install --cask grammarly-desktop        # grammarly-desktop is a grammar checker
+# brew install --cask grammarly                # grammarly is a grammar checker
+# brew install --cask grammarly-desktop        # grammarly-desktop is a grammar checker
 brew install --cask jetbrains-toolbox        # jetbrains-toolbox is a IDE manager
 brew install --cask jupyter-notebook-viewer  # jupyter-notebook-viewer is a jupyter notebook viewer
-brew install --cask messenger                # messenger is a chat software
+# brew install --cask messenger                # messenger is a chat software
 brew install --cask microsoft-office         # microsoft-office is a office software
-brew install --cask microsoft-remote-desktop # microsoft-remote-desktop is a remote access software
+# brew install --cask microsoft-remote-desktop # microsoft-remote-desktop is a remote access software
 brew install --cask microsoft-teams          # microsoft-teams is a chat software
 brew install --cask notion                   # notion is a note taking software
 brew install --cask parallels                # parallels is a virtualization software
-brew install --cask parallels-access         # parallels-access is a remote access software
-brew install --cask parallels-client         # parallels-client is a remote access software
+# brew install --cask parallels-access         # parallels-access is a remote access software
+# brew install --cask parallels-client         # parallels-client is a remote access software
 brew install --cask parallels-toolbox        # parallels-toolbox is a virtualization software
 brew install --cask postman                  # postman is a REST client
 brew install --cask prince                   # prince is a PDF converter
@@ -51,16 +58,15 @@ brew install --cask qlstephen                # qlstephen is a quicklook plugin
 brew install --cask raspberry-pi-imager      # raspberry-pi-imager is a SD card formatter
 brew install --cask rider                    # rider is a IDE
 brew install --cask sdformatter              # sdformatter is a SD card formatter
-brew install --cask sketchbook               # sketchbook is a drawing software
+# brew install --cask sketchbook               # sketchbook is a drawing software
 brew install --cask slack                    # slack is a chat software
 brew install --cask syntax-highlight         # syntax-highlight is a syntax highlighting tool for source code
-brew install --cask tableplus                # tableplus is a database client
-brew install --cask termius                  # termius is a remote access software
+# brew install --cask tableplus                # tableplus is a database client
+# brew install --cask termius                  # termius is a remote access software
 brew install --cask transmission-cli         # transmission-cli is a BitTorrent client
 brew install --cask unite                    # unite is a file manager
-brew install --cask unite                    # unite is a file manager
 brew install --cask visual-studio-code       # visual-studio-code is a code editor
-brew install --cask vnc-viewer               # vnc-viewer is a remote access software
+# brew install --cask vnc-viewer               # vnc-viewer is a remote access software
 # Git credential manager core
 brew tap microsoft/git                          # microsoft/git is a git credential manager
 brew install --cask git-credential-manager-core # git-credential-manager-core is a git credential manager
@@ -75,6 +81,6 @@ brew install --cask font-meslo-lg-nerd-font # font-meslo-lg-nerd-font is a font
 brew install --cask font-fira-code          # font-fira-code is a font
 
 # Install Brew Cask Drivers
-brew tap homebrew/cask-drivers # cask-drivers is a driver manager
+# brew tap homebrew/cask-drivers # cask-drivers is a driver manager
 # brew install --cask logitech-options # logitech-options is a logitech driver
-brew install --cask philips-hue-sync # philips-hue-sync is a hue sync driver
+# brew install --cask philips-hue-sync # philips-hue-sync is a hue sync driver

@@ -7,7 +7,8 @@ code --install-extension atlassian.atlascode
 code --install-extension bungcip.better-toml
 code --install-extension christian-kohler.path-intellisense
 code --install-extension DavidAnson.vscode-markdownlint
-code --install-extension davidbabel.vscode-simpler-icons
+# code --install-extension davidbabel.vscode-simpler-icons
+code --install-extension davidbabel.antigravity-icons-supercharged-gray
 code --install-extension donjayamanne.githistory
 code --install-extension eamodio.gitlens
 code --install-extension ecmel.vscode-html-css

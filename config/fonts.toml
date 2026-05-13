@@ -1,0 +1,9 @@
+# Developer fonts. All via brew cask — `homebrew/cask-fonts` is no longer required.
+
+[[item]]
+name = "font-meslo-lg-nerd-font"
+description = "Nerd Font required by Powerlevel10k"
+
+[[item]]
+name = "font-fira-code"
+description = "Ligatures + clean monospace"

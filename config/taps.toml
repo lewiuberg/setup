@@ -1,0 +1,10 @@
+# Homebrew taps. Most modern formulae no longer need taps.
+
+[[item]]
+name = "microsoft/git"
+description = "Required for git-credential-manager-core cask"
+
+[[item]]
+name = "hashicorp/tap"
+description = "Terraform, Vault, Consul"
+default = false

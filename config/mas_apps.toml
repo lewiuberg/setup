@@ -1,0 +1,82 @@
+# Mac App Store apps installed via `mas install <id>`.
+# IDs salvaged from .old-root/automated-setup/manual_installations.sh.
+# Requires the App Store CLI (`mas`) and that you're signed in to the App Store.
+
+[[item]]
+name = "BetterJSON for Safari"
+description = "Pretty-printed JSON in Safari"
+id = 1511935951
+
+[[item]]
+name = "BetterSnapTool"
+description = "Window-snapping"
+id = 417375580
+
+[[item]]
+name = "Dark Reader for Safari"
+description = "Dark mode for any website"
+id = 1438243180
+
+[[item]]
+name = "Dynamo"
+description = "Native macOS Vim app"
+id = 1445910651
+
+[[item]]
+name = "Graphic"
+description = "Vector drawing"
+id = 404705039
+
+[[item]]
+name = "HP Easy Scan"
+description = "Scanner driver"
+id = 967004861
+default = false
+
+[[item]]
+name = "iStatistica Pro"
+description = "System monitor"
+id = 1447778660
+default = false
+
+[[item]]
+name = "LanScan"
+description = "Network scanner"
+id = 472226235
+
+[[item]]
+name = "macOS Server"
+description = "Apple's server tools (note: discontinued by Apple; install may fail)"
+id = 883878097
+default = false
+
+[[item]]
+name = "New File Menu"
+description = "Right-click → New File in Finder"
+id = 1064959555
+default = false
+
+[[item]]
+name = "Parcel"
+description = "Package tracking"
+id = 639968404
+
+[[item]]
+name = "RAR Extractor — Unarchiver Pro"
+description = "RAR / 7z / Zip extractor"
+id = 647505820
+
+[[item]]
+name = "Ring"
+description = "Ring doorbell / camera app"
+id = 1142753258
+
+[[item]]
+name = "Smart Converter Pro 2"
+description = "Media format converter"
+id = 660234210
+
+[[item]]
+name = "Viper FTP Lite"
+description = "FTP client"
+id = 1001007066

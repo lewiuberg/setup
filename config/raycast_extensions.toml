@@ -1,0 +1,17 @@
+# Raycast extensions. Each opens its Store page in the browser for manual install.
+
+[[item]]
+name = "Brew"
+description = "Search and install Homebrew packages from Raycast"
+url = "https://www.raycast.com/nhojb/brew"
+
+[[item]]
+name = "Visual Studio Code"
+description = "Open recent VS Code projects"
+url = "https://www.raycast.com/thomas/visual-studio-code"
+
+[[item]]
+name = "GitHub"
+description = "Browse repos, issues, PRs"
+url = "https://www.raycast.com/raycast/github"
+default = false

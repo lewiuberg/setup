@@ -1,0 +1,29 @@
+# Runtimes managed by mise (single tool replaces pyenv + asdf).
+# `version` is passed to mise as the version spec (e.g. "latest", "3.12", "lts").
+
+[[item]]
+name = "python"
+description = "CPython via python-build-standalone (fast install)"
+version = "latest"
+
+[[item]]
+name = "dotnet"
+description = ".NET SDK"
+version = "latest"
+
+[[item]]
+name = "node"
+description = "Node.js"
+version = "lts"
+
+[[item]]
+name = "go"
+description = "Go toolchain"
+version = "latest"
+default = false
+
+[[item]]
+name = "rust"
+description = "Rust toolchain (rustup)"
+version = "latest"
+default = false

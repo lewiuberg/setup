@@ -1,0 +1,17 @@
+# Extra Homebrew taps. Add or remove freely.
+#
+# Note: homebrew/cask-fonts was deprecated in early 2023 — fonts moved into
+# the core cask repo. Kept here only if you have machines still on older
+# Homebrew. Most users can leave default = false.
+
+[[item]]
+name = "microsoft/git"
+description = "Microsoft's Git fork and credential manager"
+required = false
+default = true
+
+[[item]]
+name = "homebrew/cask-fonts"
+description = "Legacy font cask repository (deprecated since Homebrew 4.0)"
+required = false
+default = false
